@@ -43,7 +43,7 @@ struct detallesView: View {
                         .offset(y:-40)
                         .foregroundColor(Color.white) 
                     
-                }.offset(y:40)
+                }
                 
             }.padding(0)
             
@@ -109,27 +109,62 @@ struct detallesView: View {
                 .padding(.top, -5)
                 
                 // Opciones: Estados
-                Picker(selection: $option, label: Text("Picker"))
-                {
-                    Text("No cobrado").tag(1)
-                    Text("Cobrado").tag(2)
-                    Text("Conflicto").tag(3)
+                ZStack{
+                    // Barra de color
+                    if(option == 1){
+                        Color(red: 255, green: 255, blue: 255)
+                            .edgesIgnoringSafeArea(.all)
+                            .frame(height: 50)
+                            .offset(y:-47)
+                            .frame(width: 350)
+                            .zIndex(0)
+                    }else if(option == 2){
+                        Color(red: 0, green: 255, blue: 0)
+                            .edgesIgnoringSafeArea(.all)
+                            .frame(height: 50)
+                            .offset(y:-47)
+                            .frame(width: 350)
+                            .zIndex(0)
+                    }else if(option == 3){
+                        Color(red: 255, green: 0, blue: 0)
+                            .edgesIgnoringSafeArea(.all)
+                            .frame(height: 50)
+                            .offset(y:-47)
+                            .frame(width: 350)
+                            .zIndex(0)
+                    }
                     
-                }.padding(.top, 5.0)
-                    .pickerStyle(.segmented)
-                    .frame(width: 330)
-                    .onChange(of: option){ value in
+                    
+                    Picker(selection: $option, label: Text("Picker"))
+                    {
+                        Text("No cobrado").tag(1)
+                        Text("Cobrado").tag(2)
+                        Text("Conflicto").tag(3)
                         
-                        if(option == 1){
-                            estadoFinal = "No cobrado"
-                        } else if (option == 2){
-                            estadoFinal = "Cobrado"
-                        } else if (option == 3){
-                            estadoFinal = "Conflicto"
-                        }
-                        
-                    } .padding(.bottom, 35)
-                    .padding(.top, -55)
+                    }.pickerStyle(.segmented)
+                        .frame(width: 330)
+                        .background(
+                            // Apply a background color to the selected segment
+                            RoundedRectangle(cornerRadius: 8)
+                                .fill(Color.white) // Change this color to your desired color
+                                .padding(.horizontal, 0) // Adjust the padding as needed
+                        )
+                        .onChange(of: option){ value in
+                            
+                            if(option == 1){
+                                estadoFinal = "No cobrado"
+                            } else if (option == 2){
+                                estadoFinal = "Cobrado"
+                            } else if (option == 3){
+                                estadoFinal = "Conflicto"
+                            }
+                            
+                        } .padding(.bottom, 35)
+                        .padding(.top, -60)
+                        .zIndex(2)
+                    
+                   
+                }
                 
                 // Campo de texto 1: Comentarios adicionales
                 Text("Comentarios adicionales:")
@@ -138,16 +173,16 @@ struct detallesView: View {
                     .fontWeight(.bold)
                     .padding([.bottom, .trailing], -3.0)
                     .padding(.leading, 35)
+                    .padding(.top, -10)
                 
-                TextField("", text: $comentarioAdicional)
-                    .frame(width: 330, height: 100)
-                    .background(
+                TextEditor(text: $comentarioAdicional)
+                    .frame(width: 323, height: 100)
+                    .overlay(
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(Color.gray, lineWidth: 1)
                     )
-                    .font(.body)
-                    .fontWeight(.regular)
-                    .multilineTextAlignment(.center)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                
                 
                 // Botón: Guardar
                 Button(action: {
@@ -156,12 +191,12 @@ struct detallesView: View {
                     Text("Guardar")
                         .font(.title2)
                         .fontWeight(.bold)
-                        .frame(width: 300, height: 50)
+                        .frame(width: 300, height: 40)
                         .foregroundColor(Color.white) // Establece el color del texto en blanco
                 }
                 .buttonStyle(.borderedProminent)
                 .tint(Color(red: 0, green: 156/255, blue: 171/255))
-                .padding(.top, 28)
+                .padding(.top, 23)
                 
                 Spacer()
                 

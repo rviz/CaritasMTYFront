@@ -53,6 +53,7 @@ struct loginView: View {
                         .font(.title)
                         .fontWeight(.light)
                         .multilineTextAlignment(.center)
+                        
                     
                     Picker(selection: $option, label: Text("Picker")) {
                         Text("Recolector").tag(1)

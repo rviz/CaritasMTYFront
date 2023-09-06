@@ -1,9 +1,3 @@
-//
-//  listadoView.swift
-//  caritas
-//
-//  Created by Alumno on 05/09/23.
-//
 
 import SwiftUI
 
@@ -13,7 +7,7 @@ struct listadoView: View {
     @State private var filtroID: String = ""
     @State private var tipoFiltro: String = ""
     @State private var lista: Array<Recibo> = []
-//ewdiwndfoiw
+
     
     
     var body: some View {
@@ -81,24 +75,6 @@ struct listadoView: View {
                 }
             }
             
-            
-            // Opciones: Estados
-            
-            // Campo de texto 1: Comentarios adicionales
-           
-            // Botón: Guardar
-            Button(action: {
-                // Acción que deseas realizar cuando se presione el botón
-            }) {
-                Text("Guardar")
-                    .font(.title2)
-                    .fontWeight(.bold)
-                    .frame(width: 300, height: 60)
-                    .foregroundColor(Color.white) // Establece el color del texto en blanco
-            }
-            .buttonStyle(.borderedProminent)
-            .tint(Color(red: 0, green: 156/255, blue: 171/255))
-            .padding(.top, 28)
             
             Spacer()
             

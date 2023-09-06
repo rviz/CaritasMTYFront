@@ -14,7 +14,7 @@ struct contentView: View {
              .tabItem {
                  Label("Tickets", systemImage: "ticket")
              }
-            detallesView()
+            listadoView()
              .tabItem {
                  Label("Notifications", systemImage: "bell.badge")
              }

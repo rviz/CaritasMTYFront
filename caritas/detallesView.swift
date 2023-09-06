@@ -43,7 +43,7 @@ struct detallesView: View {
                         .offset(y:-40)
                         .foregroundColor(Color.white) 
                     
-                }.offset(y:40)
+                }
                 
             }.padding(0)
             

@@ -7,7 +7,7 @@ struct listadoView: View {
     @State private var filtroID: String = ""
     @State private var tipoFiltro: String = ""
     @State private var lista: Array<Recibo> = []
-
+//soy efragod scrum master
     
     
     var body: some View {

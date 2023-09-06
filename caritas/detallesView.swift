@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct detallesView: View {
-   // var muestra: Recibo
+
     // Variables
     @State private var estadoFinal: String = ""
     @State private var comentarioAdicional: String = ""
@@ -18,8 +18,7 @@ struct detallesView: View {
     @State private var calle: String = "Sin información"
     @State private var colonia: String = "Sin información"
     @State private var monto: Int = 0
-    @State private var notas: String = "Sin información"
-    
+    @State private var notas: String = "Sin información"    
     
     var body: some View {
         
@@ -27,6 +26,7 @@ struct detallesView: View {
             
             // Impresión de información
             VStack{
+                
                 
                 ZStack{
                     
@@ -48,105 +48,125 @@ struct detallesView: View {
                 
             }.padding(0)
             
-            HStack{
+            ScrollView {
                 
-                VStack(alignment: .leading, spacing: 0) {
-                    
-                    HStack {
-                        Text("Calle:")
-                            .font(.title3)
-                            .fontWeight(.bold)
-                        Text(calle)
-                            .font(.title3)
-                    }.padding(.bottom, 10)
-                    
-                    HStack {
-                        Text("Colonia:")
-                            .font(.title3)
-                            .fontWeight(.bold)
-                        Text(colonia)
-                            .font(.title3)
-                    }.padding(.bottom, 10)
-                    
-                    HStack {
-                        Text("Monto:")
-                            .font(.title3)
-                            .fontWeight(.bold)
-                        Text("$" + String(monto))
-                            .font(.title3)
-                    }.padding(.bottom, 10)
-                    
-                    HStack {
-                        Text("Notas:")
-                            .font(.title3)
-                            .fontWeight(.bold)
-                        Text(notas)
-                            .font(.title3)
-                    }.padding(.bottom, 10)
+                
+                // Botón: Guardar
+                Button(action: {
+                    // Acción que deseas realizar cuando se presione el botón
+                }) {
+                    Text("Ver mapa")
+                        .font(.title2)
+                        .fontWeight(.bold)
+                        .frame(width: 300, height: 30)
+                        .foregroundColor(Color.white)
                 }
-                .padding(.top, 100)
-                .padding(.bottom, 25)
-            }
-            .padding(.leading, -95)
-            .offset(y:-50)
-            .padding(.top, -5)
-            
-            // Opciones: Estados
-            Picker(selection: $option, label: Text("Picker"))
-            {
-                Text("No cobrado").tag(1)
-                Text("Cobrado").tag(2)
-                Text("Conflicto").tag(3)
+                .buttonStyle(.borderedProminent)
+                .tint(Color(red: 0, green: 156/255, blue: 171/255))
+                .padding(.top, 25)
+                .padding(.bottom, -10)
                 
-            }.padding(.top, 5.0)
-                .pickerStyle(.segmented)
-                .frame(width: 330)
-                .onChange(of: option){ value in
+                HStack{
                     
-                    if(option == 1){
-                        estadoFinal = "No cobrado"
-                    } else if (option == 2){
-                        estadoFinal = "Cobrado"
-                    } else if (option == 3){
-                        estadoFinal = "Conflicto"
+                    VStack(alignment: .leading, spacing: 0) {
+                        
+                        HStack {
+                            Text("Calle:")
+                                .font(.title3)
+                                .fontWeight(.bold)
+                            Text(calle)
+                                .font(.title3)
+                        }.padding(.bottom, 10)
+                        
+                        HStack {
+                            Text("Colonia:")
+                                .font(.title3)
+                                .fontWeight(.bold)
+                            Text(colonia)
+                                .font(.title3)
+                        }.padding(.bottom, 10)
+                        
+                        HStack {
+                            Text("Monto:")
+                                .font(.title3)
+                                .fontWeight(.bold)
+                            Text("$" + String(monto))
+                                .font(.title3)
+                        }.padding(.bottom, 10)
+                        
+                        HStack {
+                            Text("Notas:")
+                                .font(.title3)
+                                .fontWeight(.bold)
+                            Text(notas)
+                                .font(.title3)
+                        }.padding(.bottom, 10)
                     }
+                    .padding(.top, 100)
+                    .padding(.bottom, 25)
+                }
+                .padding(.leading, -95)
+                .offset(y:-50)
+                .padding(.top, -5)
+                
+                // Opciones: Estados
+                Picker(selection: $option, label: Text("Picker"))
+                {
+                    Text("No cobrado").tag(1)
+                    Text("Cobrado").tag(2)
+                    Text("Conflicto").tag(3)
                     
-                } .padding(.bottom, 35)
-                .padding(.top, -55)
-            
-            // Campo de texto 1: Comentarios adicionales
-            Text("Comentarios adicionales:")
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .font(.title3)
-                .fontWeight(.bold)
-                .padding([.bottom, .trailing], -3.0)
-                .padding(.leading, 35)
-            
-            TextField("", text: $comentarioAdicional)
-                .frame(width: 330, height: 100)
-                .background(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.gray, lineWidth: 1)
-                )
-                .font(.body)
-                .fontWeight(.regular)
-                .multilineTextAlignment(.center)
-            
-            // Botón: Guardar
-            Button(action: {
-                // Acción que deseas realizar cuando se presione el botón
-            }) {
-                Text("Guardar")
-                    .font(.title2)
+                }.padding(.top, 5.0)
+                    .pickerStyle(.segmented)
+                    .frame(width: 330)
+                    .onChange(of: option){ value in
+                        
+                        if(option == 1){
+                            estadoFinal = "No cobrado"
+                        } else if (option == 2){
+                            estadoFinal = "Cobrado"
+                        } else if (option == 3){
+                            estadoFinal = "Conflicto"
+                        }
+                        
+                    } .padding(.bottom, 35)
+                    .padding(.top, -55)
+                
+                // Campo de texto 1: Comentarios adicionales
+                Text("Comentarios adicionales:")
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .font(.title3)
                     .fontWeight(.bold)
-                    .frame(width: 300, height: 60)
-                    .foregroundColor(Color.white) // Establece el color del texto en blanco
+                    .padding([.bottom, .trailing], -3.0)
+                    .padding(.leading, 35)
+                
+                TextField("", text: $comentarioAdicional)
+                    .frame(width: 330, height: 100)
+                    .background(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.gray, lineWidth: 1)
+                    )
+                    .font(.body)
+                    .fontWeight(.regular)
+                    .multilineTextAlignment(.center)
+                
+                // Botón: Guardar
+                Button(action: {
+                    // Acción que deseas realizar cuando se presione el botón
+                }) {
+                    Text("Guardar")
+                        .font(.title2)
+                        .fontWeight(.bold)
+                        .frame(width: 300, height: 50)
+                        .foregroundColor(Color.white) // Establece el color del texto en blanco
+                }
+                .buttonStyle(.borderedProminent)
+                .tint(Color(red: 0, green: 156/255, blue: 171/255))
+                .padding(.top, 28)
+                
+                Spacer()
+                
             }
-            .buttonStyle(.borderedProminent)
-            .tint(Color(red: 0, green: 156/255, blue: 171/255))
-            .padding(.top, 28)
-            
-            Spacer()
             
         }
         

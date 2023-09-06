@@ -13,6 +13,7 @@ struct contentView: View {
     var body: some View {
                 
         TabView{
+            
             listadoView()
              .tabItem {
                  Label("Tickets", systemImage: "ticket")
@@ -30,6 +31,5 @@ struct contentView: View {
 struct contentView_Previews: PreviewProvider {
     static var previews: some View {
         contentView()
-            .preferredColorScheme(.light)
     }
 }

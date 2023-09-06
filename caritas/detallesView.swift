@@ -180,6 +180,10 @@ struct detallesView: View {
                             .stroke(Color.gray, lineWidth: 1)
                     )
                     .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .onTapGesture {
+                                        // Resignar el primer respondedor del teclado
+                                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                                    }
                 
                 
                 // Botón: Guardar

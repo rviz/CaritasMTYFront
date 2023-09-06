@@ -104,7 +104,7 @@ struct loginView: View {
                                 coordinador = true
                             }
                             
-                        } .padding(.top, 40)
+                        } .padding(.top, 20)
                     
                     //comentario
                     // Botón: Ingresar
@@ -151,7 +151,7 @@ struct loginView: View {
             
             
             
-        }
+        }  .preferredColorScheme(.light)
     }
 }
 

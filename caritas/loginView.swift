@@ -106,7 +106,7 @@ struct loginView: View {
                             
                         } .padding(.top, 20)
                     
-                    
+                    //comentario
                     // Botón: Ingresar
                     Button(action: {
                         if(contraseña == contraseñaCorrecto) && (usuario == usuarioCorrecto){

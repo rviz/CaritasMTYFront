@@ -106,6 +106,7 @@ struct loginView: View {
                             
                         } .padding(.top, 20)
                     
+                    
                     // Botón: Ingresar
                     Button(action: {
                         if(contraseña == contraseñaCorrecto) && (usuario == usuarioCorrecto){
@@ -114,7 +115,6 @@ struct loginView: View {
                             showAlert.toggle()
                         }
                     }) {
-                    
                         NavigationLink("INGRESAR"){
                                 contentView()
                         }
@@ -136,7 +136,7 @@ struct loginView: View {
                     Spacer()
                     
                     
-
+    
                     VStack{
                         Color.init(red: 0, green: 59/255, blue: 92/255)
                             .edgesIgnoringSafeArea(.all)

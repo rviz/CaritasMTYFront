@@ -129,7 +129,7 @@ struct detallesView: View {
                         }
                         
                     } .padding(.bottom, 35)
-                    .padding(.top, -55)
+                    .padding(.top, -60)
                 
                 // Campo de texto 1: Comentarios adicionales
                 Text("Comentarios adicionales:")
@@ -138,16 +138,16 @@ struct detallesView: View {
                     .fontWeight(.bold)
                     .padding([.bottom, .trailing], -3.0)
                     .padding(.leading, 35)
+                    .padding(.top, -10)
                 
-                TextField("", text: $comentarioAdicional)
-                    .frame(width: 330, height: 100)
-                    .background(
+                TextEditor(text: $comentarioAdicional)
+                    .frame(width: 323, height: 100)
+                    .overlay(
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(Color.gray, lineWidth: 1)
                     )
-                    .font(.body)
-                    .fontWeight(.regular)
-                    .multilineTextAlignment(.center)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                
                 
                 // Botón: Guardar
                 Button(action: {
@@ -156,12 +156,12 @@ struct detallesView: View {
                     Text("Guardar")
                         .font(.title2)
                         .fontWeight(.bold)
-                        .frame(width: 300, height: 50)
+                        .frame(width: 300, height: 40)
                         .foregroundColor(Color.white) // Establece el color del texto en blanco
                 }
                 .buttonStyle(.borderedProminent)
                 .tint(Color(red: 0, green: 156/255, blue: 171/255))
-                .padding(.top, 28)
+                .padding(.top, 23)
                 
                 Spacer()
                 

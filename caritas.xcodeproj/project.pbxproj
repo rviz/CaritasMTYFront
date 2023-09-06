@@ -1,0 +1,362 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FB95E6932AA786BD001B82BF /* listadoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB95E6922AA786BD001B82BF /* listadoView.swift */; };
+		FB95E6952AA78B4D001B82BF /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB95E6942AA78B4D001B82BF /* ModelData.swift */; };
+		FB95E6972AA78B8E001B82BF /* Recibo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB95E6962AA78B8E001B82BF /* Recibo.swift */; };
+		FBAE7D6C2AA77B6C001C653B /* contentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAE7D6B2AA77B6C001C653B /* contentView.swift */; };
+		FBF716612AA680C000C8B1F7 /* caritasApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF716602AA680C000C8B1F7 /* caritasApp.swift */; };
+		FBF716632AA680C000C8B1F7 /* loginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF716622AA680C000C8B1F7 /* loginView.swift */; };
+		FBF716652AA680C000C8B1F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBF716642AA680C000C8B1F7 /* Assets.xcassets */; };
+		FBF716682AA680C000C8B1F7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBF716672AA680C000C8B1F7 /* Preview Assets.xcassets */; };
+		FBF7166F2AA69E7700C8B1F7 /* detallesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF7166E2AA69E7700C8B1F7 /* detallesView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		FB95E6922AA786BD001B82BF /* listadoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listadoView.swift; sourceTree = "<group>"; };
+		FB95E6942AA78B4D001B82BF /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
+		FB95E6962AA78B8E001B82BF /* Recibo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recibo.swift; sourceTree = "<group>"; };
+		FBAE7D6B2AA77B6C001C653B /* contentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = contentView.swift; sourceTree = "<group>"; };
+		FBF7165D2AA680C000C8B1F7 /* caritas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = caritas.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FBF716602AA680C000C8B1F7 /* caritasApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = caritasApp.swift; sourceTree = "<group>"; };
+		FBF716622AA680C000C8B1F7 /* loginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginView.swift; sourceTree = "<group>"; };
+		FBF716642AA680C000C8B1F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FBF716672AA680C000C8B1F7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		FBF7166E2AA69E7700C8B1F7 /* detallesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = detallesView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FBF7165A2AA680C000C8B1F7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FBF716542AA680C000C8B1F7 = {
+			isa = PBXGroup;
+			children = (
+				FBF7165F2AA680C000C8B1F7 /* caritas */,
+				FBF7165E2AA680C000C8B1F7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FBF7165E2AA680C000C8B1F7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FBF7165D2AA680C000C8B1F7 /* caritas.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FBF7165F2AA680C000C8B1F7 /* caritas */ = {
+			isa = PBXGroup;
+			children = (
+				FBF716602AA680C000C8B1F7 /* caritasApp.swift */,
+				FBF716622AA680C000C8B1F7 /* loginView.swift */,
+				FB95E6922AA786BD001B82BF /* listadoView.swift */,
+				FB95E6942AA78B4D001B82BF /* ModelData.swift */,
+				FB95E6962AA78B8E001B82BF /* Recibo.swift */,
+				FBF7166E2AA69E7700C8B1F7 /* detallesView.swift */,
+				FBF716642AA680C000C8B1F7 /* Assets.xcassets */,
+				FBF716662AA680C000C8B1F7 /* Preview Content */,
+				FBAE7D6B2AA77B6C001C653B /* contentView.swift */,
+			);
+			path = caritas;
+			sourceTree = "<group>";
+		};
+		FBF716662AA680C000C8B1F7 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				FBF716672AA680C000C8B1F7 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FBF7165C2AA680C000C8B1F7 /* caritas */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FBF7166B2AA680C000C8B1F7 /* Build configuration list for PBXNativeTarget "caritas" */;
+			buildPhases = (
+				FBF716592AA680C000C8B1F7 /* Sources */,
+				FBF7165A2AA680C000C8B1F7 /* Frameworks */,
+				FBF7165B2AA680C000C8B1F7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = caritas;
+			productName = caritas;
+			productReference = FBF7165D2AA680C000C8B1F7 /* caritas.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FBF716552AA680C000C8B1F7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					FBF7165C2AA680C000C8B1F7 = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+				};
+			};
+			buildConfigurationList = FBF716582AA680C000C8B1F7 /* Build configuration list for PBXProject "caritas" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FBF716542AA680C000C8B1F7;
+			productRefGroup = FBF7165E2AA680C000C8B1F7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FBF7165C2AA680C000C8B1F7 /* caritas */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FBF7165B2AA680C000C8B1F7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FBF716682AA680C000C8B1F7 /* Preview Assets.xcassets in Resources */,
+				FBF716652AA680C000C8B1F7 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FBF716592AA680C000C8B1F7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FBF7166F2AA69E7700C8B1F7 /* detallesView.swift in Sources */,
+				FBF716632AA680C000C8B1F7 /* loginView.swift in Sources */,
+				FB95E6972AA78B8E001B82BF /* Recibo.swift in Sources */,
+				FBAE7D6C2AA77B6C001C653B /* contentView.swift in Sources */,
+				FB95E6932AA786BD001B82BF /* listadoView.swift in Sources */,
+				FBF716612AA680C000C8B1F7 /* caritasApp.swift in Sources */,
+				FB95E6952AA78B4D001B82BF /* ModelData.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		FBF716692AA680C000C8B1F7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FBF7166A2AA680C000C8B1F7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FBF7166C2AA680C000C8B1F7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"caritas/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = A01280601.caritas;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FBF7166D2AA680C000C8B1F7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"caritas/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = A01280601.caritas;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FBF716582AA680C000C8B1F7 /* Build configuration list for PBXProject "caritas" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FBF716692AA680C000C8B1F7 /* Debug */,
+				FBF7166A2AA680C000C8B1F7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FBF7166B2AA680C000C8B1F7 /* Build configuration list for PBXNativeTarget "caritas" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FBF7166C2AA680C000C8B1F7 /* Debug */,
+				FBF7166D2AA680C000C8B1F7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FBF716552AA680C000C8B1F7 /* Project object */;
+}

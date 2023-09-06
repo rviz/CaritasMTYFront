@@ -30,5 +30,6 @@ struct contentView: View {
 struct contentView_Previews: PreviewProvider {
     static var previews: some View {
         contentView()
+            .preferredColorScheme(.light)
     }
 }

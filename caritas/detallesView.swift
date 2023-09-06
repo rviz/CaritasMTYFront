@@ -112,26 +112,24 @@ struct detallesView: View {
                 ZStack{
                     // Barra de color
                     if(option == 1){
-                        Color(red: 255, green: 255, blue: 255)
-                            .edgesIgnoringSafeArea(.all)
-                            .frame(height: 50)
-                            .offset(y:-47)
-                            .frame(width: 350)
-                            .zIndex(0)
+                        Color(red: 214/255, green: 214/255, blue: 214/255)
+                                .frame(height: 50)
+                                .frame(width: 330)
+                                .cornerRadius(10) //
+                                .offset(y:-55)
+
+                        
                     }else if(option == 2){
-                        Color(red: 0, green: 255, blue: 0)
-                            .edgesIgnoringSafeArea(.all)
-                            .frame(height: 50)
-                            .offset(y:-47)
-                            .frame(width: 350)
-                            .zIndex(0)
+                        Color.green
+                                .frame(height: 50)
+                                .frame(width: 330)
+                                .cornerRadius(10) //
+                                .offset(y:-55)
                     }else if(option == 3){
-                        Color(red: 255, green: 0, blue: 0)
-                            .edgesIgnoringSafeArea(.all)
-                            .frame(height: 50)
-                            .offset(y:-47)
-                            .frame(width: 350)
-                            .zIndex(0)
+                        Color(red: 214/255, green: 0/255, blue: 0/255)                                .frame(height: 50)
+                                .frame(width: 330)
+                                .cornerRadius(10) //
+                                .offset(y:-55)
                     }
                     
                     
@@ -142,7 +140,7 @@ struct detallesView: View {
                         Text("Conflicto").tag(3)
                         
                     }.pickerStyle(.segmented)
-                        .frame(width: 330)
+                        .frame(width: 310)
                         .background(
                             // Apply a background color to the selected segment
                             RoundedRectangle(cornerRadius: 8)
@@ -159,8 +157,8 @@ struct detallesView: View {
                                 estadoFinal = "Conflicto"
                             }
                             
-                        } .padding(.bottom, 35)
-                        .padding(.top, -60)
+                        }
+                        .padding(.top, -70)
                         .zIndex(2)
                     
                    
@@ -173,7 +171,7 @@ struct detallesView: View {
                     .fontWeight(.bold)
                     .padding([.bottom, .trailing], -3.0)
                     .padding(.leading, 35)
-                    .padding(.top, -10)
+                    .padding(.top, -25)
                 
                 TextEditor(text: $comentarioAdicional)
                     .frame(width: 323, height: 100)

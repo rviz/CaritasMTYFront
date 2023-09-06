@@ -67,14 +67,14 @@ struct loginView: View {
                     
                     if usuario == usuarioCorrecto {
                         NavigationLink(
-                            destination: listadoView(),
-                            label: {
-                                Text("Iniciar Sesión")
-                                    .font(.title2)
-                                    .fontWeight(.bold)
-                                    .frame(width: 300, height: 50)
-                                    .foregroundColor(Color.white)
-                            })
+                        destination: listadoView(),
+                        label: {
+                            Text("Iniciar Sesión")
+                                .font(.title2)
+                                .fontWeight(.bold)
+                                .frame(width: 300, height: 50)
+                                .foregroundColor(Color.white)
+                        })
                         .buttonStyle(.borderedProminent)
                         .tint(Color(hue: 0.543, saturation: 0.272, brightness: 0.931, opacity: 0.3))
                         .padding(.top, 105)
@@ -88,13 +88,13 @@ struct loginView: View {
                                 .fontWeight(.bold)
                                 .frame(width: 300, height: 50)
                                 .foregroundColor(Color.white)
-                        }.alert("La contraseña y/o usuario son inválidos. Por favor vuelve a intentarlo.", isPresented: $showAlert) {
-                            Button("OK"){}
-                        }
-                        .buttonStyle(.borderedProminent)
-                        .tint(Color(hue: 0.543, saturation: 0.272, brightness: 0.931, opacity: 0.3))
-                        .padding(.top, 105)
-                    }
+                            }.alert("La contraseña y/o usuario son inválidos. Por favor vuelve a intentarlo.", isPresented: $showAlert) {
+                                Button("OK"){}
+                                }
+                                .buttonStyle(.borderedProminent)
+                                .tint(Color(hue: 0.543, saturation: 0.272, brightness: 0.931, opacity: 0.3))
+                                .padding(.top, 105)
+                                }
                 }}
         }
     }

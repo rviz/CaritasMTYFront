@@ -37,9 +37,10 @@ struct listadoView: View {
                     TextField("Buscar por ID", text: $filtroID)
                         .textFieldStyle(.roundedBorder)
                         .frame(width: 330)
-                        .font(.title)
+                        .font(.title3)
                         .fontWeight(.light)
                         .multilineTextAlignment(.center)
+                        .padding(.top, 10)
                     Picker(selection: $option, label: Text("Picker"))
                     {
                         Text("Zona").tag(1)
@@ -73,10 +74,10 @@ struct listadoView: View {
                     }
                     }.onAppear(){
                         lista = callAPILista()
-                    
-                        
-                    }
-                    
+                    } .frame(width: 350, height: 500)
+                        .padding(.top, 15)
+                        .listStyle(.inset)
+                
                 }
             }
             

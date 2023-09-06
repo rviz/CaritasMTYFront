@@ -11,6 +11,7 @@ import SwiftUI
 struct contentView: View {
     
     var body: some View {
+                
         TabView{
             listadoView()
              .tabItem {
@@ -21,6 +22,7 @@ struct contentView: View {
                  Label("Notifications", systemImage: "bell.badge")
              }
         }.tint(Color(red: 0, green: 156/255, blue: 171/255))
+
     }
 }
 

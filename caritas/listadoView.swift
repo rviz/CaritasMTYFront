@@ -67,7 +67,6 @@ struct listadoView: View {
                         listaItem in
                         NavigationLink{
                             detallesView()
-                            //ahi se mandan los datos
                         }
                     label:{
                         Text(listaItem.title)

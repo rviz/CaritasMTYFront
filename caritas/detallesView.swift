@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct detallesView: View {
-    
+   // var muestra: Recibo
     // Variables
     @State private var estadoFinal: String = ""
     @State private var comentarioAdicional: String = ""

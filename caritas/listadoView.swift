@@ -7,7 +7,6 @@ struct listadoView: View {
     @State private var filtroID: String = ""
     @State private var tipoFiltro: String = ""
     @State private var lista: Array<Recibo> = []
-//soy efragod scrum master
     
     
     var body: some View {
@@ -47,7 +46,7 @@ struct listadoView: View {
                         Text("Zona").tag(1)
                         Text("Colonia").tag(2)
                         Text("Código Postal").tag(3)
-                        
+                    
                     }
                     .padding(.top, 3.0)
                         .pickerStyle(.segmented)
@@ -66,11 +65,18 @@ struct listadoView: View {
         
                     List (lista){
                         listaItem in
+                        NavigationLink{
+                            detallesView()
+                            //ahi se mandan los datos
+                        }
+                    label:{
                         Text(listaItem.title)
+                    }
                     }.onAppear(){
                         lista = callAPILista()
-                    }
+                    
                         
+                    }
                     
                 }
             }

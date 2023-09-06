@@ -13,7 +13,7 @@ struct listadoView: View {
     @State private var filtroID: String = ""
     @State private var tipoFiltro: String = ""
     @State private var lista: Array<Recibo> = []
-
+//ewdiwndfoiw
     
     
     var body: some View {

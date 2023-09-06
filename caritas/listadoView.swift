@@ -19,7 +19,7 @@ struct listadoView: View {
                     // Barra de color
                     Color(red: 0, green: 156/255, blue: 171/255)
                         .edgesIgnoringSafeArea(.all)
-                        .frame(height: 130)
+                        .frame(height: 80)
                         .frame(height: .infinity)
                         .offset(y:-50)
                     
@@ -27,7 +27,7 @@ struct listadoView: View {
                         .font(.title)
                         .fontWeight(.bold)
                         .padding(.bottom, 5)
-                        .offset(y:-30)
+                        .offset(y:-40)
                         .foregroundColor(Color.white)
                     
                 }.offset(y:40)

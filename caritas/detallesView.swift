@@ -109,27 +109,62 @@ struct detallesView: View {
                 .padding(.top, -5)
                 
                 // Opciones: Estados
-                Picker(selection: $option, label: Text("Picker"))
-                {
-                    Text("No cobrado").tag(1)
-                    Text("Cobrado").tag(2)
-                    Text("Conflicto").tag(3)
+                ZStack{
+                    // Barra de color
+                    if(option == 1){
+                        Color(red: 255, green: 255, blue: 255)
+                            .edgesIgnoringSafeArea(.all)
+                            .frame(height: 50)
+                            .offset(y:-47)
+                            .frame(width: 350)
+                            .zIndex(0)
+                    }else if(option == 2){
+                        Color(red: 0, green: 255, blue: 0)
+                            .edgesIgnoringSafeArea(.all)
+                            .frame(height: 50)
+                            .offset(y:-47)
+                            .frame(width: 350)
+                            .zIndex(0)
+                    }else if(option == 3){
+                        Color(red: 255, green: 0, blue: 0)
+                            .edgesIgnoringSafeArea(.all)
+                            .frame(height: 50)
+                            .offset(y:-47)
+                            .frame(width: 350)
+                            .zIndex(0)
+                    }
                     
-                }.padding(.top, 5.0)
-                    .pickerStyle(.segmented)
-                    .frame(width: 330)
-                    .onChange(of: option){ value in
+                    
+                    Picker(selection: $option, label: Text("Picker"))
+                    {
+                        Text("No cobrado").tag(1)
+                        Text("Cobrado").tag(2)
+                        Text("Conflicto").tag(3)
                         
-                        if(option == 1){
-                            estadoFinal = "No cobrado"
-                        } else if (option == 2){
-                            estadoFinal = "Cobrado"
-                        } else if (option == 3){
-                            estadoFinal = "Conflicto"
-                        }
-                        
-                    } .padding(.bottom, 35)
-                    .padding(.top, -60)
+                    }.pickerStyle(.segmented)
+                        .frame(width: 330)
+                        .background(
+                            // Apply a background color to the selected segment
+                            RoundedRectangle(cornerRadius: 8)
+                                .fill(Color.white) // Change this color to your desired color
+                                .padding(.horizontal, 0) // Adjust the padding as needed
+                        )
+                        .onChange(of: option){ value in
+                            
+                            if(option == 1){
+                                estadoFinal = "No cobrado"
+                            } else if (option == 2){
+                                estadoFinal = "Cobrado"
+                            } else if (option == 3){
+                                estadoFinal = "Conflicto"
+                            }
+                            
+                        } .padding(.bottom, 35)
+                        .padding(.top, -60)
+                        .zIndex(2)
+                    
+                   
+                }
                 
                 // Campo de texto 1: Comentarios adicionales
                 Text("Comentarios adicionales:")

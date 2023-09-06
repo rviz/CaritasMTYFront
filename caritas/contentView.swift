@@ -12,11 +12,11 @@ struct contentView: View {
     
     var body: some View {
         TabView{
-             detallesView()
+            listadoView()
              .tabItem {
                  Label("Tickets", systemImage: "ticket")
              }
-            listadoView()
+            detallesView()
              .tabItem {
                  Label("Notifications", systemImage: "bell.badge")
              }

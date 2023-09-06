@@ -34,7 +34,6 @@ struct detallesView: View {
                     Color(red: 0, green: 156/255, blue: 171/255)
                         .edgesIgnoringSafeArea(.all)
                         .frame(height: 80)
-                        .frame(height: .infinity)
                         .offset(y:-50)
                     
                     Text("Detalles")

@@ -39,7 +39,6 @@ struct loginView: View {
                 //
                 LinearGradient(gradient: Gradient(colors: [Color(red: 0, green: 156/255, blue: 171/255), Color(red: 0/255, green: 59/255, blue: 92/255, opacity: 255.0)]), startPoint: .top, endPoint: .bottomLeading)
                     .edgesIgnoringSafeArea(.all)
-                    .frame(height: .infinity)
                 
                 VStack{
                     

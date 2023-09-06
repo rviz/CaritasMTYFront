@@ -7,7 +7,9 @@
 
 import SwiftUI
 
+
 struct contentView: View {
+    
     var body: some View {
         TabView{
              detallesView()

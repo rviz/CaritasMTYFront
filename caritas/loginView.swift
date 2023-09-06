@@ -82,6 +82,7 @@ struct loginView: View {
                         .font(.title)
                         .fontWeight(.light)
                         .multilineTextAlignment(.center)
+                        
                     
                     
                     // Opciones: Estados
@@ -90,8 +91,8 @@ struct loginView: View {
                         Text("Recolector").tag(1)
                         Text("Coordinador").tag(2)
                         
-                    }.padding(.top, 5.0)
-                        .pickerStyle(.segmented)
+                    }
+                    .pickerStyle(.segmented)
                         .frame(width: 330)
                         .background(Color.white.opacity(0.7))
                         .cornerRadius(10) // Añade esquinas redondeadas al fondo
@@ -103,7 +104,7 @@ struct loginView: View {
                                 coordinador = true
                             }
                             
-                        } .padding(.top, 20)
+                        } .padding(.top, 40)
                     
                     //comentario
                     // Botón: Ingresar

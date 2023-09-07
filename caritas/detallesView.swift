@@ -6,6 +6,12 @@
 //
 
 import SwiftUI
+extension View {
+    func hideKeyboard() {
+        let resign = #selector(UIResponder.resignFirstResponder)
+        UIApplication.shared.sendAction(resign, to: nil, from: nil, for: nil)
+    }
+}
 
 struct detallesView: View {
 
@@ -188,6 +194,8 @@ struct detallesView: View {
                 
                 // Botón: Guardar
                 Button(action: {
+                    hideKeyboard()
+                    
                     // Acción que deseas realizar cuando se presione el botón
                 }) {
                     Text("Guardar")

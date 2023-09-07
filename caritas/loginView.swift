@@ -77,7 +77,7 @@ struct loginView: View {
                     
                     if usuario == usuarioCorrecto {
                         NavigationLink(
-                        destination: listadoView(),
+                        destination: contentView(),
                         label: {
                             Text("Iniciar sesión")
                                 .font(.title2)

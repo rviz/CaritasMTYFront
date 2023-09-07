@@ -5,6 +5,12 @@ struct loginView: View {
     @State private var option: Int = 0
     @State private var usuario: String = ""
     @State private var contraseña: String = ""
+<<<<<<< Updated upstream
+=======
+    @State private var longitud: Int = 0
+
+    // Variables API
+>>>>>>> Stashed changes
     @State private var usuarioCorrecto: String = ""
     @State private var contraseñaCorrecto: String = ""
     @State private var showAlert = false
@@ -54,8 +60,14 @@ struct loginView: View {
                         .fontWeight(.light)
                         .multilineTextAlignment(.center)
                         
+<<<<<<< Updated upstream
                     
                     Picker(selection: $option, label: Text("Picker")) {
+=======
+                    // Opciones: Estados
+                    Picker(selection: $option, label: Text("Picker"))
+                    {
+>>>>>>> Stashed changes
                         Text("Recolector").tag(1)
                         Text("Coordinador").tag(2)
                     }

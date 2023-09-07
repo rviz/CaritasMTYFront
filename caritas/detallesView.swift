@@ -6,6 +6,12 @@
 //
 
 import SwiftUI
+extension View {
+    func hideKeyboard() {
+        let resign = #selector(UIResponder.resignFirstResponder)
+        UIApplication.shared.sendAction(resign, to: nil, from: nil, for: nil)
+    }
+}
 
 struct detallesView: View {
 
@@ -41,14 +47,13 @@ struct detallesView: View {
                         .fontWeight(.bold)
                         .padding(.bottom, 5)
                         .offset(y:-40)
-                        .foregroundColor(Color.white) 
+                        .foregroundColor(Color.white)
                     
                 }
                 
             }.padding(0)
             
             ScrollView {
-                
                 
                 // Botón: Guardar
                 Button(action: {
@@ -62,7 +67,7 @@ struct detallesView: View {
                 }
                 .buttonStyle(.borderedProminent)
                 .tint(Color(red: 0, green: 156/255, blue: 171/255))
-                .padding(.top, 25)
+                .padding(.top, 40)
                 .padding(.bottom, -10)
                 
                 HStack{
@@ -112,26 +117,24 @@ struct detallesView: View {
                 ZStack{
                     // Barra de color
                     if(option == 1){
-                        Color(red: 255, green: 255, blue: 255)
-                            .edgesIgnoringSafeArea(.all)
-                            .frame(height: 50)
-                            .offset(y:-47)
-                            .frame(width: 350)
-                            .zIndex(0)
+                        Color(red: 214/255, green: 214/255, blue: 214/255)
+                                .frame(height: 50)
+                                .frame(width: 330)
+                                .cornerRadius(10) //
+                                .offset(y:-55)
+
+                        
                     }else if(option == 2){
-                        Color(red: 0, green: 255, blue: 0)
-                            .edgesIgnoringSafeArea(.all)
-                            .frame(height: 50)
-                            .offset(y:-47)
-                            .frame(width: 350)
-                            .zIndex(0)
+                        Color.green
+                                .frame(height: 50)
+                                .frame(width: 330)
+                                .cornerRadius(10) //
+                                .offset(y:-55)
                     }else if(option == 3){
-                        Color(red: 255, green: 0, blue: 0)
-                            .edgesIgnoringSafeArea(.all)
-                            .frame(height: 50)
-                            .offset(y:-47)
-                            .frame(width: 350)
-                            .zIndex(0)
+                        Color(red: 214/255, green: 0/255, blue: 0/255)                                .frame(height: 50)
+                                .frame(width: 330)
+                                .cornerRadius(10) //
+                                .offset(y:-55)
                     }
                     
                     
@@ -142,7 +145,7 @@ struct detallesView: View {
                         Text("Conflicto").tag(3)
                         
                     }.pickerStyle(.segmented)
-                        .frame(width: 330)
+                        .frame(width: 310)
                         .background(
                             // Apply a background color to the selected segment
                             RoundedRectangle(cornerRadius: 8)
@@ -159,8 +162,8 @@ struct detallesView: View {
                                 estadoFinal = "Conflicto"
                             }
                             
-                        } .padding(.bottom, 35)
-                        .padding(.top, -60)
+                        }
+                        .padding(.top, -70)
                         .zIndex(2)
                     
                    
@@ -173,7 +176,7 @@ struct detallesView: View {
                     .fontWeight(.bold)
                     .padding([.bottom, .trailing], -3.0)
                     .padding(.leading, 35)
-                    .padding(.top, -10)
+                    .padding(.top, -25)
                 
                 TextEditor(text: $comentarioAdicional)
                     .frame(width: 323, height: 100)
@@ -182,10 +185,15 @@ struct detallesView: View {
                             .stroke(Color.gray, lineWidth: 1)
                     )
                     .clipShape(RoundedRectangle(cornerRadius: 10))
-                
+                    .onTapGesture {
+                                        // Resignar el primer respondedor del teclado
+                                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                                    }
                 
                 // Botón: Guardar
                 Button(action: {
+                    hideKeyboard()
+                    
                     // Acción que deseas realizar cuando se presione el botón
                 }) {
                     Text("Guardar")
@@ -200,11 +208,13 @@ struct detallesView: View {
                 
                 Spacer()
                 
-            }
+            } .padding(.top, -58)  // scroll
             
         }
         
-    }}
+    }
+    
+}
 
 struct Recibos_Previews: PreviewProvider {
     static var previews: some View {

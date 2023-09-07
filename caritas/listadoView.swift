@@ -83,7 +83,8 @@ struct listadoView: View {
             
             Spacer()
             
-        }
+        }          
+
         
     }}
 

@@ -7,17 +7,17 @@
 
 import SwiftUI
 
-
 struct contentView: View {
     
     var body: some View {
                 
         TabView{
+            
             listadoView()
              .tabItem {
                  Label("Tickets", systemImage: "ticket")
              }
-            detallesView()
+            notificaView()
              .tabItem {
                  Label("Notifications", systemImage: "bell.badge")
              }

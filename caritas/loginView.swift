@@ -61,10 +61,19 @@ struct loginView: View {
                     }
                     .padding(.top, 5.0)
                     .pickerStyle(.segmented)
-                    .frame(width: 330)
-                    .background(Color.white.opacity(0.7))
-                    .cornerRadius(10)
-                    .padding(.top, 20)
+
+                        .frame(width: 330)
+                        .background(Color.white.opacity(0.7))
+                        .cornerRadius(10) // Añade esquinas redondeadas al fondo
+                        .onChange(of: option){ value in
+                            
+                            if(option == 1){
+                                coordinador = false
+                            } else if (option == 2){
+                                coordinador = true
+                            }
+                            
+                        } .padding(.top, 20)
                     
                     if usuario == usuarioCorrecto {
                         NavigationLink(
@@ -98,6 +107,7 @@ struct loginView: View {
                                 }
                 }}
         }
+
     }
 }
 

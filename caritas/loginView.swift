@@ -41,7 +41,7 @@ struct loginView: View {
                         .font(.title)
                         .fontWeight(.light)
                         .multilineTextAlignment(.center)
-
+                    
                     
                     Text("Contraseña:")
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -58,7 +58,7 @@ struct loginView: View {
                         .font(.title)
                         .fontWeight(.light)
                         .multilineTextAlignment(.center)
-                        
+                    
                     
                     Picker(selection: $option, label: Text("Picker")) {
                         Text("Recolector").tag(1)
@@ -66,39 +66,55 @@ struct loginView: View {
                     }
                     .padding(.top, 5.0)
                     .pickerStyle(.segmented)
-
-                        .frame(width: 330)
-                        .background(Color.white.opacity(0.7))
-                        .cornerRadius(10) // Añade esquinas redondeadas al fondo
-                        .onChange(of: option){ value in
-                            
-                            
-                        } .padding(.top, 20)
+                    
+                    .frame(width: 330)
+                    .background(Color.white.opacity(0.7))
+                    .cornerRadius(10) // Añade esquinas redondeadas al fondo
+                    .onChange(of: option){ value in
+                        
+                        
+                    } .padding(.top, 20)
                     
                     
-                    Button("Validar"){
-                            self.isValid = self.validate()
-                        }
+                    Button{
+                        self.isValid = self.validate()
+                    } label: {
+                        Text("Iniciar sesión")
+                            .frame(width: 327, height: 61)
+                            .background(Color(red: 255/255, green: 255/255, blue: 255/255, opacity: 0.0))
+                            .cornerRadius(10)
+                        
+                    }.frame(width: 200, height: 50).tint(Color(red: 255/255, green: 255/255, blue: 255/255, opacity: 0)) // botón de atras
                         .background(
                             NavigationLink(destination: contentView(), isActive: $isValid) {
-                                        Text("Validar")
-                                }
+                                    Text("Iniciar sesión")
+                                    .frame(width: 300, height: 50) // botón de adelante
+                            }
+
                         )
                         .buttonStyle(.borderedProminent)
-                        .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                        .foregroundColor(.white)
+                        .padding(.top, 65)
+                        .font(.title3)
+                        .fontWeight(.regular)
+                    
+                    Text(mensajeError)
+                        .foregroundColor(.red)
+                        .padding(.top, 18)
 
-                    Text(mensajeError).foregroundColor(.red)
-
-                    }
-
-               
-                }}
-        }
+                }.tint(Color(red: 255/255, green: 255/255, blue: 255/255, opacity: 0.2))
+                    
+                }
+            
+        }.preferredColorScheme(.light)
+        
+    }
+    
     private func validate() -> Bool {
         if (usuario != ""){
            return true
         }else{
-            mensajeError = "Debe ingresar usuario"
+            mensajeError = "Ingresa tu usuario"
             return false
         }
     }

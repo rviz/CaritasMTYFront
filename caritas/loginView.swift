@@ -5,12 +5,10 @@ struct loginView: View {
     @State private var option: Int = 0
     @State private var usuario: String = ""
     @State private var contraseña: String = ""
-<<<<<<< Updated upstream
-=======
+    @State private var coordinador: Bool = false
     @State private var longitud: Int = 0
 
     // Variables API
->>>>>>> Stashed changes
     @State private var usuarioCorrecto: String = ""
     @State private var contraseñaCorrecto: String = ""
     @State private var showAlert = false
@@ -26,7 +24,7 @@ struct loginView: View {
                         .resizable(resizingMode: .stretch)
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 250)
-                        .padding(.bottom, 100)
+                        .padding(.bottom, 90)
                         .padding(.top, 70)
                     
                     Text("Usuario:")
@@ -60,14 +58,9 @@ struct loginView: View {
                         .fontWeight(.light)
                         .multilineTextAlignment(.center)
                         
-<<<<<<< Updated upstream
-                    
-                    Picker(selection: $option, label: Text("Picker")) {
-=======
                     // Opciones: Estados
                     Picker(selection: $option, label: Text("Picker"))
                     {
->>>>>>> Stashed changes
                         Text("Recolector").tag(1)
                         Text("Coordinador").tag(2)
                     }
@@ -86,7 +79,7 @@ struct loginView: View {
                         NavigationLink(
                         destination: listadoView(),
                         label: {
-                            Text("Iniciar Sesión")
+                            Text("Iniciar sesión")
                                 .font(.title2)
                                 .fontWeight(.bold)
                                 .frame(width: 300, height: 50)
@@ -94,14 +87,14 @@ struct loginView: View {
                         })
                         .buttonStyle(.borderedProminent)
                         .tint(Color(hue: 0.543, saturation: 0.272, brightness: 0.931, opacity: 0.3))
-                        .padding(.top, 105)
+                        .padding(.top, 85)
                         
 
                     } else {
                         Button(action: {
                             showAlert = true
                         }) {
-                            Text("Iniciar Sesión")
+                            Text("Iniciar sesión")
                                 .font(.title2)
                                 .fontWeight(.bold)
                                 .frame(width: 300, height: 50)

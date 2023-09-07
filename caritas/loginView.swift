@@ -11,6 +11,7 @@ struct loginView: View {
     
     @State private var isValid = false
     @State private var mensajeError = ""
+    @State private var conteoIntentos : Int = 0
 
 
     var body: some View {
@@ -77,7 +78,7 @@ struct loginView: View {
                     
                     
                     Button{
-                        self.isValid = self.validate()
+                        self.isValid = self.validate2()
                     } label: {
                         Text("Iniciar sesión")
                             .frame(width: 327, height: 61)
@@ -110,6 +111,7 @@ struct loginView: View {
         
     }
     
+    
     private func validate() -> Bool {
         if (usuario != ""){
            return true
@@ -118,10 +120,27 @@ struct loginView: View {
             return false
         }
     }
-
+    
+    private func validate2() -> Bool {
+        
+        
+        if (usuario != usuarioCorrecto && contraseña != contraseñaCorrecto){
+            conteoIntentos = conteoIntentos + 1
+            mensajeError = "Usuario y/o contraseña inválidos"
+            
+            if(conteoIntentos > 5){
+                mensajeError = "Límite de intentos alcanzado, intenta en 5 minutos."
+                return false
+            }
+            
+            return false
+            
+            
+        }else{
+            return true
+        }
     }
-
-
+}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

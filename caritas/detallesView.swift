@@ -47,14 +47,13 @@ struct detallesView: View {
                         .fontWeight(.bold)
                         .padding(.bottom, 5)
                         .offset(y:-40)
-                        .foregroundColor(Color.white) 
+                        .foregroundColor(Color.white)
                     
                 }
                 
             }.padding(0)
             
             ScrollView {
-                
                 
                 // Botón: Guardar
                 Button(action: {
@@ -68,7 +67,7 @@ struct detallesView: View {
                 }
                 .buttonStyle(.borderedProminent)
                 .tint(Color(red: 0, green: 156/255, blue: 171/255))
-                .padding(.top, 25)
+                .padding(.top, 40)
                 .padding(.bottom, -10)
                 
                 HStack{
@@ -191,7 +190,6 @@ struct detallesView: View {
                                         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                                     }
                 
-                
                 // Botón: Guardar
                 Button(action: {
                     hideKeyboard()
@@ -210,11 +208,13 @@ struct detallesView: View {
                 
                 Spacer()
                 
-            }
+            } .padding(.top, -58)  // scroll
             
         }
         
-    }}
+    }
+    
+}
 
 struct Recibos_Previews: PreviewProvider {
     static var previews: some View {

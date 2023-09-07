@@ -12,17 +12,21 @@ struct contentView: View {
     var body: some View {
                 
         TabView{
-            
-            listadoView()
-             .tabItem {
-                 Label("Tickets", systemImage: "ticket")
-             }
-            notificaView()
-             .tabItem {
-                 Label("Notifications", systemImage: "bell.badge")
-             }
+            Group{
+                listadoView()
+                    .tabItem {
+                        Label("Tickets", systemImage: "ticket")
+                    }
+                notificaView()
+                    .tabItem {
+                        Label("Notifications", systemImage: "bell.badge")
+                    }
+            }.toolbarBackground(.visible, for: .tabBar)
         }.tint(Color(red: 0, green: 156/255, blue: 171/255))
             .toolbar(.hidden)
+            
+            
+
 
     }
 }

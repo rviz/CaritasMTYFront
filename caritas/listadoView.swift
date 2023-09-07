@@ -46,38 +46,36 @@ struct listadoView: View {
                         Text("Zona").tag(1)
                         Text("Colonia").tag(2)
                         Text("Código Postal").tag(3)
-                    
+                        
                     }
                     .padding(.top, 3.0)
-                        .pickerStyle(.segmented)
-                        .frame(width: 330)
-                        .onChange(of: option){ value in
-                            
-                            if(option == 1){
-                                tipoFiltro = "Zona"
-                            } else if (option == 2){
-                                tipoFiltro = "Colonia"
-                            } else if (option == 3){
-                                tipoFiltro = "CodigoPostal"
-                            }
-                            
+                    .pickerStyle(.segmented)
+                    .frame(width: 330)
+                    .onChange(of: option){ value in
+                        
+                        if(option == 1){
+                            tipoFiltro = "Zona"
+                        } else if (option == 2){
+                            tipoFiltro = "Colonia"
+                        } else if (option == 3){
+                            tipoFiltro = "CodigoPostal"
                         }
-        
-                    List (lista){
-                        listaItem in
-                        NavigationLink{
-                            detallesView()
-                        }
-                    label:{
-                        Text(listaItem.title)
+                        
                     }
-                    }.onAppear(){
+                    
+                    List {
+                        ForEach(Array(lista.enumerated()), id: \.1.id) { index, listaItem in
+                            NavigationLink(destination: detallesView()) {
+                                Text("\(index + 1). \(listaItem.title)")
+                            }
+                        }
+                    }
+                    .onAppear() {
                         lista = callAPILista()
-                    } .frame(width: 350, height: 500)
-                        .padding(.top, 15)
-                        .listStyle(.inset)
-                
-                }
+                    }
+                    .frame(width: 350, height: 500)
+                    .padding(.top, 15)
+                    .listStyle(.inset)}
             }
             
             

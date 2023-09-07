@@ -8,6 +8,10 @@ struct loginView: View {
     @State private var usuarioCorrecto: String = ""
     @State private var contraseñaCorrecto: String = ""
     @State private var showAlert = false
+    
+    @State private var isValid = false
+    @State private var mensajeError = ""
+
 
     var body: some View {
         NavigationStack {
@@ -37,6 +41,7 @@ struct loginView: View {
                         .font(.title)
                         .fontWeight(.light)
                         .multilineTextAlignment(.center)
+
                     
                     Text("Contraseña:")
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -70,42 +75,37 @@ struct loginView: View {
                             
                         } .padding(.top, 20)
                     
-                    if usuario == usuarioCorrecto {
-                        NavigationLink(
-                        destination: listadoView(),
-                        label: {
-                            Text("Iniciar Sesión")
-                                .font(.title2)
-                                .fontWeight(.bold)
-                                .frame(width: 300, height: 50)
-                                .foregroundColor(Color.white)
-                        })
+                    
+                    Button("Validar"){
+                            self.isValid = self.validate()
+                        }
+                        .background(
+                            NavigationLink(destination: contentView(), isActive: $isValid) {
+                                        Text("Validar")
+                                }
+                        )
                         .buttonStyle(.borderedProminent)
-                        .tint(Color(hue: 0.543, saturation: 0.272, brightness: 0.931, opacity: 0.3))
-                        .padding(.top, 105)
-                        
+                        .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
 
-                    } else {
-                        Button(action: {
-                            showAlert = true
-                        }) {
-                            Text("Iniciar Sesión")
-                                .font(.title2)
-                                .fontWeight(.bold)
-                                .frame(width: 300, height: 50)
-                                .foregroundColor(Color.white)
-                            }.alert("La contraseña y/o usuario son inválidos. Por favor vuelve a intentarlo.", isPresented: $showAlert) {
-                                Button("OK"){}
-                                }
-                                .buttonStyle(.borderedProminent)
-                                .tint(Color(hue: 0.543, saturation: 0.272, brightness: 0.931, opacity: 0.3))
-                                .padding(.top, 105)
-                                }
+                    Text(mensajeError).foregroundColor(.red)
+
+                    }
+
+               
                 }}
         }
+    private func validate() -> Bool {
+        if (usuario != ""){
+           return true
+        }else{
+            mensajeError = "Debe ingresar usuario"
+            return false
+        }
+    }
 
     }
-}
+
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

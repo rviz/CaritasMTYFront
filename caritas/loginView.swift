@@ -67,11 +67,6 @@ struct loginView: View {
                         .cornerRadius(10) // Añade esquinas redondeadas al fondo
                         .onChange(of: option){ value in
                             
-                            if(option == 1){
-                                coordinador = false
-                            } else if (option == 2){
-                                coordinador = true
-                            }
                             
                         } .padding(.top, 20)
                     
@@ -89,6 +84,7 @@ struct loginView: View {
                         .tint(Color(hue: 0.543, saturation: 0.272, brightness: 0.931, opacity: 0.3))
                         .padding(.top, 105)
                         
+
                     } else {
                         Button(action: {
                             showAlert = true

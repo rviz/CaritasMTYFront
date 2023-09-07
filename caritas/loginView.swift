@@ -12,7 +12,11 @@ struct loginView: View {
     @State private var usuarioCorrecto: String = ""
     @State private var contraseñaCorrecto: String = ""
     @State private var showAlert = false
-
+    
+    
+    @State private var isValid = false
+    @State private var mensajeError = ""
+    
     var body: some View {
         NavigationStack {
             ZStack {
@@ -57,24 +61,23 @@ struct loginView: View {
                         .font(.title)
                         .fontWeight(.light)
                         .multilineTextAlignment(.center)
+<<<<<<< Updated upstream
                         
                     // Opciones: Estados
                     Picker(selection: $option, label: Text("Picker"))
                     {
+=======
+                    
+                    
+                    Picker(selection: $option, label: Text("Picker")) {
+>>>>>>> Stashed changes
                         Text("Recolector").tag(1)
                         Text("Coordinador").tag(2)
                     }
                     .padding(.top, 5.0)
                     .pickerStyle(.segmented)
-
-                        .frame(width: 330)
-                        .background(Color.white.opacity(0.7))
-                        .cornerRadius(10) // Añade esquinas redondeadas al fondo
-                        .onChange(of: option){ value in
-                            
-                            
-                        } .padding(.top, 20)
                     
+<<<<<<< Updated upstream
                     if usuario == usuarioCorrecto {
                         NavigationLink(
                         destination: contentView(),
@@ -88,8 +91,31 @@ struct loginView: View {
                         .buttonStyle(.borderedProminent)
                         .tint(Color(hue: 0.543, saturation: 0.272, brightness: 0.931, opacity: 0.3))
                         .padding(.top, 85)
+=======
+                    .frame(width: 330)
+                    .background(Color.white.opacity(0.7))
+                    .cornerRadius(10) // Añade esquinas redondeadas al fondo
+                    .onChange(of: option){ value in
                         
+>>>>>>> Stashed changes
+                        
+                    } .padding(.top, 20)
+                    
+                    Button("Iniciar sesión") {
+                                    self.isValid = self.validate()
+                                }   .buttonStyle(.borderedProminent)
+                                    .tint(Color(hue:0.543 , saturation:0.272, brightness:0.931, opacity:0.3))
+                                    .frame(width:400, height: 50)
+                                    .font(.title)
+                                .background(
+                                    NavigationLink(destination: contentView(), isActive: $isValid) {
+                                    }
+                                )
+                                
+                    
+                    Text(mensajeError).foregroundColor(.red)
 
+<<<<<<< Updated upstream
                     } else {
                         Button(action: {
                             showAlert = true
@@ -108,9 +134,28 @@ struct loginView: View {
                                 }
                 }}
         }
+=======
+                    }}
+>>>>>>> Stashed changes
 
+            }
+            
+        }
+    
+    
+    
+    
+    
+        private func validate() -> Bool {
+            if (usuario == ""){
+                return true
+            }else{
+                mensajeError = "Debe ingresar usuario"
+                return false
+            }
+        }
     }
-}
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

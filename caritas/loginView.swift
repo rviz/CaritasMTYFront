@@ -129,7 +129,7 @@ struct loginView: View {
     
     private func validate2() -> Bool {
         
-        if (usuario != usuarioCorrecto && contraseña != contraseñaCorrecto){
+        if (usuario != usuarioCorrecto || contraseña != contraseñaCorrecto){
             conteoIntentos = conteoIntentos + 1
             mensajeError = "Usuario y/o contraseña inválidos"
             print("Conteo actual = " + String(conteoIntentos))

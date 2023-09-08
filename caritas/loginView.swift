@@ -27,15 +27,15 @@ struct loginView: View {
                         .resizable(resizingMode: .stretch)
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 250)
-                        .padding(.bottom, 100)
-                        .padding(.top, 70)
+                        .padding(.bottom, 50)
+                        .offset(y:-20)
                     
                     Text("Usuario:")
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .font(.title3)
                         .fontWeight(.regular)
                         .padding([.bottom, .trailing], -3.0)
-                        .padding(.leading, 34)
+                        .padding(.leading, 32)
                         .foregroundColor(Color.white)
                     
                     TextField("", text: $usuario)
@@ -43,7 +43,6 @@ struct loginView: View {
                         .frame(width: 330)
                         .font(.title)
                         .fontWeight(.light)
-                        .multilineTextAlignment(.center)
                     
                     
                     Text("Contraseña:")
@@ -51,7 +50,7 @@ struct loginView: View {
                         .font(.title3)
                         .fontWeight(.regular)
                         .padding([.bottom, .trailing], -3.0)
-                        .padding(.leading, 34)
+                        .padding(.leading, 32)
                         .padding(.top, 25)
                         .foregroundColor(Color.white)
                     
@@ -60,14 +59,15 @@ struct loginView: View {
                         .frame(width: 330)
                         .font(.title)
                         .fontWeight(.light)
-                        .multilineTextAlignment(.center)
+                        .disableAutocorrection(true)
+                        .autocapitalization(.none)
+                    
                     
                     
                     Picker(selection: $option, label: Text("Picker")) {
                         Text("Recolector").tag(1)
                         Text("Coordinador").tag(2)
                     }
-                    .padding(.top, 5.0)
                     .pickerStyle(.segmented)
                     
                     .frame(width: 330)

@@ -1,9 +1,3 @@
-//
-//  ModelData.swift
-//  caritas
-//
-//  Created by Alumno on 05/09/23.
-//
 
 import Foundation
 
@@ -89,3 +83,91 @@ func prueba() -> User? {
     
     return user
 }
+
+func InicioSesion(completion: @escaping (String?) -> Void) {
+    let url = URL(string: "http://10.22.128.249:5000/collector/login")!
+    var request = URLRequest(url: url)
+    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    request.setValue("application/json", forHTTPHeaderField: "Accept")
+    request.httpMethod = "POST"
+    
+    let parameters: [String: Any] = [
+        "username": "dummy",
+        "password": "contrasena"
+    ]
+    
+    do {
+        let jsonData = try JSONSerialization.data(withJSONObject: parameters)
+        request.httpBody = jsonData
+    } catch {
+        print("Error al crear el JSON: \(error)")
+        completion(nil)
+        return
+    }
+    
+    let task = URLSession.shared.dataTask(with: request) { data, response, error in
+        guard
+            let data = data,
+            let response = response as? HTTPURLResponse,
+            error == nil
+        else {
+            print("error", error ?? URLError(.badServerResponse))
+            completion(nil)
+            return
+        }
+        
+        guard (200 ... 299) ~= response.statusCode else {
+            print("statusCode should be 2xx, but is \(response.statusCode)")
+            print("response = \(response)")
+            completion(nil)
+            return
+        }
+        
+        do {
+            if let jsonObject = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+               let id = jsonObject["id"] as? String {
+                completion(id)
+            } else {
+                print("No se pudo obtener el valor 'id' del JSON.")
+                completion(nil)
+            }
+        } catch {
+            print(error) // Error de parsing
+            completion(nil)
+        }
+    }
+    task.resume()
+}
+
+
+
+extension Dictionary {
+    func percentEncoded() -> Data? {
+        map { key, value in
+            let escapedKey = "\(key)".addingPercentEncoding(withAllowedCharacters: .urlQueryValueAllowed) ?? ""
+            let escapedValue = "\(value)".addingPercentEncoding(withAllowedCharacters: .urlQueryValueAllowed) ?? ""
+            return escapedKey + "=" + escapedValue
+        }
+        .joined(separator: "&")
+        .data(using: .utf8)
+    }
+}
+
+extension CharacterSet {
+    static let urlQueryValueAllowed: CharacterSet = {
+        let generalDelimitersToEncode = ":#[]@" // does not include "?" or "/" due to RFC 3986 - Section 3.4
+        let subDelimitersToEncode = "!$&'()*+,;="
+        
+        var allowed: CharacterSet = .urlQueryAllowed
+        allowed.remove(charactersIn: "\(generalDelimitersToEncode)\(subDelimitersToEncode)")
+        return allowed
+    }()
+}
+struct ResponseObject<T: Decodable>: Decodable {
+    let id: String
+}
+
+struct Foo: Decodable {
+    let id: String
+}
+

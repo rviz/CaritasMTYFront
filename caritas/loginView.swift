@@ -64,19 +64,16 @@ struct loginView: View {
                     
                     
                     
-                    Picker(selection: $option, label: Text("Picker")) {
+                    /* Picker(selection: $option, label: Text("Picker")) {
                         Text("Recolector").tag(1)
                         Text("Coordinador").tag(2)
                     }
                     .pickerStyle(.segmented)
-                    
                     .frame(width: 330)
                     .background(Color.white.opacity(0.7))
                     .cornerRadius(10) // Añade esquinas redondeadas al fondo
                     .onChange(of: option){ value in
-                        
-                        
-                    } .padding(.top, 20)
+                    } .padding(.top, 20) */
                     
                     
                     Button{

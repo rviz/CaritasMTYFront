@@ -22,11 +22,6 @@ struct profileView: View {
             
             NavigationLink(destination: loginView()){
                 Text("Cerrar Sesión")
-                    .frame(width: 327, height: 61)
-                    .background(Color(red: 255/255, green: 255/255, blue: 255/255, opacity: 0.0))
-                    .cornerRadius(10)
-                    .foregroundColor(Color.red)
-                    .offset(y:-70)
                     
             }
         }

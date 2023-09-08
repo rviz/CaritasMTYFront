@@ -12,8 +12,10 @@ struct loginView: View {
     @State private var isValid = false
     @State private var mensajeError = ""
     @State private var conteoIntentos : Int = 0
-
-
+    
+    // Botón
+    @State private var isButtonEnabled = false // Estado para controlar la habilitación del botón y el enlace de navegación
+    
     var body: some View {
         NavigationStack {
             ZStack {
@@ -85,6 +87,7 @@ struct loginView: View {
                             .background(Color(red: 255/255, green: 255/255, blue: 255/255, opacity: 0.0))
                             .cornerRadius(10)
                         
+
                     }.frame(width: 200, height: 50).tint(Color(red: 255/255, green: 255/255, blue: 255/255, opacity: 0)) // botón de atras
                         .background(
                             NavigationLink(destination: contentView(), isActive: $isValid) {
@@ -98,21 +101,23 @@ struct loginView: View {
                         .padding(.top, 65)
                         .font(.title3)
                         .fontWeight(.regular)
+                        .disabled(isButtonEnabled)
+                    
                     
                     Text(mensajeError)
                         .foregroundColor(.red)
                         .padding(.top, 18)
 
                 }.tint(Color(red: 255/255, green: 255/255, blue: 255/255, opacity: 0.2))
-                    
-                }
+                
+            }
             
         }.preferredColorScheme(.light)
         .toolbar(.hidden)
         
     }
     
-    
+        
     private func validate() -> Bool {
         if (usuario != ""){
            return true
@@ -124,13 +129,26 @@ struct loginView: View {
     
     private func validate2() -> Bool {
         
-        
         if (usuario != usuarioCorrecto && contraseña != contraseñaCorrecto){
             conteoIntentos = conteoIntentos + 1
             mensajeError = "Usuario y/o contraseña inválidos"
+            print("Conteo actual = " + String(conteoIntentos))
             
             if(conteoIntentos > 5){
                 mensajeError = "Límite de intentos alcanzado, intenta en 5 minutos."
+                isButtonEnabled = true
+                
+                // Temporizador
+                let timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: false) { _ in
+                    // Cambiar el valor de la variable a false después de 10 segundos
+                    isButtonEnabled.self = false
+                    conteoIntentos = 0
+                    mensajeError = " "
+                    print("Variable cambiada a false después de 5 segundos")
+                    print(conteoIntentos)
+                    
+                }
+                
                 return false
             }
             

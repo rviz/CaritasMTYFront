@@ -25,7 +25,6 @@ struct detallesView: View {
     @State private var monto: Int = 0
     @State private var calle: String = "Sin información"
     @State private var colonia: String = "Sin información"
-    @State private var monto: Int = 0
     @State private var notas: String = "Sin información"
     @State private var id: String = ""
 

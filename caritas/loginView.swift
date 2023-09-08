@@ -108,6 +108,7 @@ struct loginView: View {
                 }
             
         }.preferredColorScheme(.light)
+        .toolbar(.hidden)
         
     }
     

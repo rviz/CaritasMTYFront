@@ -17,9 +17,9 @@ struct contentView: View {
                     .tabItem {
                         Label("Tickets", systemImage: "ticket")
                     }
-                notificaView()
+                profileView()
                     .tabItem {
-                        Label("Notifications", systemImage: "bell.badge")
+                        Label("Perfil", systemImage: "person.circle")
                     }
             }.toolbarBackground(.visible, for: .tabBar)
         }.tint(Color(red: 0, green: 156/255, blue: 171/255))

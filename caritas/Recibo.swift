@@ -17,6 +17,5 @@ struct ticket: Codable, Identifiable{
     
 }
 struct User: Codable, Identifiable{
-    var fullname, id, managerId, password, username : String
-    var tickets: Array<ticket>
+    var id: String
 }

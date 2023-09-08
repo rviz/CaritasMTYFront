@@ -12,6 +12,7 @@ struct loginView: View {
     @State private var isValid = false
     @State private var mensajeError = ""
     @State private var conteoIntentos : Int = 0
+    @State private var idd: String = ""
     
     // Botón
     @State private var isButtonEnabled = false // Estado para controlar la habilitación del botón y el enlace de navegación
@@ -98,8 +99,8 @@ struct loginView: View {
                         .font(.title3)
                         .fontWeight(.regular)
                         .disabled(isButtonEnabled)
-                    
-                    
+            
+                
                     Text(mensajeError)
                         .foregroundColor(.red)
                         .padding(.top, 18)
@@ -115,12 +116,24 @@ struct loginView: View {
     
         
     private func validate() -> Bool {
-        if (usuario != ""){
-           return true
-        }else{
-            mensajeError = "Ingresa tu usuario"
+        InicioSesion { id in
+            if let id = id, !id.isEmpty {
+                self.idd = id
+                // Inicio de sesión exitoso y se ha obtenido un ID válido
+                //return true
+            } else {
+                // Inicio de sesión fallido o ID no válido
+                let errorMessage = id?.isEmpty == true ? "Ingresa tu usuario" : "Inicio de sesión fallido"
+                //return false
+            }
+        }
+        if idd == "" {
             return false
         }
+        else {
+            return true
+        }
+        
     }
     
     private func validate2() -> Bool {
@@ -140,6 +153,7 @@ struct loginView: View {
                     isButtonEnabled.self = false
                     conteoIntentos = 0
                     mensajeError = " "
+                    
                     print("Variable cambiada a false después de 5 segundos")
                     print(conteoIntentos)
                     

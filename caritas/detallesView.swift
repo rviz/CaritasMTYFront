@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+
 extension View {
     func hideKeyboard() {
         let resign = #selector(UIResponder.resignFirstResponder)
@@ -173,8 +174,8 @@ struct detallesView: View {
                     .padding(.leading, 35)
                     .padding(.top, -25)
                 
-                TextEditor(text: $comentarioAdicional)
-                    .frame(width: 323, height: 100)
+                TextField("Comentario", text: $comentarioAdicional)
+                    .frame(width: 323, height: 45)
                     .overlay(
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(Color.gray, lineWidth: 1)

@@ -11,19 +11,31 @@ struct profileView: View {
     var body: some View {
 
         VStack{
-            Spacer()
-            Image(systemName: "person.circle")
-                .resizable(resizingMode: .stretch)
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 100)
-            Text("Hola (nombre)")
+            ZStack{
+                // Barra de color
+                Color(red: 0, green: 156/255, blue: 171/255)
+                    .edgesIgnoringSafeArea(.all)
+                    .frame(width:500, height: 250)
+                    .rotationEffect(Angle(degrees:-15))
+                    .offset(y:-50)
+                // Imagen del repartidor en cuestión
+                Image(systemName: "person.circle")
+                    .resizable(resizingMode: .stretch)
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 130)
+                    .background(Color.white)
+                    .clipShape(Circle())
+                    .offset(y:80)
+            }.offset(y:-50)
+            
+            Text("(nombre)")
                 .font(.largeTitle)
             Spacer()
             
             NavigationLink(destination: loginView()){
                 Text("Cerrar Sesión")
-                    
-            }
+                    .foregroundColor(Color.red)
+            }.offset(y:-25)
         }
     }
 }

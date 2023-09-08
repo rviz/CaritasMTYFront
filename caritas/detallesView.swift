@@ -21,9 +21,9 @@ struct detallesView: View {
     @State private var option: Int = 1
     
     // Información del recibo
+    @State private var monto: Int = 0
     @State private var calle: String = "Sin información"
     @State private var colonia: String = "Sin información"
-    @State private var monto: Int = 0
     @State private var notas: String = "Sin información"    
     
     var body: some View {
@@ -55,6 +55,13 @@ struct detallesView: View {
             
             ScrollView {
                 
+                Text("$" + String(monto))
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .multilineTextAlignment(.center)
+                    .padding(.top, 40)
+                    .padding(.bottom, 30)
+                
                 // Botón: Guardar
                 Button(action: {
                     // Acción que deseas realizar cuando se presione el botón
@@ -62,48 +69,33 @@ struct detallesView: View {
                     Text("Ver mapa")
                         .font(.title2)
                         .fontWeight(.bold)
-                        .frame(width: 300, height: 30)
+                        .frame(width: 300, height: 40)
                         .foregroundColor(Color.white)
                 }
                 .buttonStyle(.borderedProminent)
                 .tint(Color(red: 0, green: 156/255, blue: 171/255))
-                .padding(.top, 40)
-                .padding(.bottom, -10)
-                
+                .padding(.bottom, -15)
+
                 HStack{
                     
                     VStack(alignment: .leading, spacing: 0) {
                         
                         HStack {
                             Text("Calle:")
-                                .font(.title3)
                                 .fontWeight(.bold)
                             Text(calle)
-                                .font(.title3)
                         }.padding(.bottom, 10)
                         
                         HStack {
                             Text("Colonia:")
-                                .font(.title3)
                                 .fontWeight(.bold)
                             Text(colonia)
-                                .font(.title3)
-                        }.padding(.bottom, 10)
-                        
-                        HStack {
-                            Text("Monto:")
-                                .font(.title3)
-                                .fontWeight(.bold)
-                            Text("$" + String(monto))
-                                .font(.title3)
                         }.padding(.bottom, 10)
                         
                         HStack {
                             Text("Notas:")
-                                .font(.title3)
                                 .fontWeight(.bold)
                             Text(notas)
-                                .font(.title3)
                         }.padding(.bottom, 10)
                     }
                     .padding(.top, 100)
@@ -185,10 +177,7 @@ struct detallesView: View {
                             .stroke(Color.gray, lineWidth: 1)
                     )
                     .clipShape(RoundedRectangle(cornerRadius: 10))
-                    .onTapGesture {
-                                        // Resignar el primer respondedor del teclado
-                                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                                    }
+                    .ignoresSafeArea(.keyboard, edges: .bottom)
                 
                 // Botón: Guardar
                 Button(action: {

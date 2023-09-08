@@ -91,7 +91,6 @@ struct loginView: View {
                                     Text("Iniciar sesión")
                                     .frame(width: 300, height: 50) // botón de adelante
                             }
-
                         )
                         .buttonStyle(.borderedProminent)
                         .foregroundColor(.white)

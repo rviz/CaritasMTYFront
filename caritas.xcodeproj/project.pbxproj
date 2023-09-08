@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		93AD73542AAA2486006C4E3F /* notificaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AD73532AAA2486006C4E3F /* notificaView.swift */; };
+		93AD73542AAA2486006C4E3F /* profileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AD73532AAA2486006C4E3F /* profileView.swift */; };
 		FB95E6932AA786BD001B82BF /* listadoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB95E6922AA786BD001B82BF /* listadoView.swift */; };
 		FB95E6952AA78B4D001B82BF /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB95E6942AA78B4D001B82BF /* ModelData.swift */; };
 		FB95E6972AA78B8E001B82BF /* Recibo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB95E6962AA78B8E001B82BF /* Recibo.swift */; };
@@ -20,7 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		93AD73532AAA2486006C4E3F /* notificaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = notificaView.swift; sourceTree = "<group>"; };
+		93AD73532AAA2486006C4E3F /* profileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileView.swift; sourceTree = "<group>"; };
 		FB95E6922AA786BD001B82BF /* listadoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listadoView.swift; sourceTree = "<group>"; };
 		FB95E6942AA78B4D001B82BF /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		FB95E6962AA78B8E001B82BF /* Recibo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recibo.swift; sourceTree = "<group>"; };
@@ -69,7 +69,7 @@
 				FBF7166E2AA69E7700C8B1F7 /* detallesView.swift */,
 				FB95E6942AA78B4D001B82BF /* ModelData.swift */,
 				FB95E6962AA78B8E001B82BF /* Recibo.swift */,
-				93AD73532AAA2486006C4E3F /* notificaView.swift */,
+				93AD73532AAA2486006C4E3F /* profileView.swift */,
 				FBF716642AA680C000C8B1F7 /* Assets.xcassets */,
 				FBF716662AA680C000C8B1F7 /* Preview Content */,
 				FBAE7D6B2AA77B6C001C653B /* contentView.swift */,
@@ -160,7 +160,7 @@
 				FB95E6972AA78B8E001B82BF /* Recibo.swift in Sources */,
 				FBAE7D6C2AA77B6C001C653B /* contentView.swift in Sources */,
 				FB95E6932AA786BD001B82BF /* listadoView.swift in Sources */,
-				93AD73542AAA2486006C4E3F /* notificaView.swift in Sources */,
+				93AD73542AAA2486006C4E3F /* profileView.swift in Sources */,
 				FBF716612AA680C000C8B1F7 /* caritasApp.swift in Sources */,
 				FB95E6952AA78B4D001B82BF /* ModelData.swift in Sources */,
 			);

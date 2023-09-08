@@ -72,6 +72,7 @@ struct listadoView: View {
                     }
                     .onAppear() {
                         lista = callAPILista()
+                        
                     }
                     .frame(width: 350, height: 515)
                     .padding(.top, 15)

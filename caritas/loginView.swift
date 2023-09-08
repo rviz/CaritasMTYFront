@@ -65,19 +65,16 @@ struct loginView: View {
                     
                     
                     
-                    Picker(selection: $option, label: Text("Picker")) {
+                    /* Picker(selection: $option, label: Text("Picker")) {
                         Text("Recolector").tag(1)
                         Text("Coordinador").tag(2)
                     }
                     .pickerStyle(.segmented)
-                    
                     .frame(width: 330)
                     .background(Color.white.opacity(0.7))
                     .cornerRadius(10) // Añade esquinas redondeadas al fondo
                     .onChange(of: option){ value in
-                        
-                        
-                    } .padding(.top, 20)
+                    } .padding(.top, 20) */
                     
                     
                     Button{
@@ -142,7 +139,7 @@ struct loginView: View {
     
     private func validate2() -> Bool {
         
-        if (usuario != usuarioCorrecto && contraseña != contraseñaCorrecto){
+        if (usuario != usuarioCorrecto || contraseña != contraseñaCorrecto){
             conteoIntentos = conteoIntentos + 1
             mensajeError = "Usuario y/o contraseña inválidos"
             print("Conteo actual = " + String(conteoIntentos))

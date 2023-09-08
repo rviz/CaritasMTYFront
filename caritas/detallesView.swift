@@ -126,7 +126,7 @@ struct detallesView: View {
                                 .cornerRadius(10) //
                                 .offset(y:-55)
                     }else if(option == 3){
-                        Color(red: 214/255, green: 0/255, blue: 0/255)                                .frame(height: 50)
+                        Color(red: 255/255, green: 0/255, blue: 0/255)                                .frame(height: 50)
                                 .frame(width: 330)
                                 .cornerRadius(10) //
                                 .offset(y:-55)
@@ -167,20 +167,24 @@ struct detallesView: View {
                 // Campo de texto 1: Comentarios adicionales
                 Text("Comentarios adicionales:")
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .font(.title3)
-                    .fontWeight(.bold)
                     .padding([.bottom, .trailing], -3.0)
                     .padding(.leading, 35)
                     .padding(.top, -25)
+                    .font(.title3)
+                    .fontWeight(.regular)
                 
-                TextField("Comentario", text: $comentarioAdicional)
-                    .frame(width: 323, height: 45)
+                TextField("Comentario", text: $comentarioAdicional, axis: .vertical)
+                    .onTapGesture {
+                        
+                    }
+                    .padding(.leading)
+                    .padding(.top,5)
+                    .padding(.bottom, 5)
+                    .frame(width: 323)
                     .overlay(
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(Color.gray, lineWidth: 1)
                     )
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                    .ignoresSafeArea(.keyboard, edges: .bottom)
                 
                 // Botón: Guardar
                 Button(action: {

@@ -4,7 +4,7 @@ import SwiftUI
 struct listadoView: View {
     // Variables
     @State private var option: Int = 1
-    @State private var filtroID: String = ""
+    @State private var filtroSearch: String = ""
     @State private var tipoFiltro: String = ""
     @State private var lista: Array<ticket> = []
     
@@ -34,13 +34,15 @@ struct listadoView: View {
             HStack{
                 
                 VStack() {
-                    TextField("Buscar por ID", text: $filtroID)
-                        .textFieldStyle(.roundedBorder)
-                        .frame(width: 330)
-                        .font(.title3)
-                        .fontWeight(.light)
-                        .multilineTextAlignment(.center)
-                        .padding(.top, 10)
+                
+                     TextField("Buscar por ID", text: $filtroSearch)
+                         .textFieldStyle(.roundedBorder)
+                         .frame(width: 330)
+                         .font(.title3)
+                         .fontWeight(.light)
+                         .multilineTextAlignment(.leading)
+                         .padding(.top, 10)
+                    
                     Picker(selection: $option, label: Text("Picker"))
                     {
                         Text("Zona").tag(1)
@@ -77,6 +79,7 @@ struct listadoView: View {
                     .frame(width: 350, height: 515)
                     .padding(.top, 15)
                     .listStyle(.inset)}
+
             }
             
             

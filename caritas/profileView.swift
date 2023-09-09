@@ -27,8 +27,9 @@ struct profileView: View {
                     .clipShape(Circle())
                     .offset(y:80)
             }.offset(y:-50)
-            
-            Text("(nombre)")
+            Text("Hola,")
+                .font(.largeTitle)
+            Text("(fullname)")
                 .font(.largeTitle)
             Spacer()
             

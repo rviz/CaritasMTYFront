@@ -13,7 +13,7 @@ struct Recibo: Codable, Identifiable{
 
 struct ticket: Codable, Identifiable{
     var cellPhone, collectorComments, collectorId, date, housePhoneNumber: String
-    var housingReference, id, managerId, receiptComments, reprogrammationComments, state: String
+    var housingReference, id, managerId, receiptComments, reprogramationComments, state: String
     
 }
 struct User: Codable, Identifiable{

@@ -5,14 +5,17 @@ struct loginView: View {
     @State private var option: Int = 0
     @State private var usuario: String = ""
     @State private var contraseña: String = ""
-    @State private var usuarioCorrecto: String = ""
-    @State private var contraseñaCorrecto: String = ""
+    @State private var usuarioCorrecto: String = "hola"
+    @State private var contraseñaCorrecto: String = "hola"
     @State private var showAlert = false
     
     @State private var isValid = false
     @State private var mensajeError = ""
     @State private var conteoIntentos : Int = 0
     @State private var idd: String = ""
+    
+    
+    
     
     // Botón
     @State private var isButtonEnabled = false // Estado para controlar la habilitación del botón y el enlace de navegación
@@ -77,12 +80,13 @@ struct loginView: View {
                     } .padding(.top, 20) */
                     
                     
+                     
                     Button{
-                        self.isValid = self.validate2()
+                        self.isValid = self.validate()
                     } label: {
                         Text("Iniciar sesión")
                             .frame(width: 327, height: 61)
-                            .background(Color(red: 255/255, green: 255/255, blue: 255/255, opacity: 0.0))
+                            .background(Color(red: 255/255, green: 255/255, blue: 255/255, opacity: 0.1))
                             .cornerRadius(10)
                         
 
@@ -99,35 +103,45 @@ struct loginView: View {
                         .font(.title3)
                         .fontWeight(.regular)
                         .disabled(isButtonEnabled)
-            
-                
+    
                     Text(mensajeError)
                         .foregroundColor(.red)
                         .padding(.top, 18)
 
                 }.tint(Color(red: 255/255, green: 255/255, blue: 255/255, opacity: 0.2))
-                
+            
             }
             
         }.preferredColorScheme(.light)
         .toolbar(.hidden)
-        
+    
     }
     
-        
-    private func validate() -> Bool {
-        InicioSesion { id in
-            if let id = id, !id.isEmpty {
+     func validate() -> Bool {
+         InicioSesion(username: usuario, password: contraseña) { id in            if let id = id, !id.isEmpty {
                 self.idd = id
                 // Inicio de sesión exitoso y se ha obtenido un ID válido
                 //return true
-            } else {
+            } else if (mensajeError != "Intenta en 10 minutos."){
                 // Inicio de sesión fallido o ID no válido
-                let errorMessage = id?.isEmpty == true ? "Ingresa tu usuario" : "Inicio de sesión fallido"
-                //return false
+                mensajeError = "Usuario y/o contraseña inválidos"
+
             }
         }
-        if idd == "" {
+         conteoIntentos = conteoIntentos + 1
+         print("Conteo actual = " + String(conteoIntentos))
+         if(conteoIntentos > 5){
+             mensajeError = "Intenta en 10 minutos."
+             isButtonEnabled = true
+         }
+         
+         
+         let timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: false) { _ in
+             isButtonEnabled.self = false
+             conteoIntentos = 0
+             mensajeError = " "
+         }
+         if self.idd == "" {
             return false
         }
         else {
@@ -140,11 +154,10 @@ struct loginView: View {
         
         if (usuario != usuarioCorrecto || contraseña != contraseñaCorrecto){
             conteoIntentos = conteoIntentos + 1
-            mensajeError = "Usuario y/o contraseña inválidos"
             print("Conteo actual = " + String(conteoIntentos))
             
             if(conteoIntentos > 5){
-                mensajeError = "Límite de intentos alcanzado, intenta en 5 minutos."
+                mensajeError = "Intenta en 5 minutos."
                 isButtonEnabled = true
                 
                 // Temporizador

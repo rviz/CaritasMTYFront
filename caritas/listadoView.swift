@@ -6,7 +6,7 @@ struct listadoView: View {
     @State private var option: Int = 1
     @State private var filtroID: String = ""
     @State private var tipoFiltro: String = ""
-    @State private var lista: Array<Recibo> = []
+    @State private var lista: Array<ticket> = []
     
     
     var body: some View {
@@ -66,12 +66,12 @@ struct listadoView: View {
                     List {
                         ForEach(Array(lista.enumerated()), id: \.1.id) { index, listaItem in
                             NavigationLink(destination: detallesView()) {
-                                Text("\(index + 1). \(listaItem.title)")
+                                Text("\(index + 1). Calle: \(listaItem.id) \n- Colonia: \(listaItem.state) \n-  Hora \(listaItem.date) \n- Monto: \(listaItem.housingReference)")
                             }
                         }
                     }
                     .onAppear() {
-                        lista = callAPILista()
+                        lista = tickets()
                         
                     }
                     .frame(width: 350, height: 515)

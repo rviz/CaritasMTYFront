@@ -54,8 +54,14 @@ func tickets() -> Array<ticket> {
                 let postList = try jsonDecoder.decode([ticket].self, from: data!)
                 lista = postList
                 for postItem in postList {
-                    print("Id: \(postItem.id) - state: \(postItem.state) - housingReference: \(postItem.housingReference)- date: \(postItem.date)")
+                    var idText = postItem.id.isEmpty ? "SIN INFORMACIÓN" : postItem.id
+                    var stateText = postItem.state.isEmpty ? "SIN INFORMACIÓN" : postItem.state
+                    var housingReferenceText = postItem.housingReference.isEmpty ? "SIN INFORMACIÓN" : postItem.housingReference
+                    var dateText = postItem.date.isEmpty ? "SIN INFORMACIÓN" : postItem.date
+                    
+                    print("Id: \(idText) - state: \(stateText) - housingReference: \(housingReferenceText) - date: \(dateText)")
                 }
+
             }catch{
                 print(error)
             }

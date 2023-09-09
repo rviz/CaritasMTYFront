@@ -115,6 +115,7 @@ struct loginView: View {
         }.preferredColorScheme(.light)
         .toolbar(.hidden)
     
+        
     }
     
      func validate() -> Bool {
@@ -122,11 +123,15 @@ struct loginView: View {
                 self.idd = id
                 // Inicio de sesión exitoso y se ha obtenido un ID válido
                 //return true
-            } else if (mensajeError != "Intenta en 10 minutos."){
+             
+
+            }
+             else if (mensajeError != "Intenta en 10 minutos."){
                 // Inicio de sesión fallido o ID no válido
                 mensajeError = "Usuario y/o contraseña inválidos"
 
             }
+
         }
          conteoIntentos = conteoIntentos + 1
          print("Conteo actual = " + String(conteoIntentos))
@@ -136,7 +141,9 @@ struct loginView: View {
          }
          
          
-         let timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: false) { _ in
+         
+         
+         let timer = Timer.scheduledTimer(withTimeInterval: 15, repeats: false) { _ in
              isButtonEnabled.self = false
              conteoIntentos = 0
              mensajeError = " "

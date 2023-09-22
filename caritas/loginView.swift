@@ -134,7 +134,6 @@ struct loginView: View {
                  mensajeError = "Usuario y/o contraseña inválidos"
              }
          }
-
          conteoIntentos = conteoIntentos + 1
          print("Conteo actual = " + String(conteoIntentos))
          if(conteoIntentos > 5){

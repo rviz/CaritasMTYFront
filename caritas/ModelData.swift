@@ -75,7 +75,7 @@ func tickets() -> Array<ticket> {
 }
 
 func InicioSesion(username: String, password: String, completion: @escaping (Int?) -> Void) {
-    let url = URL(string: "http://10.22.218.36:5000/collector/login")!
+    let url = URL(string: "http://10.22.163.19:5000/collector/login")!
     var request = URLRequest(url: url)
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
     request.setValue("application/json", forHTTPHeaderField: "Accept")
@@ -161,9 +161,9 @@ func InicioSesion(username: String, password: String, completion: @escaping (Int
         }()
     }
     struct ResponseObject<T: Decodable>: Decodable {
-        let id: String
+        let id: Int
     }
 
     struct Foo: Decodable {
-        let id: String
+        let id: Int
     }

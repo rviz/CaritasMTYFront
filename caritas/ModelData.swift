@@ -35,10 +35,9 @@ func callAPILista() -> Array<Recibo> {
     return lista
 }
 
-
 func tickets() -> Array<ticket> {
     var lista: Array<ticket> = []
-        guard let url = URL(string:"http://10.22.172.147:5000/ticket/collector-tickets/6") else{
+        guard let url = URL(string:"http://10.22.137.69:5000/ticket/collector-tickets/6") else{
             return lista
         }
     
@@ -75,9 +74,8 @@ func tickets() -> Array<ticket> {
     return lista
 }
 
-
-func InicioSesion(username: String, password: String, completion: @escaping (String?) -> Void) {
-    let url = URL(string: "http://10.22.172.147:5000/collector/login")!
+func InicioSesion(username: String, password: String, completion: @escaping (Int?) -> Void) {
+    let url = URL(string: "http://10.22.218.36:5000/collector/login")!
     var request = URLRequest(url: url)
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
     request.setValue("application/json", forHTTPHeaderField: "Accept")
@@ -96,7 +94,14 @@ func InicioSesion(username: String, password: String, completion: @escaping (Str
         return
     }
     
+    let group = DispatchGroup()
+    group.enter()
+    
     let task = URLSession.shared.dataTask(with: request) { data, response, error in
+        defer {
+            group.leave()
+        }
+        
         guard
             let data = data,
             let response = response as? HTTPURLResponse,
@@ -116,7 +121,7 @@ func InicioSesion(username: String, password: String, completion: @escaping (Str
         
         do {
             if let jsonObject = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
-               let id = jsonObject["id"] as? String {
+               let id = jsonObject["id"] as? Int {
                 completion(id)
             } else {
                 print("No se pudo obtener el valor 'id' del JSON.")
@@ -128,37 +133,37 @@ func InicioSesion(username: String, password: String, completion: @escaping (Str
         }
     }
     task.resume()
+    
+    // Esperamos a que todas las tareas en el grupo se completen antes de llamar a completion
+    group.wait()
 }
 
-
-
-extension Dictionary {
-    func percentEncoded() -> Data? {
-        map { key, value in
-            let escapedKey = "\(key)".addingPercentEncoding(withAllowedCharacters: .urlQueryValueAllowed) ?? ""
-            let escapedValue = "\(value)".addingPercentEncoding(withAllowedCharacters: .urlQueryValueAllowed) ?? ""
-            return escapedKey + "=" + escapedValue
+    extension Dictionary {
+        func percentEncoded() -> Data? {
+            map { key, value in
+                let escapedKey = "\(key)".addingPercentEncoding(withAllowedCharacters: .urlQueryValueAllowed) ?? ""
+                let escapedValue = "\(value)".addingPercentEncoding(withAllowedCharacters: .urlQueryValueAllowed) ?? ""
+                return escapedKey + "=" + escapedValue
+            }
+            .joined(separator: "&")
+            .data(using: .utf8)
         }
-        .joined(separator: "&")
-        .data(using: .utf8)
     }
-}
 
-extension CharacterSet {
-    static let urlQueryValueAllowed: CharacterSet = {
-        let generalDelimitersToEncode = ":#[]@" // does not include "?" or "/" due to RFC 3986 - Section 3.4
-        let subDelimitersToEncode = "!$&'()*+,;="
-        
-        var allowed: CharacterSet = .urlQueryAllowed
-        allowed.remove(charactersIn: "\(generalDelimitersToEncode)\(subDelimitersToEncode)")
-        return allowed
-    }()
-}
-struct ResponseObject<T: Decodable>: Decodable {
-    let id: String
-}
+    extension CharacterSet {
+        static let urlQueryValueAllowed: CharacterSet = {
+            let generalDelimitersToEncode = ":#[]@" // does not include "?" or "/" due to RFC 3986 - Section 3.4
+            let subDelimitersToEncode = "!$&'()*+,;="
+            
+            var allowed: CharacterSet = .urlQueryAllowed
+            allowed.remove(charactersIn: "\(generalDelimitersToEncode)\(subDelimitersToEncode)")
+            return allowed
+        }()
+    }
+    struct ResponseObject<T: Decodable>: Decodable {
+        let id: String
+    }
 
-struct Foo: Decodable {
-    let id: String
-}
-
+    struct Foo: Decodable {
+        let id: String
+    }

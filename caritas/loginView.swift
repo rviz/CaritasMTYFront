@@ -66,7 +66,7 @@ struct loginView: View {
                         .disableAutocorrection(true)
                         .autocapitalization(.none)
                     
-                    
+                
                     
                     /* Picker(selection: $option, label: Text("Picker")) {
                         Text("Recolector").tag(1)
@@ -80,7 +80,6 @@ struct loginView: View {
                     } .padding(.top, 20) */
                     
                     
-                     
                     Button{
                         self.isValid = self.validate()
                     } label: {
@@ -91,18 +90,22 @@ struct loginView: View {
                         
 
                     }.frame(width: 200, height: 50).tint(Color(red: 255/255, green: 255/255, blue: 255/255, opacity: 0)) // botón de atras
-                        .background(
+                        .navigationDestination(isPresented: $isValid){
+                            contentView()
+                        }
+                        /*.background(
                             NavigationLink(destination: contentView(), isActive: $isValid) {
                                     Text("Iniciar sesión")
                                     .frame(width: 300, height: 50) // botón de adelante
                             }
-                        )
+                        )*/
+                    
                         .buttonStyle(.borderedProminent)
                         .foregroundColor(.white)
                         .padding(.top, 65)
                         .font(.title3)
                         .fontWeight(.regular)
-                        .disabled(isButtonEnabled)
+                        //.disabled(isButtonEnabled)
     
                     Text(mensajeError)
                         .foregroundColor(.red)
@@ -116,23 +119,22 @@ struct loginView: View {
         .toolbar(.hidden)
     
         
+        
     }
     
      func validate() -> Bool {
-         InicioSesion(username: usuario, password: contraseña) { id in            if let id = id, !id.isEmpty {
-                self.idd = id
-                // Inicio de sesión exitoso y se ha obtenido un ID válido
-                //return true
-             
+         InicioSesion(username: usuario, password: contraseña) { id in
+             if let id = id, id != 0 {
+                 self.idd = String(id) // Convierte el entero a String si es necesario
+                 print(id)
+                 // Inicio de sesión exitoso y se ha obtenido un ID válido
+                 //return true
+             } else if (mensajeError != "Intenta en 10 minutos.") {
+                 // Inicio de sesión fallido o ID no válido
+                 mensajeError = "Usuario y/o contraseña inválidos"
+             }
+         }
 
-            }
-             else if (mensajeError != "Intenta en 10 minutos."){
-                // Inicio de sesión fallido o ID no válido
-                mensajeError = "Usuario y/o contraseña inválidos"
-
-            }
-
-        }
          conteoIntentos = conteoIntentos + 1
          print("Conteo actual = " + String(conteoIntentos))
          if(conteoIntentos > 5){

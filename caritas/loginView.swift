@@ -18,7 +18,7 @@ struct loginView: View {
     
     
     // Botón
-    @State private var isButtonEnabled = false // Estado para controlar la habilitación del botón y el enlace de navegación
+    @State private var isButtonEnabled = false // Estado para controlar la habilitación del botón y el enlace de navegación pepe
     
     var body: some View {
         NavigationStack {

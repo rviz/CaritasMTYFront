@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import Combine // Limite de caracteres en TextField
+
 
 extension View {
     func hideKeyboard() {
@@ -25,10 +27,11 @@ struct detallesView: View {
     @State private var monto: Int = 0
     @State private var calle: String = "Sin información"
     @State private var colonia: String = "Sin información"
+    @State private var numeroTelefonico: Int = 0
     @State private var notas: String = "Sin información"
     @State private var id: String = ""
-
-    
+    let textLimit = 150
+        
     var body: some View {
         
         VStack{
@@ -80,6 +83,7 @@ struct detallesView: View {
                 .padding(.bottom, -15)
 
                 HStack{
+                                        
                     
                     VStack(alignment: .leading, spacing: 0) {
                         
@@ -95,6 +99,18 @@ struct detallesView: View {
                             Text(colonia)
                         }.padding(.bottom, 10)
                         
+                        HStack {
+                             Text("Donante:")
+                                 .fontWeight(.bold)
+                             Text(colonia)
+                         }.padding(.bottom, 10)
+                                             
+                         HStack {
+                             Text("Teléfono:")
+                                 .fontWeight(.bold)
+                             Text(colonia)
+                         }.padding(.bottom, 10)
+                                             
                         HStack {
                             Text("Notas:")
                                 .fontWeight(.bold)
@@ -174,6 +190,9 @@ struct detallesView: View {
                     .fontWeight(.regular)
                 
                 TextField("Comentario", text: $comentarioAdicional, axis: .vertical)
+                    .onReceive(Just(comentarioAdicional)){ // Limita la cantidad de caracteres
+                                           _ in limitText(textLimit)
+                                       }
                     .onTapGesture {
                         
                     }
@@ -185,6 +204,8 @@ struct detallesView: View {
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(Color.gray, lineWidth: 1)
                     )
+                
+                
                 
                 // Botón: Guardar
                 Button(action: {
@@ -208,8 +229,15 @@ struct detallesView: View {
         }
         
     }
+    func limitText(_ upper: Int){
+           if comentarioAdicional.count > upper {
+               comentarioAdicional = String(comentarioAdicional.prefix(upper))
+           }
+       }
     
 }
+
+
 
 struct Recibos_Previews: PreviewProvider {
     static var previews: some View {

@@ -4,7 +4,7 @@ import Foundation
 func tickets() -> Array<ticket> {
     var lista: Array<ticket> = []
     
-    guard let url = URL(string: "http://10.22.174.66:5000/ticket/collector-tickets/1") else {
+    guard let url = URL(string: "http://10.22.166.15:5000/ticket/collector-tickets/1") else {
         print("Error: URL no válida")
         return lista
     }
@@ -39,7 +39,7 @@ func tickets() -> Array<ticket> {
 
 
 func InicioSesion(username: String, password: String, completion: @escaping (Int?) -> Void) {
-    let url = URL(string: "http://10.22.174.66:5000/collector/login")!
+    let url = URL(string: "http://10.22.166.15:5000/collector/login")!
     var request = URLRequest(url: url)
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
     request.setValue("application/json", forHTTPHeaderField: "Accept")

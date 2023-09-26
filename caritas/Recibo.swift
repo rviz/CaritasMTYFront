@@ -6,16 +6,22 @@
 //
 
 import Foundation
-struct Recibo: Codable, Identifiable{
-    var userId, id: Int
-    var title, body: String
+struct ticketote: Codable{
+    var tickets: [ticket]
 }
 
 struct ticket: Codable, Identifiable{
-    var cellPhone, collectorComments, collectorId, date, housePhoneNumber: String
-    var housingReference, id, managerId, receiptComments, reprogramationComments, state: String
-    
+    var uuid, housingReference, receiptComments, reprogramationComments, housePhoneNumber, cellPhone, collectorComments, state, date, donorName: String
+    var id, managerId, collectorId, donationAmount: Int
 }
 struct User: Codable, Identifiable{
     var id: String
+}
+
+struct ResponseObject<T: Decodable>: Decodable {
+    let id: Int
+}
+
+struct Foo: Decodable {
+    let id: Int
 }

@@ -1,81 +1,45 @@
 
 import Foundation
 
-
-func callAPILista() -> Array<Recibo> {
-    var lista: Array<Recibo> = []
-        guard let url = URL(string:"https://jsonplaceholder.typicode.com/posts") else{
-            return lista
-        }
-    
-    let group = DispatchGroup()
-    group.enter()
-    
-    let task = URLSession.shared.dataTask(with: url){
-        data, response, error in
-        let jsonDecoder = JSONDecoder()
-        
-        if (data != nil){
-            do{
-                let postList = try jsonDecoder.decode([Recibo].self, from: data!)
-                lista = postList
-                for postItem in postList {
-                    print("Id: \(postItem.id) - Titulo: \(postItem.title) ")
-                }
-            }catch{
-                print(error)
-            }
-        }
-        
-        group.leave()
-    }
-    task.resume()
-
-    group.wait()
-    return lista
-}
-
 func tickets() -> Array<ticket> {
     var lista: Array<ticket> = []
-        guard let url = URL(string:"http://10.22.137.69:5000/ticket/collector-tickets/6") else{
-            return lista
-        }
     
+    guard let url = URL(string: "http://10.22.174.66:5000/ticket/collector-tickets/1") else {
+        print("Error: URL no válida")
+        return lista
+    }
     let group = DispatchGroup()
     group.enter()
     
-    let task = URLSession.shared.dataTask(with: url){
-        data, response, error in
+    let task = URLSession.shared.dataTask(with: url) { data, response, error in
         let jsonDecoder = JSONDecoder()
         
-        if (data != nil){
-            do{
-                let postList = try jsonDecoder.decode([ticket].self, from: data!)
-                lista = postList
-                for postItem in postList {
-                    var idText = postItem.id.isEmpty ? "SIN INFORMACIÓN" : postItem.id
-                    var stateText = postItem.state.isEmpty ? "SIN INFORMACIÓN" : postItem.state
-                    var housingReferenceText = postItem.housingReference.isEmpty ? "SIN INFORMACIÓN" : postItem.housingReference
-                    var dateText = postItem.date.isEmpty ? "SIN INFORMACIÓN" : postItem.date
-                    
-                    print("Id: \(idText) - state: \(stateText) - housingReference: \(housingReferenceText) - date: \(dateText)")
+        if (data != nil) {
+            do {
+                let postList = try jsonDecoder.decode(ticketote.self, from: data!)
+                lista = postList.tickets
+                
+                for postItem in postList.tickets {
+                    print("Id: \(postItem.id) - state: \(postItem.state) - housingReference: \(postItem.housingReference) - date: \(postItem.date)")
                 }
-
-            }catch{
-                print(error)
+            } catch {
+                print("Error al decodificar JSON: \(error)")
             }
+        } else if let error = error {
+            print("Error en la solicitud HTTP: \(error)")
         }
         
         group.leave()
     }
+    
     task.resume()
-
     group.wait()
     return lista
 }
 
+
 func InicioSesion(username: String, password: String, completion: @escaping (Int?) -> Void) {
-    let url = URL(string: "http://10.22.163.19:5000/collector/login")!
+    let url = URL(string: "http://10.22.174.66:5000/collector/login")!
     var request = URLRequest(url: url)
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
     request.setValue("application/json", forHTTPHeaderField: "Accept")
@@ -160,10 +124,4 @@ func InicioSesion(username: String, password: String, completion: @escaping (Int
             return allowed
         }()
     }
-    struct ResponseObject<T: Decodable>: Decodable {
-        let id: Int
-    }
-
-    struct Foo: Decodable {
-        let id: Int
-    }
+   

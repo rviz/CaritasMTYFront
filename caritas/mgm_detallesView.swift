@@ -1,35 +1,33 @@
 //
-//  Recibos.swift
+//  ManDetallesView.swift
 //  caritas
 //
-//  Created by Alumno on 04/09/23.
+//  Created by Rudy on 25/09/23.
 //
 
 import SwiftUI
 
-extension View {
-    func hideKeyboard() {
-        let resign = #selector(UIResponder.resignFirstResponder)
-        UIApplication.shared.sendAction(resign, to: nil, from: nil, for: nil)
-    }
-}
 
-struct detallesView: View {
-
+struct mgm_detallesView: View {
     // Variables
-    @State private var estadoFinal: String = ""
+    
     @State private var comentarioAdicional: String = ""
-    @State private var optionEstado: Int = 1
+    @State private var optionEstado = 1
     
     // Información del recibo
     @State private var monto: Int = 0
-    @State private var calle: String = "Sin información"
-    @State private var colonia: String = "Sin información"
+    @State private var calle: String = "Sin información, colonia patito, rincon perezoso #345"
     @State private var notas: String = "Sin información"
-    @State private var id: String = ""
+    
+    // Información del recibo para el manager
+    @State private var idRecibo: Int = 69
+    @State private var estadoFinal: String = ""
+    @State private var estado: String = ""
 
     
+    
     var body: some View {
+       
         
         VStack{
             
@@ -79,90 +77,46 @@ struct detallesView: View {
                 .tint(Color(red: 0, green: 156/255, blue: 171/255))
                 .padding(.bottom, -15)
 
-                HStack{
-                    
                     VStack(alignment: .leading, spacing: 0) {
-                        
+                        HStack {
+                            Text("ID Recibo:")
+                                .fontWeight(.bold)
+                            Text(String(idRecibo))
+                        }.padding(.bottom, 10)
                         HStack {
                             Text("Calle:")
                                 .fontWeight(.bold)
                             Text(calle)
                         }.padding(.bottom, 10)
-                        
-                        HStack {
-                            Text("Colonia:")
-                                .fontWeight(.bold)
-                            Text(colonia)
-                        }.padding(.bottom, 10)
-                        
                         HStack {
                             Text("Notas:")
                                 .fontWeight(.bold)
                             Text(notas)
                         }.padding(.bottom, 10)
+                        HStack {
+                            Text("Estado:")
+                                .fontWeight(.bold)
+                            Text(estado)
+                                .foregroundColor(getTextColor())
+                        }.padding(.bottom, 10)
+                            .onAppear(){
+                                if(optionEstado == 1){
+                                    estado = "No cobrado"
+                                } else if (optionEstado == 2){
+                                    estado = "Cobrado"
+                                } else if (optionEstado == 3){
+                                    estado = "Conflicto"
+                                }
+                            }
+                            
                     }
                     .padding(.top, 100)
                     .padding(.bottom, 25)
-                }
-                .padding(.leading, -95)
-                .offset(y:-50)
-                .padding(.top, -5)
+                    .offset(y:-50)
+                    .frame(maxWidth: 380)
                 
-                // Opciones: Estados
-                ZStack{
-                    // Barra de color
-                    if(optionEstado == 1){
-                        Color(red: 214/255, green: 214/255, blue: 214/255)
-                                .frame(height: 50)
-                                .frame(width: 330)
-                                .cornerRadius(10) //
-                                .offset(y:-55)
-
-                        
-                    }else if(optionEstado == 2){
-                        Color.green
-                                .frame(height: 50)
-                                .frame(width: 330)
-                                .cornerRadius(10) //
-                                .offset(y:-55)
-                    }else if(optionEstado == 3){
-                        Color(red: 255/255, green: 0/255, blue: 0/255)                                .frame(height: 50)
-                                .frame(width: 330)
-                                .cornerRadius(10) //
-                                .offset(y:-55)
-                    }
-                    
-                    
-                    Picker(selection: $optionEstado, label: Text("Picker"))
-                    {
-                        Text("No cobrado").tag(1)
-                        Text("Cobrado").tag(2)
-                        Text("Conflicto").tag(3)
-                        
-                    }.pickerStyle(.segmented)
-                        .frame(width: 310)
-                        .background(
-                            // Apply a background color to the selected segment
-                            RoundedRectangle(cornerRadius: 8)
-                                .fill(Color.white) // Change this color to your desired color
-                                .padding(.horizontal, 0) // Adjust the padding as needed
-                        )
-                        .onChange(of: optionEstado){ value in
-                            
-                            if(optionEstado == 1){
-                                estadoFinal = "No cobrado"
-                            } else if (optionEstado == 2){
-                                estadoFinal = "Cobrado"
-                            } else if (optionEstado == 3){
-                                estadoFinal = "Conflicto"
-                            }
-                            
-                        }
-                        .padding(.top, -70)
-                        .zIndex(2)
-                    
-                   
-                }
+               
+                
                 
                 // Campo de texto 1: Comentarios adicionales
                 Text("Comentarios adicionales:")
@@ -208,11 +162,25 @@ struct detallesView: View {
         }
         
     }
+    private func getTextColor() -> Color {
+        if optionEstado == 1 {
+            return Color.gray
+        } else if optionEstado == 2 {
+            return Color.green
+        } else if optionEstado == 3 {
+            return Color.red
+        } else {
+            return Color.black // You can choose a default color if needed
+        }
+    }
     
 }
 
-struct Recibos_Previews: PreviewProvider {
+
+
+
+struct mgm_detallesView_Previews: PreviewProvider {
     static var previews: some View {
-        VStack{
-            detallesView()}    }
+        mgm_detallesView()
+    }
 }

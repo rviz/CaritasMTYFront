@@ -47,6 +47,8 @@ struct loginView: View {
                         .frame(width: 330)
                         .font(.title)
                         .fontWeight(.light)
+                        .disableAutocorrection(true)
+                        .autocapitalization(.none)
                     
                     
                     Text("Contraseña:")

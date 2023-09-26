@@ -9,8 +9,7 @@ import SwiftUI
 
 
 struct mgm_detallesView: View {
-    // Variables
-    
+    // Variables globales
     @State private var comentarioAdicional: String = ""
     @State private var optionEstado = 1
     
@@ -21,7 +20,6 @@ struct mgm_detallesView: View {
     
     // Información del recibo para el manager
     @State private var idRecibo: Int = 69
-    @State private var estadoFinal: String = ""
     @State private var estado: String = ""
 
     

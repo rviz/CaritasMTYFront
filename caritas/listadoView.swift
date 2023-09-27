@@ -71,7 +71,7 @@ struct listadoView: View {
                     
                     List {
                         ForEach(Array(lista.enumerated()), id: \.1.id) { index, listaItem in
-                            NavigationLink(destination: detallesView()) {
+                            NavigationLink(destination: detallesView(ticketId: listaItem.id)) {
                                 
                                 VStack(alignment: .leading, spacing: 5) {
                                                                                             
@@ -89,17 +89,27 @@ struct listadoView: View {
                                     }
                                     
                                     if(listaItem.state == "CONFLICT"){
-                                        Text("- Estado: \(listaItem.state)")
-                                            .foregroundColor(.red)
-                                            .bold()
+                                        HStack{
+                                            Text("- Estado: ")
+                                                .bold()
+                                            Text("\(listaItem.state)")
+                                                .foregroundColor(.red)
+                                        }
+                                        
                                     } else if (listaItem.state == "PENDING"){
-                                        Text("- Estado: \(listaItem.state)")
-                                            .foregroundColor(.orange)
-                                            .bold()
+                                        HStack{
+                                            Text("- Estado: ")
+                                                .bold()
+                                            Text("\(listaItem.state)")
+                                                .foregroundColor(.gray)
+                                        }
                                     } else if (listaItem.state == "COLLECTED"){
-                                        Text("- Estado: \(listaItem.state)")
-                                            .foregroundColor(.green)
-                                            .bold()
+                                        HStack{
+                                            Text("- Estado: ")
+                                                .bold()
+                                            Text("\(listaItem.state)")
+                                                .foregroundColor(.green)
+                                        }
                                     }
                                     
                                     HStack {

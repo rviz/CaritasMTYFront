@@ -31,29 +31,22 @@ struct mgm_detallesView: View {
             
             // Impresión de información
             VStack{
-                
-                
                 ZStack{
-                    
                     // Barra de color
                     Color(red: 0, green: 156/255, blue: 171/255)
                         .edgesIgnoringSafeArea(.all)
                         .frame(height: 80)
                         .offset(y:-50)
-                    
                     Text("Detalles")
                         .font(.title)
                         .fontWeight(.bold)
                         .padding(.bottom, 5)
                         .offset(y:-40)
                         .foregroundColor(Color.white)
-                    
                 }
-                
             }.padding(0)
             
             ScrollView {
-                
                 Text("$" + String(monto))
                     .font(.largeTitle)
                     .fontWeight(.bold)

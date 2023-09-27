@@ -21,6 +21,7 @@ struct detallesView: View {
 
 
     // Variables
+    @Environment(\.dismiss) private var dismiss
     @State private var estadoFinal: String = ""
     @State private var comentarioAdicional: String = ""
     @State private var optionEstado: Int = 1
@@ -32,6 +33,7 @@ struct detallesView: View {
     @State private var numeroTelefonico: Int = 0
     @State private var notas: String = "Sin información"
     @State private var id: String = ""
+    @State var guardado: Bool = false
     let textLimit = 150
         
     var body: some View {
@@ -192,6 +194,7 @@ struct detallesView: View {
                     .font(.title3)
                     .fontWeight(.regular)
                 
+
                 TextField("Comentario", text: $comentarioAdicional, axis: .vertical)
                     .onReceive(Just(comentarioAdicional)){ // Limita la cantidad de caracteres
                                            _ in limitText(textLimit)
@@ -207,14 +210,22 @@ struct detallesView: View {
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(Color.gray, lineWidth: 1)
                     )
+                    .onAppear() {
+                        comentarioAdicional = ticket.collectorComments
+                        }
                 
                 
                 
                 // Botón: Guardar
                 Button(action: {
                     hideKeyboard()
-                    // Acción que deseas realizar cuando se presione el botón
-                }) {
+                    CambiarComment(id: ticket.id, comment: comentarioAdicional) { msg in
+                        if let msg = msg, msg != "" {
+                            guardado = true
+                        }}
+                    dismiss()
+                    
+                        }){
                     Text("Guardar")
                         .font(.title2)
                         .fontWeight(.bold)

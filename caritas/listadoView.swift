@@ -129,10 +129,13 @@ struct listadoView: View {
                                 }
                             }
                         }
+                        .refreshable{
+                            lista = tickets()
+                        }
                         .onAppear() {
                             if yaCargo==false{
                                 lista = tickets()
-                                yaCargo = true
+                                //yaCargo = true
                             }
                         }
                         .frame(width: 350, height: 515)
@@ -144,7 +147,9 @@ struct listadoView: View {
                 }
                 Spacer()
             }
-        }}
+        }
+        
+    }
 }
 struct listadoView_Previews: PreviewProvider {
     static var previews: some View {

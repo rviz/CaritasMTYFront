@@ -97,11 +97,9 @@ func InicioSesion(username: String, password: String, completion: @escaping (Int
         }
     }
     task.resume()
-    
-    // Esperamos a que todas las tareas en el grupo se completen antes de llamar a completion
     group.wait()
 }
-
+/*
     extension Dictionary {
         func percentEncoded() -> Data? {
             map { key, value in
@@ -124,4 +122,68 @@ func InicioSesion(username: String, password: String, completion: @escaping (Int
             return allowed
         }()
     }
-   
+*/
+
+func CambiarComment(id: Int, comment: String, completion: @escaping (String?) -> Void) {
+    let url = URL(string: "http://10.22.166.15:5000/ticket/change_collector_comments")!
+    var request = URLRequest(url: url)
+    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    request.setValue("application/json", forHTTPHeaderField: "Accept")
+    request.httpMethod = "POST"
+    
+    let parameters: [String: Any] = [
+        "ticket_id": id,
+        "collector_comments": comment
+    ]
+    do {
+        let jsonData = try JSONSerialization.data(withJSONObject: parameters)
+        request.httpBody = jsonData
+    } catch {
+        print("Error al crear el JSON: \(error)")
+        completion(nil)
+        return
+    }
+    
+    let group = DispatchGroup()
+    group.enter()
+    
+    let task = URLSession.shared.dataTask(with: request) { data, response, error in
+        defer {
+            group.leave()
+        }
+        
+        guard
+            let data = data,
+            let response = response as? HTTPURLResponse,
+            error == nil
+        else {
+            print("error", error ?? URLError(.badServerResponse))
+            completion(nil)
+            return
+        }
+        
+        guard (200 ... 299) ~= response.statusCode else {
+            print("statusCode should be 2xx, but is \(response.statusCode)")
+            print("response = \(response)")
+            completion(nil)
+            return
+        }
+        
+        do {
+            if let jsonObject = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+               let msg = jsonObject["msg"] as? String {
+                print (msg)
+                completion(msg)
+            } else {
+                print("No se pudo obtener el valor 'id' del JSON.")
+                completion(nil)
+            }
+        } catch {
+            print(error) // Error de parsing
+            completion(nil)
+        }
+    }
+    task.resume()
+    group.wait()
+}
+

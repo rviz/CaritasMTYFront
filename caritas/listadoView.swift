@@ -8,6 +8,7 @@ struct listadoView: View {
     @State private var tipoFiltro: String = ""
     @State private var colorEstado: Color = .black
     @State private var lista: Array<ticket> = []
+    @State var yaCargo: Bool = false
     
     
     var body: some View {
@@ -129,8 +130,10 @@ struct listadoView: View {
                             }
                         }
                         .onAppear() {
-                            //Necesitamos un if que no cargue todo de nuevo si se regresa
-                            lista = tickets()
+                            if yaCargo==false{
+                                lista = tickets()
+                                yaCargo = true
+                            }
                         }
                         .frame(width: 350, height: 515)
                         .padding(.top, 15)

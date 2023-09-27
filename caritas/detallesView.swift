@@ -17,6 +17,8 @@ extension View {
 }
 
 struct detallesView: View {
+    var ticket: ticket
+
 
     // Variables
     @State private var estadoFinal: String = ""
@@ -90,7 +92,7 @@ struct detallesView: View {
                         HStack {
                             Text("Calle:")
                                 .fontWeight(.bold)
-                            Text(calle)
+                            Text(ticket.housingReference)
                         }.padding(.bottom, 10)
                         
                         HStack {
@@ -147,6 +149,7 @@ struct detallesView: View {
                                 .cornerRadius(10) //
                                 .offset(y:-55)
                     }
+                    
                     
                     
                     Picker(selection: $optionEstado, label: Text("Picker"))
@@ -242,5 +245,5 @@ struct detallesView: View {
 struct Recibos_Previews: PreviewProvider {
     static var previews: some View {
         VStack{
-            detallesView()}    }
+            detallesView(ticket: tickets()[0] )}    }
 }

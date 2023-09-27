@@ -18,7 +18,7 @@ struct ticket: Codable, Identifiable{
 struct User: Codable, Identifiable{
     var id: String
 }
-
+/*
 struct ResponseObject<T: Decodable>: Decodable {
     let id: Int
 }
@@ -26,3 +26,4 @@ struct ResponseObject<T: Decodable>: Decodable {
 struct Foo: Decodable {
     let id: Int
 }
+*/

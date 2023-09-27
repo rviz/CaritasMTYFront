@@ -101,6 +101,7 @@ func InicioSesion(username: String, password: String, completion: @escaping (Int
     task.resume()
     group.wait()
 }
+
 /*
     extension Dictionary {
         func percentEncoded() -> Data? {

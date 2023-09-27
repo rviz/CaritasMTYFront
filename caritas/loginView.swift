@@ -121,7 +121,6 @@ struct loginView: View {
         .toolbar(.hidden)
     
         
-        
     }
     
      func validate() -> Bool {
@@ -159,6 +158,7 @@ struct loginView: View {
         }
         
     }
+    
     
     private func validate2() -> Bool {
         

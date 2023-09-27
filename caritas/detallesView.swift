@@ -17,10 +17,14 @@ extension View {
 }
 
 struct detallesView: View {
+    @Binding var yaCargo: Bool
+    //@Binding var ticket: ticket
+
     var ticket: ticket
 
 
     // Variables
+    @Environment(\.dismiss) private var dismiss
     @State private var estadoFinal: String = ""
     @State private var comentarioAdicional: String = ""
     @State private var optionEstado: Int = 1
@@ -32,9 +36,52 @@ struct detallesView: View {
     @State private var numeroTelefonico: Int = 0
     @State private var notas: String = "Sin información"
     @State private var id: String = ""
+    @State var guardado: Bool = false
     let textLimit = 150
-        
+    
+    // Variables de la base de datos
+    var calleBD: String {
+        if ticket.housingReference.isEmpty {
+            return "Sin información"
+        } else {
+            return ticket.housingReference
+        }
+    }
+    
+    var coloniaBD: String {
+        if ticket.reprogramationComments.isEmpty {
+            return "Sin información"
+        } else {
+            return ticket.reprogramationComments
+        }
+    }
+    
+    var donanteBD: String {
+        if ticket.donorName.isEmpty {
+            return "Sin información"
+        } else {
+            return ticket.donorName
+        }
+    }
+    
+    var telefonoBD: String {
+        if ticket.cellPhone.isEmpty {
+            return "Sin información"
+        } else {
+            return ticket.cellPhone
+        }
+    }
+    
+    var notasBD: String {
+        if ticket.receiptComments.isEmpty {
+            return "Sin información"
+        } else {
+            return ticket.receiptComments
+        }
+    }
+    
     var body: some View {
+        
         
         VStack{
             
@@ -63,7 +110,7 @@ struct detallesView: View {
             
             ScrollView {
                 
-                Text("$" + String(monto))
+                Text("$" + String(ticket.donationAmount))
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .multilineTextAlignment(.center)
@@ -86,41 +133,43 @@ struct detallesView: View {
 
                 HStack{
                                         
-                    
                     VStack(alignment: .leading, spacing: 0) {
+                        
+                       
                         
                         HStack {
                             Text("Calle:")
                                 .fontWeight(.bold)
-                            Text(ticket.housingReference)
+                            Text(calleBD)
                         }.padding(.bottom, 10)
                         
                         HStack {
                             Text("Colonia:")
                                 .fontWeight(.bold)
-                            Text(colonia)
+                            Text(coloniaBD)
                         }.padding(.bottom, 10)
                         
                         HStack {
                              Text("Donante:")
                                  .fontWeight(.bold)
-                             Text(colonia)
+                            Text(donanteBD)
                          }.padding(.bottom, 10)
                                              
                          HStack {
                              Text("Teléfono:")
                                  .fontWeight(.bold)
-                             Text(colonia)
+                             Text("+\(telefonoBD)")
                          }.padding(.bottom, 10)
                                              
                         HStack {
                             Text("Notas:")
                                 .fontWeight(.bold)
-                            Text(notas)
+                            Text(notasBD)
                         }.padding(.bottom, 10)
                     }
                     .padding(.top, 100)
                     .padding(.bottom, 25)
+                    
                 }
                 .padding(.leading, -95)
                 .offset(y:-50)
@@ -152,6 +201,8 @@ struct detallesView: View {
                     
                     
                     
+                    
+                    
                     Picker(selection: $optionEstado, label: Text("Picker"))
                     {
                         Text("No cobrado").tag(1)
@@ -167,11 +218,11 @@ struct detallesView: View {
                         )
                         .onChange(of: optionEstado){ value in
                             if(optionEstado == 1){
-                                estadoFinal = "No cobrado"
+                                estadoFinal = "PENDING"
                             } else if (optionEstado == 2){
-                                estadoFinal = "Cobrado"
+                                estadoFinal = "COLLECTED"
                             } else if (optionEstado == 3){
-                                estadoFinal = "Conflicto"
+                                estadoFinal = "CONFLICT"
                             }
                             
                         }
@@ -190,6 +241,7 @@ struct detallesView: View {
                     .font(.title3)
                     .fontWeight(.regular)
                 
+
                 TextField("Comentario", text: $comentarioAdicional, axis: .vertical)
                     .onReceive(Just(comentarioAdicional)){ // Limita la cantidad de caracteres
                                            _ in limitText(textLimit)
@@ -205,14 +257,33 @@ struct detallesView: View {
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(Color.gray, lineWidth: 1)
                     )
-                
+                    .onAppear() {
+                        comentarioAdicional = ticket.collectorComments
+                        if (ticket.state == "PENDING"){
+                            optionEstado = 1
+                        }
+                        else if (ticket.state == "COLLECTED"){
+                            optionEstado = 2
+                        }
+                        else if (ticket.state == "CONFLICT"){
+                            optionEstado = 3
+                        }
+                    }
                 
                 
                 // Botón: Guardar
                 Button(action: {
                     hideKeyboard()
-                    // Acción que deseas realizar cuando se presione el botón
-                }) {
+                    CambiarComment(id: ticket.id, comment: comentarioAdicional) { msg in
+                        if let msg = msg, msg != "" {
+                        }}
+                    CambiarEstado(id: ticket.id, state: estadoFinal) { msg in
+                        if let msg = msg, msg != "" {
+                        }}
+                    yaCargo = false
+                    dismiss()
+                    
+                        }){
                     Text("Guardar")
                         .font(.title2)
                         .fontWeight(.bold)
@@ -242,6 +313,8 @@ struct detallesView: View {
 
 struct Recibos_Previews: PreviewProvider {
     static var previews: some View {
-        VStack{
-            detallesView(ticket: tickets()[0] )}    }
+        @State var yaCargo = false
+       // @State var tickete : ticket = tickets()[0]
+      
+        detallesView(yaCargo: $yaCargo, ticket: tickets()[0])   }
 }

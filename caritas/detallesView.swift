@@ -107,7 +107,7 @@ struct detallesView: View {
             
             ScrollView {
                 
-                Text("$" + String(monto))
+                Text("$" + String(ticket.donationAmount))
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .multilineTextAlignment(.center)

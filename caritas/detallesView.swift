@@ -17,6 +17,8 @@ extension View {
 }
 
 struct detallesView: View {
+    //@Binding var ticket: ticket
+
     var ticket: ticket
 
 
@@ -311,6 +313,7 @@ struct detallesView: View {
 
 struct Recibos_Previews: PreviewProvider {
     static var previews: some View {
-        VStack{
-            detallesView(ticket: tickets()[0] )}    }
+       // @State var tickete : ticket = tickets()[0]
+      
+            detallesView(ticket: tickets()[0] )   }
 }

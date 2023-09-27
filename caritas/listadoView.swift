@@ -73,7 +73,7 @@ struct listadoView: View {
                         List {
                             ForEach(Array(lista.enumerated()), id: \.1.id){
                                 index, listaItem in
-                                NavigationLink(destination: detallesView(ticket: listaItem)) {
+                                NavigationLink(destination: detallesView(ticket:listaItem)) {
                                     VStack(alignment: .leading, spacing: 5) {
                                         
                                         HStack {
@@ -153,6 +153,7 @@ struct listadoView: View {
 }
 struct listadoView_Previews: PreviewProvider {
     static var previews: some View {
+        
         listadoView()
     }
 }

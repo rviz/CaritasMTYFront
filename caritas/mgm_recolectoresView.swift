@@ -12,7 +12,8 @@ struct mgm_recolectoresView: View {
     @State private var colorEstado: Color = .black
     @State private var lista: Array<ticket> = []
     @State var yaCargo: Bool = false
-    
+    // Agregar un array con los nombres cuando tenga endpoint de la lista de recolectores por manager id.
+    // Integrar ese array en el ForEach de la linea 23.
     
     var body: some View {
                 

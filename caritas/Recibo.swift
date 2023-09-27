@@ -14,6 +14,7 @@ struct ticket: Codable, Identifiable{
     var uuid, housingReference, receiptComments, reprogramationComments, housePhoneNumber, cellPhone, collectorComments, state, date, donorName: String
     var id, managerId, collectorId, donationAmount: Int
 }
+
 struct User: Codable, Identifiable{
     var id: String
 }

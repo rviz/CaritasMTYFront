@@ -258,13 +258,13 @@ struct detallesView: View {
                     )
                     .onAppear() {
                         comentarioAdicional = ticket.collectorComments
-                        if (ticket.collectorComments == "PENDING"){
+                        if (ticket.state == "PENDING"){
                             optionEstado = 1
                         }
-                        else if (ticket.collectorComments == "COLLECTED"){
+                        else if (ticket.state == "COLLECTED"){
                             optionEstado = 2
                         }
-                        else if (ticket.collectorComments == "CONFLICT"){
+                        else if (ticket.state == "CONFLICT"){
                             optionEstado = 3
                         }
                     }

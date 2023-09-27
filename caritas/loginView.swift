@@ -159,6 +159,7 @@ struct loginView: View {
         
     }
     
+    
     private func validate2() -> Bool {
         
         if (usuario != usuarioCorrecto || contraseña != contraseñaCorrecto){

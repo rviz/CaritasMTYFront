@@ -164,10 +164,8 @@ struct detallesView: View {
                             // Apply a background color to the selected segment
                             RoundedRectangle(cornerRadius: 8)
                                 .fill(Color.white) // Change this color to your desired color
-                                .padding(.horizontal, 0) // Adjust the padding as needed
                         )
                         .onChange(of: optionEstado){ value in
-                            
                             if(optionEstado == 1){
                                 estadoFinal = "No cobrado"
                             } else if (optionEstado == 2){

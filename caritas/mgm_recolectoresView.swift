@@ -1,16 +1,93 @@
-//
-//  mgm_recolectoresView.swift
-//  caritas
-//
-//  Created by Rudy on 25/09/23.
-//
+
+// MANAGER
 
 import SwiftUI
 
 struct mgm_recolectoresView: View {
+    // Variables
+    @State private var option: Int = 1
+    @State private var filtroSearch: String = ""
+    @State private var searchIsActive = false
+    @State private var tipoFiltro: String = ""
+    @State private var colorEstado: Color = .black
+    @State private var lista: Array<ticket> = []
+    @State var yaCargo: Bool = false
+    
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
+                
+                NavigationStack {
+                    List {
+                        ForEach(Array(lista.enumerated()), id: \.1.id){
+                            index, listaItem in
+                            NavigationLink(destination: detallesView(ticket: listaItem)) {
+                                VStack(alignment: .leading, spacing: 5) {
+                                    
+                                    HStack {
+                                        Text("Recibo \(index + 1):")
+                                            .fontWeight(.bold)
+                                            .foregroundColor(Color(red: 0, green: 156/255, blue: 171/255))
+                                        Text("#\(listaItem.id)548493")
+                                    }
+                                    
+                                    HStack {
+                                        Text("- Calle:")
+                                            .fontWeight(.bold)
+                                        Text("\(listaItem.housingReference)")
+                                    }
+                                    
+                                    if(listaItem.state == "CONFLICT"){
+                                        HStack{
+                                            Text("- Estado: ")
+                                                .bold()
+                                            Text("\(listaItem.state)")
+                                                .foregroundColor(.red)
+                                        }
+                                        
+                                    } else if (listaItem.state == "PENDING"){
+                                        HStack{
+                                            Text("- Estado: ")
+                                                .bold()
+                                            Text("\(listaItem.state)")
+                                                .foregroundColor(.gray)
+                                        }
+                                    } else if (listaItem.state == "COLLECTED"){
+                                        HStack{
+                                            Text("- Estado: ")
+                                                .bold()
+                                            Text("\(listaItem.state)")
+                                                .foregroundColor(.green)
+                                        }
+                                    }
+                                    
+                                    HStack {
+                                        Text("- Fecha:")
+                                            .fontWeight(.bold)
+                                        Text("\(listaItem.date)")
+                                    }
+                                    
+                                    HStack {
+                                        Text("- Monto:")
+                                            .fontWeight(.bold)
+                                        Text("$\(listaItem.donationAmount)")
+                                    }
+                                }
+                                .padding(0)
+                            }
+                        }
+                    }
+                    .onAppear() {
+                        if yaCargo==false{
+                            lista = tickets()
+                            yaCargo = true
+                        }
+                    }
+                    .frame(width: 350)
+                    .listStyle(.inset)
+                    .navigationTitle("Recolectores")
+                }.searchable(text: $filtroSearch, prompt: "Busca un recolector")
+
+        }
 }
 
 struct mgm_recolectoresView_Previews: PreviewProvider {

@@ -1,4 +1,6 @@
 
+// RECOLECTOR
+
 import SwiftUI
 
 struct listadoView: View {
@@ -50,24 +52,18 @@ struct listadoView: View {
                         
                         Picker(selection: $option, label: Text("Picker"))
                         {
-                            Text("Zona").tag(1)
+                            Text("Nombre Donante").tag(1)
                             Text("Colonia").tag(2)
-                            Text("Código Postal").tag(3)
-                            
                         }
                         .padding(.top, 3.0)
                         .pickerStyle(.segmented)
                         .frame(width: 330)
                         .onChange(of: option){ value in
-                            
                             if(option == 1){
-                                tipoFiltro = "Zona"
+                                tipoFiltro = "Nombre"
                             } else if (option == 2){
                                 tipoFiltro = "Colonia"
-                            } else if (option == 3){
-                                tipoFiltro = "CodigoPostal"
                             }
-                            
                         }
                     
                         List {

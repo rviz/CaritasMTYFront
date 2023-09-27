@@ -17,6 +17,7 @@ extension View {
 }
 
 struct detallesView: View {
+    @Binding var yaCargo: Bool
     //@Binding var ticket: ticket
 
     var ticket: ticket
@@ -281,6 +282,7 @@ struct detallesView: View {
                     CambiarEstado(id: ticket.id, state: estadoFinal) { msg in
                         if let msg = msg, msg != "" {
                         }}
+                    yaCargo = false
                     dismiss()
                     
                         }){
@@ -313,7 +315,8 @@ struct detallesView: View {
 
 struct Recibos_Previews: PreviewProvider {
     static var previews: some View {
+        @State var yaCargo = false
        // @State var tickete : ticket = tickets()[0]
       
-            detallesView(ticket: tickets()[0] )   }
+        detallesView(yaCargo: $yaCargo, ticket: tickets()[0])   }
 }

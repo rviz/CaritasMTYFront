@@ -73,7 +73,7 @@ struct listadoView: View {
                         List {
                             ForEach(Array(lista.enumerated()), id: \.1.id){
                                 index, listaItem in
-                                NavigationLink(destination: detallesView(ticket:listaItem)) {
+                                NavigationLink(destination: detallesView(yaCargo:$yaCargo,ticket:listaItem)) {
                                     VStack(alignment: .leading, spacing: 5) {
                                         
                                         HStack {
@@ -169,7 +169,7 @@ struct listadoView: View {
                         .onAppear() {
                             if yaCargo==false{
                                 lista = tickets()
-                                //yaCargo = true
+                                yaCargo = true
                             }
                         }
                         .frame(width: 350, height: 515)

@@ -77,52 +77,86 @@ struct listadoView: View {
                                     VStack(alignment: .leading, spacing: 5) {
                                         
                                         HStack {
+                                            // Impresión de etiqueta "sin información"
+                                            var idReciboBD: String {
+                                                if listaItem.id == 0 {
+                                                    return "Sin información"
+                                                } else {
+                                                    return "#\(String(listaItem.id))"
+                                                }
+                                            }
+                                            
                                             Text("Recibo \(index + 1):")
                                                 .fontWeight(.bold)
                                                 .foregroundColor(Color(red: 0, green: 156/255, blue: 171/255))
-                                            Text("#\(listaItem.id)548493")
+                                            Text("\(idReciboBD)")
                                         }
                                         
                                         HStack {
-                                            Text("- Calle:")
-                                                .fontWeight(.bold)
-                                            Text("\(listaItem.housingReference)")
-                                        }
-                                        
-                                        if(listaItem.state == "CONFLICT"){
-                                            HStack{
-                                                Text("- Estado: ")
-                                                    .bold()
-                                                Text("\(listaItem.state)")
-                                                    .foregroundColor(.red)
+                                            // Impresión de etiqueta "sin información"
+                                            var calleBD: String {
+                                                if listaItem.housingReference.isEmpty {
+                                                    return "Sin información"
+                                                } else {
+                                                    return listaItem.housingReference
+                                                }
                                             }
                                             
-                                        } else if (listaItem.state == "PENDING"){
-                                            HStack{
-                                                Text("- Estado: ")
+                                            Text("- Calle:")
+                                                .fontWeight(.bold)
+                                            Text(calleBD)
+                                        }
+                                        
+                                        
+                                        HStack{
+                                            Text("- Estado:")
+                                                .bold()
+                                            if(listaItem.state == "CONFLICT"){
+                                                Text("Conflicto")
+                                                    .foregroundColor(.red)
                                                     .bold()
-                                                Text("\(listaItem.state)")
-                                                    .foregroundColor(.gray)
-                                            }
-                                        } else if (listaItem.state == "COLLECTED"){
-                                            HStack{
-                                                Text("- Estado: ")
-                                                    .bold()
-                                                Text("\(listaItem.state)")
+                                            } else if(listaItem.state == "PENDING"){
+                                                Text("No cobrado")
+                                                    .foregroundColor(.black)
+                                            } else if (listaItem.state == "COLLECTED"){
+                                                Text("Cobrado")
                                                     .foregroundColor(.green)
+                                                    .bold()
+                                            } else if (listaItem.state.isEmpty){
+                                                Text("Sin información")
                                             }
+                                            
                                         }
                                         
                                         HStack {
+                                            // Impresión de etiqueta "sin información"
+                                            var fechaBD: String {
+                                                if listaItem.date.isEmpty {
+                                                    return "Sin información"
+                                                } else {
+                                                    return listaItem.date
+                                                }
+                                            }
+                                            
                                             Text("- Fecha:")
                                                 .fontWeight(.bold)
-                                            Text("\(listaItem.date)")
+                                            Text(fechaBD)
                                         }
                                         
                                         HStack {
+                                            
+                                            // Impresión de etiqueta "sin información"
+                                            var montoBD: String {
+                                                if listaItem.donationAmount == 0 {
+                                                    return "Sin información"
+                                                } else {
+                                                    return String(listaItem.donationAmount)
+                                                }
+                                            }
+                                            
                                             Text("- Monto:")
                                                 .fontWeight(.bold)
-                                            Text("$\(listaItem.donationAmount)")
+                                            Text("$\(montoBD)")
                                         }
                                     }
                                     .padding(0)

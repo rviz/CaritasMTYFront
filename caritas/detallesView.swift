@@ -171,11 +171,11 @@ struct detallesView: View {
                         .onChange(of: optionEstado){ value in
                             
                             if(optionEstado == 1){
-                                estadoFinal = "No cobrado"
+                                estadoFinal = "PENDING"
                             } else if (optionEstado == 2){
-                                estadoFinal = "Cobrado"
+                                estadoFinal = "COLLECTED"
                             } else if (optionEstado == 3){
-                                estadoFinal = "Conflicto"
+                                estadoFinal = "CONFLICT"
                             }
                             
                         }
@@ -212,8 +212,16 @@ struct detallesView: View {
                     )
                     .onAppear() {
                         comentarioAdicional = ticket.collectorComments
+                        if (ticket.collectorComments == "PENDING"){
+                            optionEstado = 1
                         }
-                
+                        else if (ticket.collectorComments == "COLLECTED"){
+                            optionEstado = 2
+                        }
+                        else if (ticket.collectorComments == "CONFLICT"){
+                            optionEstado = 3
+                        }
+                    }
                 
                 
                 // Botón: Guardar
@@ -221,7 +229,9 @@ struct detallesView: View {
                     hideKeyboard()
                     CambiarComment(id: ticket.id, comment: comentarioAdicional) { msg in
                         if let msg = msg, msg != "" {
-                            guardado = true
+                        }}
+                    CambiarEstado(id: ticket.id, state: estadoFinal) { msg in
+                        if let msg = msg, msg != "" {
                         }}
                     dismiss()
                     

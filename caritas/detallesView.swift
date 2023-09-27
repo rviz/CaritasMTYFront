@@ -35,8 +35,50 @@ struct detallesView: View {
     @State private var id: String = ""
     @State var guardado: Bool = false
     let textLimit = 150
-        
+    
+    // Variables de la base de datos
+    var calleBD: String {
+        if ticket.housingReference.isEmpty {
+            return "Sin información"
+        } else {
+            return ticket.housingReference
+        }
+    }
+    
+    var coloniaBD: String {
+        if ticket.reprogramationComments.isEmpty {
+            return "Sin información"
+        } else {
+            return ticket.reprogramationComments
+        }
+    }
+    
+    var donanteBD: String {
+        if ticket.donorName.isEmpty {
+            return "Sin información"
+        } else {
+            return ticket.donorName
+        }
+    }
+    
+    var telefonoBD: String {
+        if ticket.cellPhone.isEmpty {
+            return "Sin información"
+        } else {
+            return ticket.cellPhone
+        }
+    }
+    
+    var notasBD: String {
+        if ticket.receiptComments.isEmpty {
+            return "Sin información"
+        } else {
+            return ticket.receiptComments
+        }
+    }
+    
     var body: some View {
+        
         
         VStack{
             
@@ -65,7 +107,7 @@ struct detallesView: View {
             
             ScrollView {
                 
-                Text("$" + String(monto))
+                Text("$" + String(ticket.donationAmount))
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .multilineTextAlignment(.center)
@@ -88,41 +130,43 @@ struct detallesView: View {
 
                 HStack{
                                         
-                    
                     VStack(alignment: .leading, spacing: 0) {
+                        
+                       
                         
                         HStack {
                             Text("Calle:")
                                 .fontWeight(.bold)
-                            Text(ticket.housingReference)
+                            Text(calleBD)
                         }.padding(.bottom, 10)
                         
                         HStack {
                             Text("Colonia:")
                                 .fontWeight(.bold)
-                            Text(colonia)
+                            Text(coloniaBD)
                         }.padding(.bottom, 10)
                         
                         HStack {
                              Text("Donante:")
                                  .fontWeight(.bold)
-                             Text(colonia)
+                            Text(donanteBD)
                          }.padding(.bottom, 10)
                                              
                          HStack {
                              Text("Teléfono:")
                                  .fontWeight(.bold)
-                             Text(colonia)
+                             Text("+\(telefonoBD)")
                          }.padding(.bottom, 10)
                                              
                         HStack {
                             Text("Notas:")
                                 .fontWeight(.bold)
-                            Text(notas)
+                            Text(notasBD)
                         }.padding(.bottom, 10)
                     }
                     .padding(.top, 100)
                     .padding(.bottom, 25)
+                    
                 }
                 .padding(.leading, -95)
                 .offset(y:-50)
@@ -151,6 +195,8 @@ struct detallesView: View {
                                 .cornerRadius(10) //
                                 .offset(y:-55)
                     }
+                    
+                    
                     
                     
                     

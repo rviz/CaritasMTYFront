@@ -4,6 +4,7 @@
 import SwiftUI
 
 struct listadoView: View {
+    
     // Variables
     @State private var option: Int = 1
     @State private var filtroSearch: String = ""
@@ -12,6 +13,29 @@ struct listadoView: View {
     @State private var lista: Array<ticket> = []
     @State var yaCargo: Bool = false
     
+    @State private var dateString: String = "2023-09-27T14:30:00Z" // Sample date string
+    @State private var formattedDateString: String = ""
+    
+    // Función para cambiar el formato de una fecha
+    private func formatDateString(date: String) -> String {
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "yyyy-MM-dd"
+
+        let dateFormatterPrint = DateFormatter()
+        dateFormatterPrint.dateFormat = "MMMM d, yyyy"
+        dateFormatterPrint.locale = Locale(identifier: "es_ES") // Set the locale to Spanish
+
+        if let date = dateFormatterGet.date(from: date) {
+            // Capitalize the first letter of the month
+            var formattedDate = dateFormatterPrint.string(from: date)
+            if let firstChar = formattedDate.first {
+                formattedDate.replaceSubrange(formattedDate.startIndex...formattedDate.startIndex, with: String(firstChar).capitalized)
+            }
+            return formattedDate
+        } else {
+            return "Fecha inválida"
+        }
+    }
     
     var body: some View {
         NavigationStack{
@@ -65,7 +89,7 @@ struct listadoView: View {
                                 tipoFiltro = "Colonia"
                             }
                         }
-                    
+                        
                         List {
                             ForEach(Array(lista.enumerated()), id: \.1.id){
                                 index, listaItem in
@@ -130,7 +154,7 @@ struct listadoView: View {
                                                 if listaItem.date.isEmpty {
                                                     return "Sin información"
                                                 } else {
-                                                    return listaItem.date
+                                                    return (formatDateString(date: listaItem.date))
                                                 }
                                             }
                                             
@@ -176,11 +200,19 @@ struct listadoView: View {
                     
                 }
                 Spacer()
+                
+                
             }
+            
         }
-        
+         
     }
+    
+    
 }
+
+
+
 struct listadoView_Previews: PreviewProvider {
     static var previews: some View {
         

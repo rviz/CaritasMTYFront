@@ -5,17 +5,10 @@ struct loginView: View {
     @State private var option: Int = 0
     @State private var usuario: String = ""
     @State private var contraseña: String = ""
-    @State private var usuarioCorrecto: String = "hola"
-    @State private var contraseñaCorrecto: String = "hola"
-    @State private var showAlert = false
-    
     @State private var isValid = false
     @State private var mensajeError = ""
     @State private var conteoIntentos : Int = 0
     @State private var idd: String = ""
-    
-    
-    
     
     // Botón
     @State private var isButtonEnabled = false // Estado para controlar la habilitación del botón y el enlace de navegación pepe
@@ -68,20 +61,6 @@ struct loginView: View {
                         .disableAutocorrection(true)
                         .autocapitalization(.none)
                     
-                
-                    
-                    /* Picker(selection: $option, label: Text("Picker")) {
-                        Text("Recolector").tag(1)
-                        Text("Coordinador").tag(2)
-                    }
-                    .pickerStyle(.segmented)
-                    .frame(width: 330)
-                    .background(Color.white.opacity(0.7))
-                    .cornerRadius(10) // Añade esquinas redondeadas al fondo
-                    .onChange(of: option){ value in
-                    } .padding(.top, 20) */
-                    
-                    
                     Button{
                         self.isValid = self.validate()
                     } label: {
@@ -95,19 +74,13 @@ struct loginView: View {
                         .navigationDestination(isPresented: $isValid){
                             contentView()
                         }
-                        /*.background(
-                            NavigationLink(destination: contentView(), isActive: $isValid) {
-                                    Text("Iniciar sesión")
-                                    .frame(width: 300, height: 50) // botón de adelante
-                            }
-                        )*/
+                       
                     
                         .buttonStyle(.borderedProminent)
                         .foregroundColor(.white)
                         .padding(.top, 65)
                         .font(.title3)
                         .fontWeight(.regular)
-                        //.disabled(isButtonEnabled)
     
                     Text(mensajeError)
                         .foregroundColor(.red)
@@ -129,7 +102,6 @@ struct loginView: View {
                  self.idd = String(id) // Convierte el entero a String si es necesario
                  print(id)
                  // Inicio de sesión exitoso y se ha obtenido un ID válido
-                 //return true
              } else if (mensajeError != "Intenta en 10 minutos.") {
                  // Inicio de sesión fallido o ID no válido
                  mensajeError = "Usuario y/o contraseña inválidos"
@@ -143,8 +115,6 @@ struct loginView: View {
              isButtonEnabled = true
          }
          
-         
-         
          let timer = Timer.scheduledTimer(withTimeInterval: 15, repeats: false) { _ in
              isButtonEnabled.self = false
              conteoIntentos = 0
@@ -157,40 +127,6 @@ struct loginView: View {
             return true
         }
         
-    }
-    
-    
-    private func validate2() -> Bool {
-        
-        if (usuario != usuarioCorrecto || contraseña != contraseñaCorrecto){
-            conteoIntentos = conteoIntentos + 1
-            print("Conteo actual = " + String(conteoIntentos))
-            
-            if(conteoIntentos > 5){
-                mensajeError = "Intenta en 5 minutos."
-                isButtonEnabled = true
-                
-                // Temporizador
-                let timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: false) { _ in
-                    // Cambiar el valor de la variable a false después de 10 segundos
-                    isButtonEnabled.self = false
-                    conteoIntentos = 0
-                    mensajeError = " "
-                    
-                    print("Variable cambiada a false después de 5 segundos")
-                    print(conteoIntentos)
-                    
-                }
-                
-                return false
-            }
-            
-            return false
-            
-            
-        }else{
-            return true
-        }
     }
 }
 

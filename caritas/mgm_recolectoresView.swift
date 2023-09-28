@@ -3,6 +3,7 @@
 
 import SwiftUI
 
+/*
 struct mgm_recolectoresView: View {
     // Variables
     @State private var option: Int = 1
@@ -127,10 +128,10 @@ struct mgm_recolectoresView: View {
         }
     }
 }
-
 struct mgm_recolectoresView_Previews: PreviewProvider {
 
     static var previews: some View {
         mgm_recolectoresView()
     }
 }
+*/

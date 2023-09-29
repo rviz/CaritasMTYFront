@@ -14,6 +14,7 @@ struct mgm_recolectoresView: View {
     @State private var lista: Array<ticket> = []
     @State var yaCargo: Bool = false
     @State var listaR: Array<Collector> = []
+
     
     @State private var dateString: String = "2023-09-27T14:30:00Z" // Sample date string
     @State private var formattedDateString: String = ""
@@ -59,7 +60,9 @@ struct mgm_recolectoresView: View {
                        
                         List (listaR){
                             listaItem in
-                            Text(listaItem.fullname)
+                            NavigationLink(destination: mgm_detallesView(yaCargo:$yaCargo, collector:listaItem)) {
+                                Text(listaItem.fullname)
+                            }
                         }
                         .refreshable{
                             listaR = recolectores()

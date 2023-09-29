@@ -9,6 +9,9 @@ import SwiftUI
 
 
 struct mgm_detallesView: View {
+    @Binding var yaCargo: Bool
+    
+    var collector : Collector
     // Variables globales
     @State private var comentarioAdicional: String = ""
     @State private var optionEstado = 1
@@ -172,6 +175,7 @@ struct mgm_detallesView: View {
 
 struct mgm_detallesView_Previews: PreviewProvider {
     static var previews: some View {
-        mgm_detallesView()
+        @State var yaCargo = false
+        mgm_detallesView(yaCargo: $yaCargo, collector: recolectores()[0])
     }
 }

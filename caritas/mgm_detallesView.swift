@@ -18,11 +18,11 @@ struct mgm_detallesView: View {
     
     // Información del recibo
     @State private var monto: Int = 0
-    @State private var calle: String = "Sin información, colonia patito, rincon perezoso #345"
+    @State private var calle: String = "Sin información"
     @State private var notas: String = "Sin información"
     
     // Información del recibo para el manager
-    @State private var idRecibo: Int = 69
+    @State private var idRecibo: Int = 23828
     @State private var estado: String = ""
 
     

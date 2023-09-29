@@ -13,125 +13,84 @@ struct mgm_recolectoresView: View {
     @State private var colorEstado: Color = .black
     @State private var lista: Array<ticket> = []
     @State var yaCargo: Bool = false
+    @State var listaR: Array<Collector> = []
     
+    @State private var dateString: String = "2023-09-27T14:30:00Z" // Sample date string
+    @State private var formattedDateString: String = ""
+    
+    // Función para cambiar el formato de una fecha
     
     var body: some View {
-        NavigationStack {
+        NavigationStack{
             VStack{
-                List {
-                    ForEach(Array(lista.enumerated()), id: \.1.id){
-                        index, listaItem in
-                        NavigationLink(destination: detallesView(yaCargo:$yaCargo,ticket:listaItem)) {
-                            VStack(alignment: .leading, spacing: 5) {
-                                
-                                HStack {
-                                    // Impresión de etiqueta "sin información"
-                                    var idReciboBD: String {
-                                        if listaItem.id == 0 {
-                                            return "Sin información"
-                                        } else {
-                                            return "#\(String(listaItem.id))"
-                                        }
-                                    }
-                                    
-                                    Text("Recibo \(index + 1):")
-                                        .fontWeight(.bold)
-                                        .foregroundColor(Color(red: 0, green: 156/255, blue: 171/255))
-                                    Text("\(idReciboBD)")
-                                }
-                                
-                                HStack {
-                                    // Impresión de etiqueta "sin información"
-                                    var calleBD: String {
-                                        if listaItem.housingReference.isEmpty {
-                                            return "Sin información"
-                                        } else {
-                                            return listaItem.housingReference
-                                        }
-                                    }
-                                    
-                                    Text("- Calle:")
-                                        .fontWeight(.bold)
-                                    Text(calleBD)
-                                }
-                                
-                                
-                                HStack{
-                                    Text("- Estado:")
-                                        .bold()
-                                    if(listaItem.state == "CONFLICT"){
-                                        Text("Conflicto")
-                                            .foregroundColor(.red)
-                                            .bold()
-                                    } else if(listaItem.state == "PENDING"){
-                                        Text("No cobrado")
-                                            .foregroundColor(.black)
-                                    } else if (listaItem.state == "COLLECTED"){
-                                        Text("Cobrado")
-                                            .foregroundColor(.green)
-                                            .bold()
-                                    } else if (listaItem.state.isEmpty){
-                                        Text("Sin información")
-                                    }
-                                    
-                                }
-                                
-                                HStack {
-                                    // Impresión de etiqueta "sin información"
-                                    var fechaBD: String {
-                                        if listaItem.date.isEmpty {
-                                            return "Sin información"
-                                        } else {
-                                            return listaItem.date
-                                        }
-                                    }
-                                    
-                                    Text("- Fecha:")
-                                        .fontWeight(.bold)
-                                    Text(fechaBD)
-                                }
-                                
-                                HStack {
-                                    
-                                    // Impresión de etiqueta "sin información"
-                                    var montoBD: String {
-                                        if listaItem.donationAmount == 0 {
-                                            return "Sin información"
-                                        } else {
-                                            return String(listaItem.donationAmount)
-                                        }
-                                    }
-                                    
-                                    Text("- Monto:")
-                                        .fontWeight(.bold)
-                                    Text("$\(montoBD)")
-                                }
-                            }
-                            .padding(0)
+                VStack{
+                    
+                    ZStack{
+                        // Barra de color
+                        Color(red: 0, green: 156/255, blue: 171/255)
+                            .edgesIgnoringSafeArea(.all)
+                            .frame(height: 80)
+                            .offset(y:-50)
+                        
+                        Text("Tickets asignados")
+                            .font(.title)
+                            .fontWeight(.bold)
+                            .padding(.bottom, 5)
+                            .offset(y:-40)
+                            .foregroundColor(Color.white)
+                        
+                    }.offset(y:40)
+                }
+                
+                HStack{
+                    
+                    
+                    VStack() {
+                        
+                        
+                        
+                        TextField("Buscar por ID", text: $filtroSearch)
+                            .textFieldStyle(.roundedBorder)
+                            .frame(width: 330)
+                            .font(.title3)
+                            .fontWeight(.light)
+                            .multilineTextAlignment(.leading)
+                            .padding(.top, 10)
+                       
+                        List (listaR){
+                            listaItem in
+                            Text(listaItem.fullname)
                         }
+                        .refreshable{
+                            listaR = recolectores()
+                        }
+                        .onAppear() {
+                            if yaCargo==false{
+                                listaR = recolectores()
+                                yaCargo = true
+                            }
+                        }
+                    
                     }
+                    
                 }
-                .refreshable{
-                    lista = tickets()
-                }
-                .onAppear() {
-                    if yaCargo==false{
-                        lista = tickets()
-                        yaCargo = true
-                    }
-                }
-                .frame(width: 350)
-                .listStyle(.inset)
-                .navigationTitle("Recolectores")
+                Spacer()
+                
+                
             }
-            .searchable(text: $filtroSearch, prompt: "Busca un recolector")
+            
         }
+         
     }
+    
+    
 }
-struct mgm_recolectoresView_Previews: PreviewProvider {
 
+
+
+struct mgm_recolectoresView_Previews: PreviewProvider {
     static var previews: some View {
+        
         mgm_recolectoresView()
     }
 }
-

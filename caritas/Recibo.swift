@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 struct ticketote: Codable{
     var tickets: [ticket]
 }
@@ -18,12 +19,14 @@ struct ticket: Codable, Identifiable{
 struct User: Codable, Identifiable{
     var id: String
 }
-/*
-struct ResponseObject<T: Decodable>: Decodable {
-    let id: Int
+
+struct Collector: Codable, Identifiable{
+    var fullname, username, uuid: String
+    var id, managerId: Int
+    var tickets: [ticket]
 }
 
-struct Foo: Decodable {
-    let id: Int
+struct Manager: Codable {
+    var collectors: [Collector]
 }
-*/
+

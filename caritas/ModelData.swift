@@ -4,7 +4,7 @@ import Foundation
 func tickets() -> Array<ticket> {
     var lista: Array<ticket> = []
     
-    guard let url = URL(string: "http://10.22.166.15:5000/ticket/collector-tickets/1") else {
+    guard let url = URL(string: "http://10.22.175.113:5000/ticket/collector-tickets/1") else {
         print("Error: URL no válida")
         return lista
     }
@@ -18,7 +18,6 @@ func tickets() -> Array<ticket> {
             do {
                 let postList = try jsonDecoder.decode(ticketote.self, from: data!)
                 lista = postList.tickets
-                
                 for postItem in postList.tickets {
                     print("Id: \(postItem.id) - state: \(postItem.state) - housingReference: \(postItem.housingReference) - date: \(postItem.date)")
                 }
@@ -37,11 +36,46 @@ func tickets() -> Array<ticket> {
     return lista
 }
 
-//func recolectores() -> Array<
-
+func recolectores() -> Array<Collector> {
+    var lista: Array<Collector> = []
+    guard let url = URL(string: "http://10.22.175.113:5000/collector/get_by_manager_id/1") else {
+        print("Error: URL no válida")
+        return lista
+    }
+    
+    let group = DispatchGroup() // Crea un DispatchGroup
+    group.enter() // Indica que estamos ingresando al grupo
+    
+    let task = URLSession.shared.dataTask(with: url) { data, response, error in
+        let jsonDecoder = JSONDecoder()
+        
+        if let data = data {
+            do {
+                let postList = try jsonDecoder.decode(Manager.self, from: data)
+                //
+                lista = postList.collectors
+                //
+                for postItem in postList.collectors {
+                    print("Id: \(postItem.id) - state: \(postItem.fullname) - housingReference: \(postItem.managerId) - date: \(postItem.uuid)")
+                }
+                
+            } catch {
+                print("Error al decodificar JSON: \(error)")
+            }
+        } else if let error = error {
+            print("Error en la solicitud HTTP: \(error)")
+        }
+        
+        group.leave() // Indica que estamos saliendo del grupo después de que se complete la tarea
+    }
+    
+    task.resume()
+    group.wait()
+    return lista
+}
 
 func InicioSesion(username: String, password: String, completion: @escaping (Int?) -> Void) {
-    let url = URL(string: "http://10.22.166.15:5000/collector/login")!
+    let url = URL(string: "http://10.22.175.113:5000/collector/login")!
     var request = URLRequest(url: url)
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
     request.setValue("application/json", forHTTPHeaderField: "Accept")
@@ -131,7 +165,7 @@ func InicioSesion(username: String, password: String, completion: @escaping (Int
 */
 
 func CambiarComment(id: Int, comment: String, completion: @escaping (String?) -> Void) {
-    let url = URL(string: "http://10.22.166.15:5000/ticket/change_collector_comments")!
+    let url = URL(string: "http://10.22.175.113:5000/ticket/change_collector_comments")!
     var request = URLRequest(url: url)
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
     request.setValue("application/json", forHTTPHeaderField: "Accept")
@@ -195,7 +229,7 @@ func CambiarComment(id: Int, comment: String, completion: @escaping (String?) ->
 
 
 func CambiarEstado(id: Int, state: String, completion: @escaping (String?) -> Void) {
-    let url = URL(string: "http://10.22.166.15:5000/ticket/change_state")!
+    let url = URL(string: "http://10.22.175.113:5000/ticket/change_state")!
     var request = URLRequest(url: url)
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
     request.setValue("application/json", forHTTPHeaderField: "Accept")

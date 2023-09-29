@@ -108,6 +108,8 @@ struct mgm_detallesView: View {
                     .padding(.bottom, 25)
                     .offset(y:-50)
                     .frame(maxWidth: 380)
+                    .frame(minWidth: 350)
+                    .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
                 
                
                 

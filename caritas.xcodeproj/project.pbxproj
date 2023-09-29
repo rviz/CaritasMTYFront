@@ -31,7 +31,7 @@
 		FB95E6942AA78B4D001B82BF /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		FB95E6962AA78B8E001B82BF /* Recibo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recibo.swift; sourceTree = "<group>"; };
 		FBAE7D6B2AA77B6C001C653B /* contentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = contentView.swift; sourceTree = "<group>"; };
-		FBF7165D2AA680C000C8B1F7 /* caritas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = caritas.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FBF7165D2AA680C000C8B1F7 /* Cáritas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cáritas.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF716602AA680C000C8B1F7 /* caritasApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = caritasApp.swift; sourceTree = "<group>"; };
 		FBF716622AA680C000C8B1F7 /* loginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginView.swift; sourceTree = "<group>"; };
 		FBF716642AA680C000C8B1F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -61,7 +61,7 @@
 		FBF7165E2AA680C000C8B1F7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FBF7165D2AA680C000C8B1F7 /* caritas.app */,
+				FBF7165D2AA680C000C8B1F7 /* Cáritas.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -97,9 +97,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FBF7165C2AA680C000C8B1F7 /* caritas */ = {
+		FBF7165C2AA680C000C8B1F7 /* Cáritas */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FBF7166B2AA680C000C8B1F7 /* Build configuration list for PBXNativeTarget "caritas" */;
+			buildConfigurationList = FBF7166B2AA680C000C8B1F7 /* Build configuration list for PBXNativeTarget "Cáritas" */;
 			buildPhases = (
 				FBF716592AA680C000C8B1F7 /* Sources */,
 				FBF7165A2AA680C000C8B1F7 /* Frameworks */,
@@ -109,9 +109,9 @@
 			);
 			dependencies = (
 			);
-			name = caritas;
+			name = "Cáritas";
 			productName = caritas;
-			productReference = FBF7165D2AA680C000C8B1F7 /* caritas.app */;
+			productReference = FBF7165D2AA680C000C8B1F7 /* Cáritas.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -142,7 +142,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FBF7165C2AA680C000C8B1F7 /* caritas */,
+				FBF7165C2AA680C000C8B1F7 /* Cáritas */,
 			);
 		};
 /* End PBXProject section */
@@ -303,7 +303,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"caritas/Preview Content\"";
-				DEVELOPMENT_TEAM = XPJZ3VJDL7;
+				DEVELOPMENT_TEAM = 6AUPJ8CSTJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -333,7 +333,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"caritas/Preview Content\"";
-				DEVELOPMENT_TEAM = XPJZ3VJDL7;
+				DEVELOPMENT_TEAM = 6AUPJ8CSTJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -367,7 +367,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FBF7166B2AA680C000C8B1F7 /* Build configuration list for PBXNativeTarget "caritas" */ = {
+		FBF7166B2AA680C000C8B1F7 /* Build configuration list for PBXNativeTarget "Cáritas" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FBF7166C2AA680C000C8B1F7 /* Debug */,

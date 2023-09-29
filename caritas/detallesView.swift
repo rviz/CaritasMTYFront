@@ -143,9 +143,10 @@ struct detallesView: View {
                             Text(calleBD)
                         }.padding(.bottom, 10)
                         
-                        HStack {
-                            Text("Colonia:")
+                        VStack {
+                            Text("Colonia: ")
                                 .fontWeight(.bold)
+                            +
                             Text(coloniaBD)
                         }.padding(.bottom, 10)
                         
@@ -169,9 +170,8 @@ struct detallesView: View {
                     }
                     .padding(.top, 100)
                     .padding(.bottom, 25)
-                    
+                    .frame(maxWidth: 380)
                 }
-                .padding(.leading, -95)
                 .offset(y:-50)
                 .padding(.top, -5)
                 

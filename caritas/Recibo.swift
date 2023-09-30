@@ -18,6 +18,7 @@ struct ticket: Codable, Identifiable{
 
 struct User: Codable, Identifiable{
     var id: String
+    var rol: String
 }
 
 struct Collector: Codable, Identifiable{

@@ -63,9 +63,7 @@ struct listadoView: View {
                     
                     
                     VStack() {
-                        
-                        
-                        
+
                         TextField("Buscar por ID", text: $filtroSearch)
                             .textFieldStyle(.roundedBorder)
                             .frame(width: 330)

@@ -69,7 +69,7 @@ struct mgm_recolectoresView: View {
                             .frame(height: 80)
                             .offset(y:-50)
                         
-                        Text("Tickets asignados")
+                        Text("Recolectores")
                             .font(.title)
                             .fontWeight(.bold)
                             .padding(.bottom, 5)
@@ -185,6 +185,9 @@ struct mgm_recolectoresView: View {
                                 yaCargo = true
                             }
                         }
+                        .frame(width: 350, height: 515)
+                        .padding(.top, 15)
+                        .listStyle(.inset)
                     
                     }
                     

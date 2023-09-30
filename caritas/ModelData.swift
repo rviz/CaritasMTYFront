@@ -4,7 +4,7 @@ import Foundation
 func tickets() -> Array<ticket> {
     var lista: Array<ticket> = []
     
-    guard let url = URL(string: "http://10.22.175.113:5000/ticket/collector-tickets/1") else {
+    guard let url = URL(string: "http://10.22.141.9:5000/ticket/collector-tickets/1") else {
         print("Error: URL no válida")
         return lista
     }
@@ -38,7 +38,7 @@ func tickets() -> Array<ticket> {
 
 func recolectores() -> Array<Collector> {
     var lista: Array<Collector> = []
-    guard let url = URL(string: "http://10.22.175.113:5000/collector/get_by_manager_id/1") else {
+    guard let url = URL(string: "http://10.22.141.9:5000/collector/get_by_manager_id/1") else {
         print("Error: URL no válida")
         return lista
     }
@@ -74,8 +74,8 @@ func recolectores() -> Array<Collector> {
     return lista
 }
 
-func InicioSesion(username: String, password: String, completion: @escaping (Int?) -> Void) {
-    let url = URL(string: "http://10.22.175.113:5000/collector/login")!
+func InicioSesion(username: String, password: String, completion: @escaping (Int?, String?) -> Void) {
+    let url = URL(string: "http://10.22.141.9:5000/general/login")!
     var request = URLRequest(url: url)
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
     request.setValue("application/json", forHTTPHeaderField: "Accept")
@@ -90,7 +90,7 @@ func InicioSesion(username: String, password: String, completion: @escaping (Int
         request.httpBody = jsonData
     } catch {
         print("Error al crear el JSON: \(error)")
-        completion(nil)
+        completion(nil, nil)
         return
     }
     
@@ -108,28 +108,29 @@ func InicioSesion(username: String, password: String, completion: @escaping (Int
             error == nil
         else {
             print("error", error ?? URLError(.badServerResponse))
-            completion(nil)
+            completion(nil, nil)            
             return
         }
         
         guard (200 ... 299) ~= response.statusCode else {
             print("statusCode should be 2xx, but is \(response.statusCode)")
             print("response = \(response)")
-            completion(nil)
+            completion(nil, nil)            
             return
         }
         
         do {
             if let jsonObject = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
-               let id = jsonObject["id"] as? Int {
-                completion(id)
+                           let id = jsonObject["id"] as? Int,
+                           let role = jsonObject["role"] as? String { // Recuperar el valor del rol del JSON
+                            completion(id, role)
             } else {
                 print("No se pudo obtener el valor 'id' del JSON.")
-                completion(nil)
+                completion(nil, nil)           
             }
         } catch {
             print(error) // Error de parsing
-            completion(nil)
+            completion(nil, nil)
         }
     }
     task.resume()
@@ -165,7 +166,7 @@ func InicioSesion(username: String, password: String, completion: @escaping (Int
 */
 
 func CambiarComment(id: Int, comment: String, completion: @escaping (String?) -> Void) {
-    let url = URL(string: "http://10.22.175.113:5000/ticket/change_collector_comments")!
+    let url = URL(string: "http://10.22.141.9:5000/ticket/change_collector_comments")!
     var request = URLRequest(url: url)
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
     request.setValue("application/json", forHTTPHeaderField: "Accept")
@@ -229,7 +230,7 @@ func CambiarComment(id: Int, comment: String, completion: @escaping (String?) ->
 
 
 func CambiarEstado(id: Int, state: String, completion: @escaping (String?) -> Void) {
-    let url = URL(string: "http://10.22.175.113:5000/ticket/change_state")!
+    let url = URL(string: "http://10.22.141.9:5000/ticket/change_state")!
     var request = URLRequest(url: url)
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
     request.setValue("application/json", forHTTPHeaderField: "Accept")

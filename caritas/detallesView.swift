@@ -31,10 +31,10 @@ struct detallesView: View {
     
     // Información del recibo
     @State private var monto: Int = 0
-    @State private var calle: String = "Sin información"
-    @State private var colonia: String = "Sin información"
+    @State private var calle: String = ""
+    @State private var colonia: String = ""
     @State private var numeroTelefonico: Int = 0
-    @State private var notas: String = "Sin información"
+    @State private var notas: String = ""
     @State private var id: String = ""
     @State var guardado: Bool = false
     let textLimit = 150
@@ -76,7 +76,7 @@ struct detallesView: View {
     
     var coloniaBD: String {
         if ticket.reprogramationComments.isEmpty {
-            return "Sin información"
+            return "Sin información, sin info, sin informaciones, no disponibles."
         } else {
             return ticket.reprogramationComments
         }
@@ -116,32 +116,33 @@ struct detallesView: View {
             VStack{
                 
                 ZStack{
-                    
+                    /*
                     // Barra de color
                     Color(red: 0, green: 156/255, blue: 171/255)
                         .edgesIgnoringSafeArea(.all)
                         .frame(height: 80)
                         .offset(y:-50)
+                    */
                     
-                    Text("Detalles")
+                    Text("$" + String(ticket.donationAmount))
                         .font(.title)
                         .fontWeight(.bold)
-                        .padding(.bottom, 5)
-                        .offset(y:-40)
-                        .foregroundColor(Color.white)
+                        .offset(y:-30)
                     
                 }
+                .padding(.top,15)
                 
             }.padding(0)
             
             ScrollView {
-                
+                /*
                 Text("$" + String(ticket.donationAmount))
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .multilineTextAlignment(.center)
                     .padding(.top, 40)
                     .padding(.bottom, 30)
+                 */
                 
                 // Botón: Guardar
                 Button(action: {
@@ -152,21 +153,17 @@ struct detallesView: View {
                         .fontWeight(.bold)
                         .frame(width: 300, height: 40)
                         .foregroundColor(Color.white)
+                        
                 }
                 .buttonStyle(.borderedProminent)
                 .tint(Color(red: 0, green: 156/255, blue: 171/255))
-                .padding(.bottom, -15)
+                .offset(y:20)
+                .padding(.top,20)
+
 
                 HStack{
                                         
                     VStack(alignment: .leading, spacing: 0) {
-                        
-                        VStack {
-                            Text("Id: ")
-                                .fontWeight(.bold)
-                            +
-                            Text(idBD)
-                        }.padding(.bottom, 10)
                         
                         VStack {
                              Text("Donante: ")
@@ -180,11 +177,8 @@ struct detallesView: View {
                                 .fontWeight(.bold)
                             +
                             Text("+\(telefonoBD)")
-                        }.padding(.bottom, 30)
-                        
-                        Text("Dirección")
+                        }.padding(.bottom, 15)
                         Divider()
-                            .padding(.top, 10)
                             .padding(.bottom, 15)
                         
                         VStack {

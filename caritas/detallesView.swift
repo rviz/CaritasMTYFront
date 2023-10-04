@@ -50,9 +50,20 @@ struct detallesView: View {
                     
                 }
                 
-            }.padding(0)
-            
+            }
+           
             ScrollView {
+<<<<<<< Updated upstream
+=======
+                MapView(latitud: 25.649991, longitud: -100.29)
+                    .frame(width: 250.0, height: 250.0)
+                Text("$" + String(ticket.donationAmount))
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .multilineTextAlignment(.center)
+                    .padding(.top, 40)
+                    .padding(.bottom, 30)
+>>>>>>> Stashed changes
                 
                 // Botón: Guardar
                 Button(action: {
@@ -88,6 +99,13 @@ struct detallesView: View {
                                 .fontWeight(.bold)
                             Text(colonia)
                                 .font(.title3)
+=======
+                        VStack {
+                            Text("Colonia: ")
+                                .fontWeight(.bold)
+                            +
+                            Text(coloniaBD)
+>>>>>>> Stashed changes
                         }.padding(.bottom, 10)
                         
                         HStack {
@@ -108,8 +126,11 @@ struct detallesView: View {
                     }
                     .padding(.top, 100)
                     .padding(.bottom, 25)
+<<<<<<< Updated upstream
+=======
+                    .frame(maxWidth: 380)
+>>>>>>> Stashed changes
                 }
-                .padding(.leading, -95)
                 .offset(y:-50)
                 .padding(.top, -5)
                 

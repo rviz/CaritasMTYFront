@@ -88,7 +88,7 @@ struct mgm_recolectoresView: View {
             
                         List (listaR){
                             listaItem in
-                            NavigationLink(destination: mgm_detallesView(yaCargo:$yaCargo, collector:listaItem)) {
+                            NavigationLink(destination: listadoView()) {
                                 
                             
                                 VStack(alignment: .leading, spacing: 5) {

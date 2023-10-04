@@ -15,6 +15,7 @@ struct loginView: View {
     @State private var isButtonEnabled = false // Estado para controlar la habilitación del botón y el enlace de navegación pepe
     
     var body: some View {
+        
         NavigationStack {
             ZStack {
                 LinearGradient(gradient: Gradient(colors: [Color(red: 0, green: 156/255, blue: 171/255), Color(red: 0/255, green: 59/255, blue: 92/255, opacity: 255.0)]), startPoint: .top, endPoint: .bottomLeading)
@@ -97,11 +98,17 @@ struct loginView: View {
                         .offset(y:70)
 
                 }.tint(Color(red: 255/255, green: 255/255, blue: 255/255, opacity: 0.2))
+                    .onAppear(){
+                        usuario = ""
+                        contraseña = ""
+                    }
+                    
             
             }
             
         }.preferredColorScheme(.light)
         .toolbar(.hidden)
+        
     
         
     }

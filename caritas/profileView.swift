@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct profileView: View {
+    @Environment (\.dismiss) private var dismiss
     var body: some View {
 
         VStack{
@@ -32,12 +33,17 @@ struct profileView: View {
             Text("(fullname)")
                 .font(.largeTitle)
             Spacer()
+            Button("hehe xd"){
+                dismiss()
+            }
             
-            NavigationLink(destination: loginView()){
+           /*/ NavigationLink(destination: loginView()){
                 Text("Cerrar Sesión")
                     .foregroundColor(Color.red)
             }.offset(y:-25)
+*/
         }
+        
     }
 }
 

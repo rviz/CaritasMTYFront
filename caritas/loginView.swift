@@ -8,7 +8,7 @@ struct loginView: View {
     @State private var isValid = false
     @State private var mensajeError = ""
     @State private var conteoIntentos : Int = 0
-    @State private var idd: String = ""
+    @State private var idd: Int = 0
     @State private var role: String = ""
     
     // Botón
@@ -74,12 +74,7 @@ struct loginView: View {
 
                     }.frame(width: 200, height: 50).tint(Color(red: 255/255, green: 255/255, blue: 255/255, opacity: 0)) // botón de atras
                         .navigationDestination(isPresented: $isValid){
-                            if (self.role == "MANAGER"){
-                                mgm_recolectoresView()
-                            }
-                            else {
-                                contentView()
-                            }
+                            contentView(id: idd, rol: role)
                         }
                        
                     
@@ -88,11 +83,11 @@ struct loginView: View {
                         .padding(.top, 60)
                         .font(.title3)
                         .fontWeight(.regular)
-                    
+                    /*
                     NavigationLink("Pestaña de manager", destination: mgm_recolectoresView())
                         .offset(y:40)
                         .navigationBarBackButtonHidden(true)
-                    
+                    */
                     Text(mensajeError)
                         .foregroundColor(.red)
                         .offset(y:70)
@@ -112,23 +107,11 @@ struct loginView: View {
     
         
     }
-    /*
-     InicioSesion(username: "usuario", password: "contraseña") { id, role in
-         if let id = id {
-             print("Inicio de sesión exitoso, ID: \(id)")
-             if let role = role {
-                 print("Rol: \(role)")
-                 // Aquí puedes usar el valor de 'role' como lo necesites
-             }
-         } else {
-             print("Inicio de sesión fallido")
-         }
-     */
     
      func validate() -> Bool {
          InicioSesion(username: usuario, password: contraseña) { id, role in
              if let id = id, id != 0 {
-                 self.idd = String(id) // Convierte el entero a String si es necesario
+                 self.idd = id // Convierte el entero a String si es necesario
                  print(id)
                  if let role = role {
                      self.role = role
@@ -153,13 +136,12 @@ struct loginView: View {
              conteoIntentos = 0
              mensajeError = " "
          }
-         if self.idd == "" {
+         if self.idd == 0 {
             return false
         }
         else {
             return true
         }
-        
     }
 }
 

@@ -8,15 +8,25 @@
 import SwiftUI
 
 struct contentView: View {
+    let id: Int
+    let rol: String
     
     var body: some View {
                 
         TabView{
             Group{
-                listadoView()
-                    .tabItem {
-                        Label("Tickets", systemImage: "ticket")
-                    }
+                if (rol == "MANAGER"){
+                    mgm_recolectoresView()
+                        .tabItem {
+                            Label("Tickets", systemImage: "ticket")
+                        }
+                }
+                else {
+                    listadoView()
+                        .tabItem {
+                            Label("Tickets", systemImage: "ticket")
+                        }
+                }
                 profileView()
                     .tabItem {
                         Label("Perfil", systemImage: "person.circle")
@@ -33,6 +43,11 @@ struct contentView: View {
 
 struct contentView_Previews: PreviewProvider {
     static var previews: some View {
-        contentView()
+        @State var id = 1
+        @State var rol = ""
+        
+        contentView(id: 1, rol: "user")
+        
+            
     }
 }

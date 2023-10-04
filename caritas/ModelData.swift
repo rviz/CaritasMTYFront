@@ -4,7 +4,7 @@ import Foundation
 func tickets() -> Array<ticket> {
     var lista: Array<ticket> = []
     
-    guard let url = URL(string: "http://10.22.141.9:5000/ticket/collector-tickets/1") else {
+    guard let url = URL(string: "http://10.22.169.212:5000/ticket/collector-tickets/1") else {
         print("Error: URL no válida")
         return lista
     }
@@ -38,7 +38,7 @@ func tickets() -> Array<ticket> {
 
 func recolectores() -> Array<Collector> {
     var lista: Array<Collector> = []
-    guard let url = URL(string: "http://10.22.141.9:5000/collector/get_by_manager_id/1") else {
+    guard let url = URL(string: "http://10.22.169.212:5000/collector/get_by_manager_id/1") else {
         print("Error: URL no válida")
         return lista
     }
@@ -75,7 +75,7 @@ func recolectores() -> Array<Collector> {
 }
 
 func InicioSesion(username: String, password: String, completion: @escaping (Int?, String?) -> Void) {
-    let url = URL(string: "http://10.22.141.9:5000/general/login")!
+    let url = URL(string: "http://10.22.169.212:5000/general/login")!
     var request = URLRequest(url: url)
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
     request.setValue("application/json", forHTTPHeaderField: "Accept")
@@ -166,7 +166,7 @@ func InicioSesion(username: String, password: String, completion: @escaping (Int
 */
 
 func CambiarComment(id: Int, comment: String, completion: @escaping (String?) -> Void) {
-    let url = URL(string: "http://10.22.141.9:5000/ticket/change_collector_comments")!
+    let url = URL(string: "http://10.22.169.212:5000/ticket/change_collector_comments")!
     var request = URLRequest(url: url)
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
     request.setValue("application/json", forHTTPHeaderField: "Accept")
@@ -230,7 +230,7 @@ func CambiarComment(id: Int, comment: String, completion: @escaping (String?) ->
 
 
 func CambiarEstado(id: Int, state: String, completion: @escaping (String?) -> Void) {
-    let url = URL(string: "http://10.22.141.9:5000/ticket/change_state")!
+    let url = URL(string: "http://10.22.169.212:5000/ticket/change_state")!
     var request = URLRequest(url: url)
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
     request.setValue("application/json", forHTTPHeaderField: "Accept")

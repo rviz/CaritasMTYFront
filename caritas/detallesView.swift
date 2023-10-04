@@ -39,20 +39,14 @@ struct detallesView: View {
     @State var guardado: Bool = false
     let textLimit = 150
     
-    // Variables de la base de datos
-    var calleBD: String {
-        if ticket.housingReference.isEmpty {
-            return "Sin información"
-        } else {
-            return ticket.housingReference
-        }
-    }
     
-    var coloniaBD: String {
-        if ticket.reprogramationComments.isEmpty {
+    
+    // Variables de la base de datos
+    var idBD: String {
+        if ticket.id == 0 {
             return "Sin información"
         } else {
-            return ticket.reprogramationComments
+            return String(ticket.id)
         }
     }
     
@@ -72,6 +66,40 @@ struct detallesView: View {
         }
     }
     
+    var calleBD: String {
+        if ticket.housingReference.isEmpty {
+            return "Sin información"
+        } else {
+            return ticket.housingReference
+        }
+    }
+    
+    var coloniaBD: String {
+        if ticket.reprogramationComments.isEmpty {
+            return "Sin información"
+        } else {
+            return ticket.reprogramationComments
+        }
+    }
+    
+    // Variables de la base de datos
+    var numeroCasaBD: String {
+        if ticket.housingReference.isEmpty {
+            return "Sin información"
+        } else {
+            return ticket.housingReference
+        }
+    }
+    
+    // Variables de la base de datos
+    var municipioBD: String {
+        if ticket.housingReference.isEmpty {
+            return "Sin información"
+        } else {
+            return ticket.housingReference
+        }
+    }
+    
     var notasBD: String {
         if ticket.receiptComments.isEmpty {
             return "Sin información"
@@ -82,12 +110,10 @@ struct detallesView: View {
     
     var body: some View {
         
-        
         VStack{
             
             // Impresión de información
             VStack{
-                
                 
                 ZStack{
                     
@@ -135,11 +161,36 @@ struct detallesView: View {
                                         
                     VStack(alignment: .leading, spacing: 0) {
                         
-                       
-                        
-                        HStack {
-                            Text("Calle:")
+                        VStack {
+                            Text("Id: ")
                                 .fontWeight(.bold)
+                            +
+                            Text(idBD)
+                        }.padding(.bottom, 10)
+                        
+                        VStack {
+                             Text("Donante: ")
+                                 .fontWeight(.bold)
+                            +
+                            Text(donanteBD)
+                         }.padding(.bottom, 10)
+                        
+                        VStack {
+                            Text("Teléfono: ")
+                                .fontWeight(.bold)
+                            +
+                            Text("+\(telefonoBD)")
+                        }.padding(.bottom, 30)
+                        
+                        Text("Dirección")
+                        Divider()
+                            .padding(.top, 10)
+                            .padding(.bottom, 15)
+                        
+                        VStack {
+                            Text("Calle: ")
+                                .fontWeight(.bold)
+                            +
                             Text(calleBD)
                         }.padding(.bottom, 10)
                         
@@ -150,21 +201,24 @@ struct detallesView: View {
                             Text(coloniaBD)
                         }.padding(.bottom, 10)
                         
-                        HStack {
-                             Text("Donante:")
-                                 .fontWeight(.bold)
-                            Text(donanteBD)
-                         }.padding(.bottom, 10)
-                                             
-                         HStack {
-                             Text("Teléfono:")
-                                 .fontWeight(.bold)
-                             Text("+\(telefonoBD)")
-                         }.padding(.bottom, 10)
-                                             
-                        HStack {
-                            Text("Notas:")
+                        VStack {
+                            Text("Número: ")
                                 .fontWeight(.bold)
+                            +
+                            Text(numeroCasaBD)
+                        }.padding(.bottom, 10)
+                        
+                        VStack {
+                            Text("Municipio: ")
+                                .fontWeight(.bold)
+                            +
+                            Text(municipioBD)
+                        }.padding(.bottom, 10)
+
+                        VStack {
+                            Text("Notas: ")
+                                .fontWeight(.bold)
+                            +
                             Text(notasBD)
                         }.padding(.bottom, 10)
                     }
@@ -174,6 +228,7 @@ struct detallesView: View {
                 }
                 .offset(y:-50)
                 .padding(.top, -5)
+                .padding(.leading, 43)
                 
                 // Opciones: Estados
                 ZStack{
@@ -198,10 +253,6 @@ struct detallesView: View {
                                 .cornerRadius(10) //
                                 .offset(y:-55)
                     }
-                    
-                    
-                    
-                    
                     
                     Picker(selection: $optionEstado, label: Text("Picker"))
                     {
@@ -232,31 +283,39 @@ struct detallesView: View {
                    
                 }
                 
-                // Campo de texto 1: Comentarios adicionales
-                Text("Comentarios adicionales:")
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding([.bottom, .trailing], -3.0)
-                    .padding(.leading, 35)
-                    .padding(.top, -25)
-                    .font(.title3)
-                    .fontWeight(.regular)
-                
-
-                TextField("Comentario", text: $comentarioAdicional, axis: .vertical)
-                    .onReceive(Just(comentarioAdicional)){ // Limita la cantidad de caracteres
-                                           _ in limitText(textLimit)
-                                       }
-                    .onTapGesture {
+                VStack{
+                    if optionEstado == 3{
+                        // Campo de texto 1: Comentarios adicionales
+                        Text("Comentarios adicionales:")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding([.bottom, .trailing], -3.0)
+                            .padding(.leading, 35)
+                            .padding(.top, -30)
+                            .font(.title3)
+                            .fontWeight(.regular)
+                        
+                        TextField("Comentario", text: $comentarioAdicional, axis: .vertical)
+                            .onReceive(Just(comentarioAdicional)){ // Limita la cantidad de caracteres
+                                _ in limitText(textLimit)
+                            }
+                            .onTapGesture {
+                                
+                            }
+                            .padding(.leading)
+                            .padding(.top,10)
+                            .padding(.bottom, 10)
+                            .frame(width: 323)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(Color.gray, lineWidth: 1)
+                            ).padding(.bottom, 55)
+                            .padding(.top, -1)
+                        
                         
                     }
-                    .padding(.leading)
-                    .padding(.top,5)
-                    .padding(.bottom, 5)
-                    .frame(width: 323)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.gray, lineWidth: 1)
-                    )
+                }
+                
+              
                     .onAppear() {
                         comentarioAdicional = ticket.collectorComments
                         if (ticket.state == "PENDING"){
@@ -268,9 +327,12 @@ struct detallesView: View {
                         else if (ticket.state == "CONFLICT"){
                             optionEstado = 3
                         }
-                    }
+                    } .padding(.bottom, 0)
+                    .padding(.top, -5)
                 
+              
                 
+
                 // Botón: Guardar
                 Button(action: {
                     hideKeyboard()
@@ -292,7 +354,7 @@ struct detallesView: View {
                 }
                 .buttonStyle(.borderedProminent)
                 .tint(Color(red: 0, green: 156/255, blue: 171/255))
-                .padding(.top, 23)
+                .padding(.top, -30)
                 
                 Spacer()
                 

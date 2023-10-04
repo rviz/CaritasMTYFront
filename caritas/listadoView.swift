@@ -28,6 +28,7 @@ struct listadoView: View {
                         .offset(y:-40)
                         .foregroundColor(Color.white)
                     
+<<<<<<< Updated upstream
                 }.offset(y:40)
             }
             
@@ -52,6 +53,17 @@ struct listadoView: View {
                     .pickerStyle(.segmented)
                     .frame(width: 330)
                     .onChange(of: option){ value in
+=======
+                    VStack() {
+
+                        TextField("Buscar por ID", text: $filtroSearch)
+                            .textFieldStyle(.roundedBorder)
+                            .frame(width: 330)
+                            .font(.title3)
+                            .fontWeight(.light)
+                            .multilineTextAlignment(.leading)
+                            .padding(.top, 10)
+>>>>>>> Stashed changes
                         
                         if(option == 1){
                             tipoFiltro = "Zona"

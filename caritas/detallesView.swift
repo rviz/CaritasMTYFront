@@ -33,7 +33,6 @@ struct detallesView: View {
             // Impresión de información
             VStack{
                 
-                
                 ZStack{
                     
                     // Barra de color
@@ -82,6 +81,7 @@ struct detallesView: View {
                                 .font(.title3)
                         }.padding(.bottom, 10)
                         
+<<<<<<< Updated upstream
                         HStack {
                             Text("Colonia:")
                                 .font(.title3)

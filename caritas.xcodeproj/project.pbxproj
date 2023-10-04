@@ -7,7 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+<<<<<<< Updated upstream
 		93AD73542AAA2486006C4E3F /* notificaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AD73532AAA2486006C4E3F /* notificaView.swift */; };
+=======
+		93AD73542AAA2486006C4E3F /* profileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AD73532AAA2486006C4E3F /* profileView.swift */; };
+		93FAC58B2AC2501B006BFD5F /* mgm_detallesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FAC58A2AC2501B006BFD5F /* mgm_detallesView.swift */; };
+		93FAC58D2AC25091006BFD5F /* mgm_recolectoresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FAC58C2AC25091006BFD5F /* mgm_recolectoresView.swift */; };
+		93FAC58F2AC250A7006BFD5F /* mgm_listadoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FAC58E2AC250A7006BFD5F /* mgm_listadoView.swift */; };
+		FB6DD6A12ACDC66E00D71A9C /* mapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6DD6A02ACDC66E00D71A9C /* mapView.swift */; };
+>>>>>>> Stashed changes
 		FB95E6932AA786BD001B82BF /* listadoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB95E6922AA786BD001B82BF /* listadoView.swift */; };
 		FB95E6952AA78B4D001B82BF /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB95E6942AA78B4D001B82BF /* ModelData.swift */; };
 		FB95E6972AA78B8E001B82BF /* Recibo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB95E6962AA78B8E001B82BF /* Recibo.swift */; };
@@ -20,12 +28,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+<<<<<<< Updated upstream
 		93AD73532AAA2486006C4E3F /* notificaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = notificaView.swift; sourceTree = "<group>"; };
+=======
+		93AD73532AAA2486006C4E3F /* profileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileView.swift; sourceTree = "<group>"; };
+		93FAC58A2AC2501B006BFD5F /* mgm_detallesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mgm_detallesView.swift; sourceTree = "<group>"; };
+		93FAC58C2AC25091006BFD5F /* mgm_recolectoresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mgm_recolectoresView.swift; sourceTree = "<group>"; };
+		93FAC58E2AC250A7006BFD5F /* mgm_listadoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mgm_listadoView.swift; sourceTree = "<group>"; };
+		FB6DD6A02ACDC66E00D71A9C /* mapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mapView.swift; sourceTree = "<group>"; };
+>>>>>>> Stashed changes
 		FB95E6922AA786BD001B82BF /* listadoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listadoView.swift; sourceTree = "<group>"; };
 		FB95E6942AA78B4D001B82BF /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		FB95E6962AA78B8E001B82BF /* Recibo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recibo.swift; sourceTree = "<group>"; };
 		FBAE7D6B2AA77B6C001C653B /* contentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = contentView.swift; sourceTree = "<group>"; };
-		FBF7165D2AA680C000C8B1F7 /* caritas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = caritas.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FBF7165D2AA680C000C8B1F7 /* Cáritas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cáritas.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF716602AA680C000C8B1F7 /* caritasApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = caritasApp.swift; sourceTree = "<group>"; };
 		FBF716622AA680C000C8B1F7 /* loginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginView.swift; sourceTree = "<group>"; };
 		FBF716642AA680C000C8B1F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -55,7 +71,7 @@
 		FBF7165E2AA680C000C8B1F7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FBF7165D2AA680C000C8B1F7 /* caritas.app */,
+				FBF7165D2AA680C000C8B1F7 /* Cáritas.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -67,12 +83,22 @@
 				FBF716622AA680C000C8B1F7 /* loginView.swift */,
 				FB95E6922AA786BD001B82BF /* listadoView.swift */,
 				FBF7166E2AA69E7700C8B1F7 /* detallesView.swift */,
+<<<<<<< Updated upstream
 				FB95E6942AA78B4D001B82BF /* ModelData.swift */,
 				FB95E6962AA78B8E001B82BF /* Recibo.swift */,
 				93AD73532AAA2486006C4E3F /* notificaView.swift */,
+=======
+				FB6DD6A02ACDC66E00D71A9C /* mapView.swift */,
+				93FAC58A2AC2501B006BFD5F /* mgm_detallesView.swift */,
+				93FAC58C2AC25091006BFD5F /* mgm_recolectoresView.swift */,
+				93FAC58E2AC250A7006BFD5F /* mgm_listadoView.swift */,
+				FB95E6942AA78B4D001B82BF /* ModelData.swift */,
+				FB95E6962AA78B8E001B82BF /* Recibo.swift */,
+				93AD73532AAA2486006C4E3F /* profileView.swift */,
+				FBAE7D6B2AA77B6C001C653B /* contentView.swift */,
+>>>>>>> Stashed changes
 				FBF716642AA680C000C8B1F7 /* Assets.xcassets */,
 				FBF716662AA680C000C8B1F7 /* Preview Content */,
-				FBAE7D6B2AA77B6C001C653B /* contentView.swift */,
 			);
 			path = caritas;
 			sourceTree = "<group>";
@@ -88,9 +114,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FBF7165C2AA680C000C8B1F7 /* caritas */ = {
+		FBF7165C2AA680C000C8B1F7 /* Cáritas */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FBF7166B2AA680C000C8B1F7 /* Build configuration list for PBXNativeTarget "caritas" */;
+			buildConfigurationList = FBF7166B2AA680C000C8B1F7 /* Build configuration list for PBXNativeTarget "Cáritas" */;
 			buildPhases = (
 				FBF716592AA680C000C8B1F7 /* Sources */,
 				FBF7165A2AA680C000C8B1F7 /* Frameworks */,
@@ -100,9 +126,9 @@
 			);
 			dependencies = (
 			);
-			name = caritas;
+			name = "Cáritas";
 			productName = caritas;
-			productReference = FBF7165D2AA680C000C8B1F7 /* caritas.app */;
+			productReference = FBF7165D2AA680C000C8B1F7 /* Cáritas.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -133,7 +159,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FBF7165C2AA680C000C8B1F7 /* caritas */,
+				FBF7165C2AA680C000C8B1F7 /* Cáritas */,
 			);
 		};
 /* End PBXProject section */
@@ -158,6 +184,7 @@
 				FBF7166F2AA69E7700C8B1F7 /* detallesView.swift in Sources */,
 				FBF716632AA680C000C8B1F7 /* loginView.swift in Sources */,
 				FB95E6972AA78B8E001B82BF /* Recibo.swift in Sources */,
+				FB6DD6A12ACDC66E00D71A9C /* mapView.swift in Sources */,
 				FBAE7D6C2AA77B6C001C653B /* contentView.swift in Sources */,
 				FB95E6932AA786BD001B82BF /* listadoView.swift in Sources */,
 				93AD73542AAA2486006C4E3F /* notificaView.swift in Sources */,
@@ -294,6 +321,7 @@
 				DEVELOPMENT_TEAM = 6AUPJ8CSTJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Compartenos tu localización, para diseñar la ruta";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -324,6 +352,7 @@
 				DEVELOPMENT_TEAM = 6AUPJ8CSTJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Compartenos tu localización, para diseñar la ruta";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -355,7 +384,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FBF7166B2AA680C000C8B1F7 /* Build configuration list for PBXNativeTarget "caritas" */ = {
+		FBF7166B2AA680C000C8B1F7 /* Build configuration list for PBXNativeTarget "Cáritas" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FBF7166C2AA680C000C8B1F7 /* Debug */,

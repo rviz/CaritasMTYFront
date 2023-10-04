@@ -6,6 +6,7 @@
 //
 
 import Foundation
+var link = "goia"
 
 func callAPILista() -> Array<Recibo> {
     var lista: Array<Recibo> = []
@@ -13,6 +14,17 @@ func callAPILista() -> Array<Recibo> {
             return lista
         }
     
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+    guard let url = URL(string: "http://10.22.169.212:5000/ticket/collector-tickets/1") else {
+=======
+    guard let url = URL(string: "http://10.22.141.9:5000/ticket/collector-tickets/1") else {
+>>>>>>> a816d1fd086614e570d94271aae9ddcdbdf42cb9
+        print("Error: URL no válida")
+        return lista
+    }
+>>>>>>> Stashed changes
     let group = DispatchGroup()
     group.enter()
     
@@ -36,7 +48,281 @@ func callAPILista() -> Array<Recibo> {
     }
     task.resume()
 
+<<<<<<< Updated upstream
+=======
+func recolectores() -> Array<Collector> {
+    var lista: Array<Collector> = []
+<<<<<<< HEAD
+    guard let url = URL(string: "http://10.22.169.212:5000/collector/get_by_manager_id/1") else {
+=======
+    guard let url = URL(string: "http://10.22.141.9:5000/collector/get_by_manager_id/1") else {
+>>>>>>> a816d1fd086614e570d94271aae9ddcdbdf42cb9
+        print("Error: URL no válida")
+        return lista
+    }
+    
+    let group = DispatchGroup() // Crea un DispatchGroup
+    group.enter() // Indica que estamos ingresando al grupo
+    
+    let task = URLSession.shared.dataTask(with: url) { data, response, error in
+        let jsonDecoder = JSONDecoder()
+        
+        if let data = data {
+            do {
+                let postList = try jsonDecoder.decode(Manager.self, from: data)
+                //
+                lista = postList.collectors
+                //
+                for postItem in postList.collectors {
+                    print("Id: \(postItem.id) - state: \(postItem.fullname) - housingReference: \(postItem.managerId) - date: \(postItem.uuid)")
+                }
+                
+            } catch {
+                print("Error al decodificar JSON: \(error)")
+            }
+        } else if let error = error {
+            print("Error en la solicitud HTTP: \(error)")
+        }
+        
+        group.leave() // Indica que estamos saliendo del grupo después de que se complete la tarea
+    }
+    
+    task.resume()
+>>>>>>> Stashed changes
     group.wait()
     return lista
 }
 
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+func InicioSesion(username: String, password: String, completion: @escaping (Int?) -> Void) {
+    let url = URL(string: "http://10.22.169.212:5000/collector/login")!
+=======
+func InicioSesion(username: String, password: String, completion: @escaping (Int?, String?) -> Void) {
+    let url = URL(string: "http://10.22.141.9:5000/general/login")!
+>>>>>>> a816d1fd086614e570d94271aae9ddcdbdf42cb9
+    var request = URLRequest(url: url)
+    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    request.setValue("application/json", forHTTPHeaderField: "Accept")
+    request.httpMethod = "POST"
+    
+    let parameters: [String: Any] = [
+        "username": username,
+        "password": password
+    ]
+    do {
+        let jsonData = try JSONSerialization.data(withJSONObject: parameters)
+        request.httpBody = jsonData
+    } catch {
+        print("Error al crear el JSON: \(error)")
+        completion(nil, nil)
+        return
+    }
+    
+    let group = DispatchGroup()
+    group.enter()
+    
+    let task = URLSession.shared.dataTask(with: request) { data, response, error in
+        defer {
+            group.leave()
+        }
+        
+        guard
+            let data = data,
+            let response = response as? HTTPURLResponse,
+            error == nil
+        else {
+            print("error", error ?? URLError(.badServerResponse))
+            completion(nil, nil)            
+            return
+        }
+        
+        guard (200 ... 299) ~= response.statusCode else {
+            print("statusCode should be 2xx, but is \(response.statusCode)")
+            print("response = \(response)")
+            completion(nil, nil)            
+            return
+        }
+        
+        do {
+            if let jsonObject = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                           let id = jsonObject["id"] as? Int,
+                           let role = jsonObject["role"] as? String { // Recuperar el valor del rol del JSON
+                            completion(id, role)
+            } else {
+                print("No se pudo obtener el valor 'id' del JSON.")
+                completion(nil, nil)           
+            }
+        } catch {
+            print(error) // Error de parsing
+            completion(nil, nil)
+        }
+    }
+    task.resume()
+    group.wait()
+}
+
+/*
+    extension Dictionary {
+        func percentEncoded() -> Data? {
+            map { key, value in
+                let escapedKey = "\(key)".addingPercentEncoding(withAllowedCharacters: .urlQueryValueAllowed) ?? ""
+                let escapedValue = "\(value)".addingPercentEncoding(withAllowedCharacters: .urlQueryValueAllowed) ?? ""
+                return escapedKey + "=" + escapedValue
+            }
+            .joined(separator: "&")
+            .data(using: .utf8)
+        }
+        .joined(separator: "&")
+        .data(using: .utf8)
+    }
+}
+
+    extension CharacterSet {
+        static let urlQueryValueAllowed: CharacterSet = {
+            let generalDelimitersToEncode = ":#[]@" // does not include "?" or "/" due to RFC 3986 - Section 3.4
+            let subDelimitersToEncode = "!$&'()*+,;="
+            
+            var allowed: CharacterSet = .urlQueryAllowed
+            allowed.remove(charactersIn: "\(generalDelimitersToEncode)\(subDelimitersToEncode)")
+            return allowed
+        }()
+    }
+*/
+
+func CambiarComment(id: Int, comment: String, completion: @escaping (String?) -> Void) {
+<<<<<<< HEAD
+    let url = URL(string: "http://10.22.169.212:5000/ticket/change_collector_comments")!
+=======
+    let url = URL(string: "http://10.22.141.9:5000/ticket/change_collector_comments")!
+>>>>>>> a816d1fd086614e570d94271aae9ddcdbdf42cb9
+    var request = URLRequest(url: url)
+    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    request.setValue("application/json", forHTTPHeaderField: "Accept")
+    request.httpMethod = "POST"
+    
+    let parameters: [String: Any] = [
+        "ticket_id": id,
+        "collector_comments": comment
+    ]
+    do {
+        let jsonData = try JSONSerialization.data(withJSONObject: parameters)
+        request.httpBody = jsonData
+    } catch {
+        print("Error al crear el JSON: \(error)")
+        completion(nil)
+        return
+    }
+    
+    let group = DispatchGroup()
+    group.enter()
+    
+    let task = URLSession.shared.dataTask(with: request) { data, response, error in
+        defer {
+            group.leave()
+        }
+        
+        guard
+            let data = data,
+            let response = response as? HTTPURLResponse,
+            error == nil
+        else {
+            print("error", error ?? URLError(.badServerResponse))
+            completion(nil)
+            return
+        }
+        
+        guard (200 ... 299) ~= response.statusCode else {
+            print("statusCode should be 2xx, but is \(response.statusCode)")
+            print("response = \(response)")
+            completion(nil)
+            return
+        }
+        
+        do {
+            if let jsonObject = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+               let msg = jsonObject["msg"] as? String {
+                print (msg)
+                completion(msg)
+            } else {
+                print("No se pudo obtener el valor 'id' del JSON.")
+                completion(nil)
+            }
+        } catch {
+            print(error) // Error de parsing
+            completion(nil)
+        }
+    }
+    task.resume()
+    group.wait()
+}
+
+
+func CambiarEstado(id: Int, state: String, completion: @escaping (String?) -> Void) {
+<<<<<<< HEAD
+    let url = URL(string: "http://10.22.169.212:5000/ticket/change_state")!
+=======
+    let url = URL(string: "http://10.22.141.9:5000/ticket/change_state")!
+>>>>>>> a816d1fd086614e570d94271aae9ddcdbdf42cb9
+    var request = URLRequest(url: url)
+    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    request.setValue("application/json", forHTTPHeaderField: "Accept")
+    request.httpMethod = "POST"
+    
+    let parameters: [String: Any] = [
+        "ticket_id": id,
+        "new_state": state
+    ]
+    do {
+        let jsonData = try JSONSerialization.data(withJSONObject: parameters)
+        request.httpBody = jsonData
+    } catch {
+        print("Error al crear el JSON: \(error)")
+        completion(nil)
+        return
+    }
+    
+    let group = DispatchGroup()
+    group.enter()
+    
+    let task = URLSession.shared.dataTask(with: request) { data, response, error in
+        defer {
+            group.leave()
+        }
+        
+        guard
+            let data = data,
+            let response = response as? HTTPURLResponse,
+            error == nil
+        else {
+            print("error", error ?? URLError(.badServerResponse))
+            completion(nil)
+            return
+        }
+        
+        guard (200 ... 299) ~= response.statusCode else {
+            print("statusCode should be 2xx, but is \(response.statusCode)")
+            print("response = \(response)")
+            completion(nil)
+            return
+        }
+        
+        do {
+            if let jsonObject = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+               let msg = jsonObject["msg"] as? String {
+                print (msg)
+                completion(msg)
+            } else {
+                print("No se pudo obtener el valor 'id' del JSON.")
+                completion(nil)
+            }
+        } catch {
+            print(error) // Error de parsing
+            completion(nil)
+        }
+    }
+    task.resume()
+    group.wait()
+}
+>>>>>>> Stashed changes

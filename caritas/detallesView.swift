@@ -372,5 +372,5 @@ struct Recibos_Previews: PreviewProvider {
         @State var yaCargo = false
        // @State var tickete : ticket = tickets()[0]
       
-        detallesView(yaCargo: $yaCargo, ticket: tickets()[0])   }
+        detallesView(yaCargo: $yaCargo, ticket: tickets(forManagerId: 1)[0])   }
 }

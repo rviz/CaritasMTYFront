@@ -4,7 +4,7 @@
 import SwiftUI
 
 struct listadoView: View {
-    
+    var id : Int
     // Variables
     @State private var option: Int = 1
     @State private var filtroSearch: String = ""
@@ -182,11 +182,11 @@ struct listadoView: View {
                             }
                         }
                         .refreshable{
-                            lista = tickets()
+                            lista = tickets(forManagerId:id)
                         }
                         .onAppear() {
                             if yaCargo==false{
-                                lista = tickets()
+                                lista = tickets(forManagerId: id)
                                 yaCargo = true
                             }
                         }
@@ -214,6 +214,7 @@ struct listadoView: View {
 struct listadoView_Previews: PreviewProvider {
     static var previews: some View {
         
-        listadoView()
+        listadoView(id: 1)
+
     }
 }

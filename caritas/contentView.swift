@@ -22,7 +22,7 @@ struct contentView: View {
                         }
                 }
                 else {
-                    listadoView()
+                    listadoView(id:1)
                         .tabItem {
                             Label("Tickets", systemImage: "ticket")
                         }

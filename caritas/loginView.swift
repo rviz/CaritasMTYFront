@@ -76,8 +76,6 @@ struct loginView: View {
                         .navigationDestination(isPresented: $isValid){
                             contentView(id: idd, rol: role)
                         }
-                       
-                    
                         .buttonStyle(.borderedProminent)
                         .foregroundColor(.white)
                         .padding(.top, 60)

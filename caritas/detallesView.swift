@@ -38,6 +38,8 @@ struct detallesView: View {
     @State private var id: String = ""
     @State var guardado: Bool = false
     @State private var commentsColor: Color = .black
+    @State private var showingConfirmationAlert = false
+
     
     // Limite de palabras en campo de comentarios
     let textLimit = 150
@@ -331,33 +333,41 @@ struct detallesView: View {
 
                 // Botón: Guardar
                 Button(action: {
-                    hideKeyboard()
-                    CambiarComment(id: ticket.id, comment: comentarioAdicional) { msg in
-                        if let msg = msg, msg != "" {
-                        }}
-                    CambiarEstado(id: ticket.id, state: estadoFinal) { msg in
-                        if let msg = msg, msg != "" {
-                        }}
-                    yaCargo = false
-                    bloquearEdicion()
-                    
-                    dismiss()
-                    
-                        }){
-                    Text("Guardar")
-                        .font(.title2)
-                        .fontWeight(.bold)
-                        .frame(width: 300, height: 40)
-                        .foregroundColor(Color.white) // Establece el color del texto en blanco
-                }
-                        .onAppear(){
-                            bloquearEdicion()
-                            
-                        }
-                .buttonStyle(.borderedProminent)
-                .tint(Color(red: 0, green: 156/255, blue: 171/255))
-                .padding(.top, -25)
-                
+                              showingConfirmationAlert = true
+                          }) {
+                              Text("Guardar")
+                                  .font(.title2)
+                                  .fontWeight(.bold)
+                                  .frame(width: 300, height: 40)
+                                  .foregroundColor(Color.white)
+                          }
+                          .buttonStyle(.borderedProminent)
+                          .tint(Color(red: 0, green: 156/255, blue: 171/255))
+                          .padding(.top, -25)
+                          .alert(isPresented: $showingConfirmationAlert) {
+                              Alert(
+                                  title: Text("Confirmar"),
+                                  message: Text("¿Estás seguro de que deseas guardar los cambios?"),
+                                  primaryButton: .default(Text("Sí")) {
+                                      hideKeyboard()
+                                      CambiarComment(id: ticket.id, comment: comentarioAdicional) { msg in
+                                          if let msg = msg, msg != "" {
+                                              // Manejar el mensaje de error si es necesario
+                                          }
+                                      }
+                                      CambiarEstado(id: ticket.id, state: estadoFinal) { msg in
+                                          if let msg = msg, msg != "" {
+                                              // Manejar el mensaje de error si es necesario
+                                          }
+                                      }
+                                      yaCargo = false
+                                      bloquearEdicion()
+                                      dismiss()
+                                  },
+                                  secondaryButton: .cancel(Text("Cancelar"))
+                              )
+                          }
+
                 Spacer()
                 
             } .padding(.top, -58)  // scroll

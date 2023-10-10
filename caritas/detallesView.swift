@@ -37,10 +37,16 @@ struct detallesView: View {
     @State private var notas: String = ""
     @State private var id: String = ""
     @State var guardado: Bool = false
+    @State private var commentsColor: Color = .black
+    
+    // Limite de palabras en campo de comentarios
     let textLimit = 150
     
+    // Bloqueo de picker
+    @State private var isPickerEnabled = true
+    @State private var isCommentEnabled = true
     
-    
+
     // Variables de la base de datos
     var idBD: String {
         if ticket.id == 0 {
@@ -261,6 +267,7 @@ struct detallesView: View {
                             RoundedRectangle(cornerRadius: 8)
                                 .fill(Color.white) // Change this color to your desired color
                         )
+                        .disabled(!isPickerEnabled)
                         .onChange(of: optionEstado){ value in
                             if(optionEstado == 1){
                                 estadoFinal = "PENDING"
@@ -285,7 +292,6 @@ struct detallesView: View {
                             .padding([.bottom, .trailing], -3.0)
                             .padding(.leading, 35)
                             .padding(.top, -30)
-                            .font(.title3)
                             .fontWeight(.regular)
                         
                         TextField("Comentario", text: $comentarioAdicional, axis: .vertical)
@@ -296,7 +302,7 @@ struct detallesView: View {
                                 
                             }
                             .padding(.leading)
-                            .padding(.top,10)
+                            .padding(.top,8)
                             .padding(.bottom, 10)
                             .frame(width: 323)
                             .overlay(
@@ -304,12 +310,11 @@ struct detallesView: View {
                                     .stroke(Color.gray, lineWidth: 1)
                             ).padding(.bottom, 55)
                             .padding(.top, -1)
-                        
-                        
+                            .foregroundColor(commentsColor)
+                            .disabled(!isCommentEnabled)
                     }
                 }
                 
-              
                     .onAppear() {
                         comentarioAdicional = ticket.collectorComments
                         if (ticket.state == "PENDING"){
@@ -323,9 +328,6 @@ struct detallesView: View {
                         }
                     } .padding(.bottom, 0)
                     .padding(.top, -5)
-                
-              
-                
 
                 // Botón: Guardar
                 Button(action: {
@@ -337,6 +339,8 @@ struct detallesView: View {
                         if let msg = msg, msg != "" {
                         }}
                     yaCargo = false
+                    bloquearEdicion()
+                    
                     dismiss()
                     
                         }){
@@ -346,9 +350,13 @@ struct detallesView: View {
                         .frame(width: 300, height: 40)
                         .foregroundColor(Color.white) // Establece el color del texto en blanco
                 }
+                        .onAppear(){
+                            bloquearEdicion()
+                            
+                        }
                 .buttonStyle(.borderedProminent)
                 .tint(Color(red: 0, green: 156/255, blue: 171/255))
-                .padding(.top, -30)
+                .padding(.top, -25)
                 
                 Spacer()
                 
@@ -361,11 +369,17 @@ struct detallesView: View {
            if comentarioAdicional.count > upper {
                comentarioAdicional = String(comentarioAdicional.prefix(upper))
            }
-       }
+    }
     
+    func bloquearEdicion(){
+        if(ticket.state == "COLLECTED" || ticket.state == "CONFLICT"){
+            isPickerEnabled = false
+            isCommentEnabled = false
+            commentsColor = .gray
+        }
+    }
+
 }
-
-
 
 struct Recibos_Previews: PreviewProvider {
     static var previews: some View {

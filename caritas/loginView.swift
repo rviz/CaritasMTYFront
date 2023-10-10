@@ -94,6 +94,7 @@ struct loginView: View {
                     .onAppear(){
                         usuario = ""
                         contraseña = ""
+                        idd=0
                     }
                     
             
@@ -105,6 +106,7 @@ struct loginView: View {
     
         
     }
+    
     
      func validate() -> Bool {
          InicioSesion(username: usuario, password: contraseña) { id, role in

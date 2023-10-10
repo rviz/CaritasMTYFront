@@ -13,6 +13,7 @@ struct contentView: View {
     
     var body: some View {
                 
+        
         TabView{
             Group{
                 if (rol == "MANAGER"){
@@ -21,8 +22,9 @@ struct contentView: View {
                             Label("Tickets", systemImage: "ticket")
                         }
                 }
+                
                 else {
-                    listadoView(id:1)
+                    listadoView(id:id)
                         .tabItem {
                             Label("Tickets", systemImage: "ticket")
                         }

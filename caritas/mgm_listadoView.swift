@@ -1,6 +1,5 @@
 
 // RECOLECTOR
-
 import SwiftUI
 
 struct mgm_listadoView: View {
@@ -57,27 +56,9 @@ struct mgm_listadoView: View {
 
                     
                     VStack() {
-                        
-                    
-                        if (contadorConflictos != 5){
-
-                            Group{
-                                Image(systemName: "face.smiling.inverse")
-                                    .resizable(resizingMode: .stretch)
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 100)
-                                    .foregroundColor(Color(red: 0, green: 156/255, blue: 171/255))
-                                    .padding(.bottom, 20)
-
-                                Text("Este recolector no tiene recibos con conflicto.")
-                                    .font(.title3)
-                                    .foregroundColor(.gray)
-                                    .multilineTextAlignment(.center)
-                                    .frame(width: 250)
-
-                            }.offset(y:230)
-                        }
-                        else{
+                        ZStack{
+                            
+                            //  else{
                             
                             List {
                                 
@@ -85,7 +66,6 @@ struct mgm_listadoView: View {
                                     // Validación: Sólo se despliegan recibos en estado "conflict"
                                     
                                     if listaItem.state == "CONFLICT" {
-                                        
                                         
                                         VStack(alignment: .leading, spacing: 5) {
                                             
@@ -98,9 +78,11 @@ struct mgm_listadoView: View {
                                                     var idReciboBD: String {
                                                         
                                                         if listaItem.id == 0 {
+                                                            
                                                             return "Sin información"
                                                             
                                                         } else {
+                                                            contadorConflictos = contadorConflictos + 1
                                                             return "\(String(listaItem.id))"
                                                         }
                                                     }
@@ -155,8 +137,27 @@ struct mgm_listadoView: View {
                             .frame(width: 350, height: 515)
                             .padding(.top, 15)
                             .listStyle(.inset)
-                            
                         }
+                        
+                        if (contadorConflictos == 0){
+
+                            Group{
+                                Image(systemName: "face.smiling.inverse")
+                                    .resizable(resizingMode: .stretch)
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 100)
+                                    .foregroundColor(Color(red: 0, green: 156/255, blue: 171/255))
+                                    .padding(.bottom, 20)
+
+                                Text("Este recolector no tiene recibos con conflicto.")
+                                    .font(.title3)
+                                    .foregroundColor(.gray)
+                                    .multilineTextAlignment(.center)
+                                    .frame(width: 250)
+
+                            }.offset(y:-500)
+                        }
+                       // }
                             
                             
                         
@@ -184,4 +185,3 @@ struct mgm_listadoView_Previews: PreviewProvider {
 
     }
 }
-

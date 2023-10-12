@@ -3,7 +3,7 @@ import Foundation
 
 func tickets(forManagerId managerId: Int) -> Array<ticket> {
     var lista: Array<ticket> = []
-    guard let url = URL(string: "http://10.22.174.38:5000/ticket/collector-tickets/\(managerId)") else {
+    guard let url = URL(string: "http://10.22.175.143:5000/ticket/collector-tickets/\(managerId)") else {
         print("Error: URL no válida")
         return lista
     }
@@ -37,7 +37,7 @@ func tickets(forManagerId managerId: Int) -> Array<ticket> {
 
 func recolectores() -> Array<Collector> {
     var lista: Array<Collector> = []
-    guard let url = URL(string: "http://10.22.174.38:5000/collector/get_by_manager_id/1") else {
+    guard let url = URL(string: "http://10.22.175.143:5000/collector/get_by_manager_id/1") else {
         print("Error: URL no válida")
         return lista
     }
@@ -74,7 +74,7 @@ func recolectores() -> Array<Collector> {
 }
 
 func InicioSesion(username: String, password: String, completion: @escaping (Int?, String?) -> Void) {
-    let url = URL(string: "http://10.22.174.38:5000/general/login")!
+    let url = URL(string: "http://10.22.175.143:5000/general/login")!
     var request = URLRequest(url: url)
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
     request.setValue("application/json", forHTTPHeaderField: "Accept")
@@ -136,36 +136,10 @@ func InicioSesion(username: String, password: String, completion: @escaping (Int
     group.wait()
 }
 
-/*
-    extension Dictionary {
-        func percentEncoded() -> Data? {
-            map { key, value in
-                let escapedKey = "\(key)".addingPercentEncoding(withAllowedCharacters: .urlQueryValueAllowed) ?? ""
-                let escapedValue = "\(value)".addingPercentEncoding(withAllowedCharacters: .urlQueryValueAllowed) ?? ""
-                return escapedKey + "=" + escapedValue
-            }
-            .joined(separator: "&")
-            .data(using: .utf8)
-        }
-        .joined(separator: "&")
-        .data(using: .utf8)
-    }
-}
 
-    extension CharacterSet {
-        static let urlQueryValueAllowed: CharacterSet = {
-            let generalDelimitersToEncode = ":#[]@" // does not include "?" or "/" due to RFC 3986 - Section 3.4
-            let subDelimitersToEncode = "!$&'()*+,;="
-            
-            var allowed: CharacterSet = .urlQueryAllowed
-            allowed.remove(charactersIn: "\(generalDelimitersToEncode)\(subDelimitersToEncode)")
-            return allowed
-        }()
-    }
-*/
 
 func CambiarComment(id: Int, comment: String, completion: @escaping (String?) -> Void) {
-    let url = URL(string: "http://10.22.174.38:5000/ticket/change_collector_comments")!
+    let url = URL(string: "http://10.22.175.143:5000/ticket/change_collector_comments")!
     var request = URLRequest(url: url)
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
     request.setValue("application/json", forHTTPHeaderField: "Accept")
@@ -229,7 +203,7 @@ func CambiarComment(id: Int, comment: String, completion: @escaping (String?) ->
 
 
 func CambiarEstado(id: Int, state: String, completion: @escaping (String?) -> Void) {
-    let url = URL(string: "http://10.22.174.38:5000/ticket/change_state")!
+    let url = URL(string: "http://10.22.175.143:5000/ticket/change_state")!
     var request = URLRequest(url: url)
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
     request.setValue("application/json", forHTTPHeaderField: "Accept")

@@ -13,6 +13,11 @@ struct mgm_recolectoresView: View {
     @State private var colorEstado: Color = .black
     @State var yaCargo: Bool = false
     @State var listaR: Array<Collector> = []
+
+
+    
+    @State private var dateString: String = "2023-09-27T14:30:00Z" // Sample date string
+    @State private var formattedDateString: String = ""
    
     func getAmmountOfCollectedTickets( tickets: Array<ticket>) -> Int {
         var ret: Int = 0;
@@ -29,6 +34,7 @@ struct mgm_recolectoresView: View {
         for t in tickets {
             if t.state == "CONFLICT" {
                 ret += 1
+                
             }
         }
         
@@ -90,6 +96,7 @@ struct mgm_recolectoresView: View {
                                     .foregroundColor(.gray)
                                     .multilineTextAlignment(.center)
                                     .frame(width: 200)
+
                                 
                             }.offset(y:230)
                             

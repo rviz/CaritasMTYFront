@@ -25,6 +25,7 @@ struct contentView: View {
                 
                 else {
                     listadoView(id:id)
+
                         .tabItem {
                             Label("Tickets", systemImage: "ticket")
                         }

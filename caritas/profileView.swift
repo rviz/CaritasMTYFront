@@ -16,24 +16,32 @@ struct profileView: View {
                 // Barra de color y la imagen del repartidor en cuestión
                 Color(red: 0, green: 156/255, blue: 171/255)
                     .edgesIgnoringSafeArea(.all)
-                    .frame(width: 500, height: 250)
-                    .rotationEffect(Angle(degrees: -15))
-                    .offset(y: -50)
-                
-                Image(systemName: "person.circle")
+
+                    .frame(width:500, height: 250)
+                    .rotationEffect(Angle(degrees:-15))
+                    .offset(y:-50)
+                // Imagen del repartidor en cuestión
+                Image(systemName: "face.smiling")
                     .resizable(resizingMode: .stretch)
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 130)
-                    .background(Color.white)
+                    .foregroundColor(.black)
+                    .background(.yellow)
                     .clipShape(Circle())
-                    .offset(y: 80)
-            }
-            .offset(y: -50)
+
+                    .offset(y:80)
+            }.offset(y:-50)
             
-            Text("Hola,")
-                .font(.largeTitle)
-            Text("(fullname)")
-                .font(.largeTitle)
+            VStack{
+                Text("¡Hola ")
+                +
+                Text("recolector")
+                .bold()
+                +
+                Text("!")
+            }
+            .font(.largeTitle)
+            .offset(y: 20)
             Spacer()
             
             Button(action: {

@@ -124,33 +124,32 @@ struct detallesView: View {
             VStack{
                 
                 ZStack{
-                    /*
+                    
                     // Barra de color
                     Color(red: 0, green: 156/255, blue: 171/255)
                         .edgesIgnoringSafeArea(.all)
                         .frame(height: 80)
                         .offset(y:-50)
-                    */
                     
-                    Text("$" + String(ticket.donationAmount))
+                    Text("Detalles")
                         .font(.title)
                         .fontWeight(.bold)
-                        .offset(y:-30)
-                    
+                        .padding(.bottom, 5)
+                        .offset(y:-40)
+                        .foregroundColor(Color.white)
                 }
-                .padding(.top,15)
+                //.padding(.top,15)
                 
             }.padding(0)
             
             ScrollView {
-                /*
+                
                 Text("$" + String(ticket.donationAmount))
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .multilineTextAlignment(.center)
                     .padding(.top, 40)
                     .padding(.bottom, 30)
-                 */
                 
                 // Botón: Guardar
                 Button(action: {
@@ -165,9 +164,6 @@ struct detallesView: View {
                 }
                 .buttonStyle(.borderedProminent)
                 .tint(Color(red: 0, green: 156/255, blue: 171/255))
-                .offset(y:20)
-                .padding(.top,20)
-
 
                 HStack{
                                         
@@ -333,6 +329,7 @@ struct detallesView: View {
 
                 // Botón: Guardar
                 Button(action: {
+//
                               showingConfirmationAlert = true
                           }) {
                               Text("Guardar")
@@ -368,6 +365,35 @@ struct detallesView: View {
                               )
                           }
 
+//
+                /*
+                    hideKeyboard()
+                    CambiarComment(id: ticket.id, comment: comentarioAdicional) { msg in
+                        if let msg = msg, msg != "" {
+                        }}
+                    CambiarEstado(id: ticket.id, state: estadoFinal) { msg in
+                        if let msg = msg, msg != "" {
+                        }}
+                    yaCargo = false
+                    
+                    dismiss()
+                    
+                        }){
+                    Text("Guardar")
+                        .font(.title2)
+                        .fontWeight(.bold)
+                        .frame(width: 300, height: 40)
+                        .foregroundColor(Color.white) // Establece el color del texto en blanco
+                }
+                        .onAppear(){
+                            //bloquearEdicion()
+                            
+                        }
+                .buttonStyle(.borderedProminent)
+                .tint(Color(red: 0, green: 156/255, blue: 171/255))
+                .padding(.top, -25)
+                
+                 */
                 Spacer()
                 
             } .padding(.top, -58)  // scroll

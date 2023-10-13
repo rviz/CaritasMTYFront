@@ -107,130 +107,130 @@ struct listadoView: View {
                         } else {
                             
                             List {
-                                ForEach(Array(lista.enumerated()), id: \.1.id){
-                                    index, listaItem in
-                                    NavigationLink(destination: detallesView(yaCargo:$yaCargo,ticket:listaItem)) {
-                                        VStack(alignment: .leading, spacing: 5) {
-                                            
-                                            
-                                            HStack{
-                                                
-                                                ZStack {
-                                                    Circle()
-                                                        .fill(Color(red: 0, green: 156/255, blue: 171/255))
-                                                        .frame(width: 30, height: 30) // Ajusta el tamaño del círculo según sea necesario
-                                                    
-                                                    Text("\(index + 1)")
-                                                        .font(.footnote)
-                                                        .foregroundColor(.white)
-                                                        .bold()
-                                                    
-                                                } .padding(.leading, -5)
-                                                    .padding(.trailing, 15)
+                                ForEach(Array(lista.enumerated()), id: \.1.id) { index, listaItem in
+                                    if filtroSearch.isEmpty || listaItem.donorName.localizedCaseInsensitiveContains(filtroSearch) {
+                                        NavigationLink(destination: detallesView(yaCargo: $yaCargo, ticket: listaItem)) {
+                                            VStack(alignment: .leading, spacing: 5) {
                                                 
                                                 
-                                                VStack(alignment: .leading){
-                                                    VStack {
-                                                        
-                                                        // Impresión de etiqueta "sin información"
-                                                        var idReciboBD: String {
-                                                            if listaItem.id == 0 {
-                                                                return "Sin información"
-                                                            } else {
-                                                                return "\(String(listaItem.id))"
-                                                            }
-                                                        }
-                                                        
-                                                        Text("Id: ")
-                                                            .fontWeight(.bold)
-                                                        +
-                                                        Text("\(idReciboBD)")
-                                                        
-                                                    }
+                                                HStack{
                                                     
-                                                    VStack {
+                                                    ZStack {
+                                                        Circle()
+                                                            .fill(Color(red: 0, green: 156/255, blue: 171/255))
+                                                            .frame(width: 30, height: 30) // Ajusta el tamaño del círculo según sea necesario
                                                         
-                                                        // Impresión de etiqueta "sin información"
-                                                        var montoBD: String {
-                                                            if listaItem.donationAmount == 0 {
-                                                                return "Sin información"
-                                                            } else {
-                                                                return String(listaItem.donationAmount)
-                                                            }
-                                                        }
-                                                        Text("Monto: ")
-                                                            .fontWeight(.bold)
-                                                        +
-                                                        Text("$\(montoBD)")
-                                                    }
+                                                        Text("\(index + 1)")
+                                                            .font(.footnote)
+                                                            .foregroundColor(.white)
+                                                            .bold()
+                                                        
+                                                    } .padding(.leading, -5)
+                                                        .padding(.trailing, 15)
                                                     
-                                                    VStack {
-                                                        // Impresión de etiqueta "sin información"
-                                                        var donanteBD: String {
-                                                            if listaItem.donorName.isEmpty {
-                                                                return "Sin información"
-                                                            } else {
-                                                                return listaItem.donorName
-                                                            }
-                                                        }
-                                                        
-                                                        Text("Donante: ")
-                                                            .fontWeight(.bold)
-                                                        +
-                                                        Text(donanteBD)
-                                                    }
                                                     
                                                     VStack(alignment: .leading){
-                                                        if(listaItem.state == "CONFLICT"){
-                                                            Text("Conflicto")
-                                                                .padding(.vertical, 3.0)
-                                                                .padding(.horizontal, 11.0)
-                                                                .background(Color.red)
-                                                                .cornerRadius(8)
+                                                        VStack {
                                                             
-                                                        } else if(listaItem.state == "PENDING"){
-                                                            Text("No cobrado")
-                                                                .padding(.vertical, 3.0)
-                                                                .padding(.horizontal, 11.0)
-                                                                .background(.gray)
-                                                                .cornerRadius(8)
+                                                            // Impresión de etiqueta "sin información"
+                                                            var idReciboBD: String {
+                                                                if listaItem.id == 0 {
+                                                                    return "Sin información"
+                                                                } else {
+                                                                    return "\(String(listaItem.id))"
+                                                                }
+                                                            }
                                                             
-                                                        } else if (listaItem.state == "COLLECTED"){
-                                                            Text("Cobrado")
-                                                                .padding(.vertical, 3.0)
-                                                                .padding(.horizontal, 11.0)
-                                                                .background(.green)
-                                                                .cornerRadius(8)
+                                                            Text("Id: ")
+                                                                .fontWeight(.bold)
+                                                            +
+                                                            Text("\(idReciboBD)")
                                                             
-                                                        } else if (listaItem.state.isEmpty){
-                                                            Text("Sin información")
                                                         }
-                                                    }
-                                                    .foregroundColor(.white)
-                                                    .font(.title3)
-                                                    .offset(y: -5)
-                                                    .padding(.bottom, 5)
+                                                        
+                                                        VStack {
+                                                            
+                                                            // Impresión de etiqueta "sin información"
+                                                            var montoBD: String {
+                                                                if listaItem.donationAmount == 0 {
+                                                                    return "Sin información"
+                                                                } else {
+                                                                    return String(listaItem.donationAmount)
+                                                                }
+                                                            }
+                                                            Text("Monto: ")
+                                                                .fontWeight(.bold)
+                                                            +
+                                                            Text("$\(montoBD)")
+                                                        }
+                                                        
+                                                        VStack {
+                                                            // Impresión de etiqueta "sin información"
+                                                            var donanteBD: String {
+                                                                if listaItem.donorName.isEmpty {
+                                                                    return "Sin información"
+                                                                } else {
+                                                                    return listaItem.donorName
+                                                                }
+                                                            }
+                                                            
+                                                            Text("Donante: ")
+                                                                .fontWeight(.bold)
+                                                            +
+                                                            Text(donanteBD)
+                                                        }
+                                                        
+                                                        VStack(alignment: .leading){
+                                                            if(listaItem.state == "CONFLICT"){
+                                                                Text("Conflicto")
+                                                                    .padding(.vertical, 3.0)
+                                                                    .padding(.horizontal, 11.0)
+                                                                    .background(Color.red)
+                                                                    .cornerRadius(8)
+                                                                
+                                                            } else if(listaItem.state == "PENDING"){
+                                                                Text("No cobrado")
+                                                                    .padding(.vertical, 3.0)
+                                                                    .padding(.horizontal, 11.0)
+                                                                    .background(.gray)
+                                                                    .cornerRadius(8)
+                                                                
+                                                            } else if (listaItem.state == "COLLECTED"){
+                                                                Text("Cobrado")
+                                                                    .padding(.vertical, 3.0)
+                                                                    .padding(.horizontal, 11.0)
+                                                                    .background(.green)
+                                                                    .cornerRadius(8)
+                                                                
+                                                            } else if (listaItem.state.isEmpty){
+                                                                Text("Sin información")
+                                                            }
+                                                        }
+                                                        .foregroundColor(.white)
+                                                        .font(.title3)
+                                                        .offset(y: -5)
+                                                        .padding(.bottom, 5)
+                                                        
+                                                    }.font(.title3)
                                                     
-                                                }.font(.title3)
-                                                
+                                                }
                                             }
+                                            .padding(0)
                                         }
-                                        .padding(0)
+                                    }
+                                }}
+                                .refreshable{
+                                    lista = tickets(forManagerId:id)
+                                }
+                                .onAppear() {
+                                    if yaCargo==false{
+                                        lista = tickets(forManagerId: id)
+                                        yaCargo = true
                                     }
                                 }
-                            }
-                            .refreshable{
-                                lista = tickets(forManagerId:id)
-                            }
-                            .onAppear() {
-                                if yaCargo==false{
-                                    lista = tickets(forManagerId: id)
-                                    yaCargo = true
-                                }
-                            }
-                            .frame(width: 350, height: 515)
-                            .padding(.top, 15)
-                            .listStyle(.inset)
+                                .frame(width: 350, height: 515)
+                                .padding(.top, 15)
+                                .listStyle(.inset)
                             
                         }
                         

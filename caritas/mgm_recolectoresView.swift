@@ -46,9 +46,15 @@ struct mgm_recolectoresView: View {
     }
    
     func getProgressValue(tickets: Array<ticket>) -> Float {
+        
+    
         let collected: Float = Float(self.getAmmountOfCollectedTickets(tickets: tickets))
         let total: Float = Float(tickets.count)
-        let result = (collected / total)
+        if (total == 0) {
+            return 0;
+        }
+        var result = (collected / total)
+        
         return result
     }
     
@@ -83,7 +89,7 @@ struct mgm_recolectoresView: View {
                 HStack{
                     
                     VStack() {
-                        
+                        /*
                         if(recolectores().isEmpty){
                             Group{
                                 Image("notificacionVacio")
@@ -99,8 +105,8 @@ struct mgm_recolectoresView: View {
 
                                 
                             }.offset(y:230)
-                            
-                        } else {
+                            */
+                        //} else {
                             
                             List (listaR){
                                 listaItem in
@@ -209,11 +215,11 @@ struct mgm_recolectoresView: View {
                                     yaCargo = true
                                 }
                             }
-                            .frame(width: 350, height: 515)
+                            .frame(width: 350, height: 700)
                             .padding(.top, 15)
                             .listStyle(.inset)
                             
-                        }
+                        //}
                         
                     }
                   

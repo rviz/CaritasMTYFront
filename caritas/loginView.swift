@@ -11,7 +11,6 @@ struct loginView: View {
     @State private var idd: Int = 0
     @State private var role: String = ""
     
-    // Botón
     @State private var isButtonEnabled = false // Estado para controlar la habilitación del botón y el enlace de navegación pepe
     
     var body: some View {
@@ -97,6 +96,7 @@ struct loginView: View {
                         idd=0
                     }
                     
+                
             
             }
             

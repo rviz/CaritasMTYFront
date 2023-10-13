@@ -8,6 +8,7 @@ struct mgm_listadoView: View {
     func ticketsWithConflict() -> [ticket] {
         return lista.filter {
             $0.state == "CONFLICT" }
+
     }
     
     var body: some View {
@@ -76,6 +77,7 @@ struct mgm_listadoView: View {
                         .frame(width: 350, height: 515)
                         .padding(.top, 15)
                         .listStyle(.inset)
+
                     }
                 } .onAppear {
                         lista = tickets(forManagerId: id)

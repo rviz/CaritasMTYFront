@@ -15,6 +15,7 @@
 		FB95E6952AA78B4D001B82BF /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB95E6942AA78B4D001B82BF /* ModelData.swift */; };
 		FB95E6972AA78B8E001B82BF /* Recibo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB95E6962AA78B8E001B82BF /* Recibo.swift */; };
 		FBAE7D6C2AA77B6C001C653B /* contentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAE7D6B2AA77B6C001C653B /* contentView.swift */; };
+		FBE4208E2AD9A33F006CCC83 /* mapaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE4208D2AD9A33F006CCC83 /* mapaView.swift */; };
 		FBF716612AA680C000C8B1F7 /* caritasApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF716602AA680C000C8B1F7 /* caritasApp.swift */; };
 		FBF716632AA680C000C8B1F7 /* loginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF716622AA680C000C8B1F7 /* loginView.swift */; };
 		FBF716652AA680C000C8B1F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBF716642AA680C000C8B1F7 /* Assets.xcassets */; };
@@ -31,6 +32,7 @@
 		FB95E6942AA78B4D001B82BF /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		FB95E6962AA78B8E001B82BF /* Recibo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recibo.swift; sourceTree = "<group>"; };
 		FBAE7D6B2AA77B6C001C653B /* contentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = contentView.swift; sourceTree = "<group>"; };
+		FBE4208D2AD9A33F006CCC83 /* mapaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mapaView.swift; sourceTree = "<group>"; };
 		FBF7165D2AA680C000C8B1F7 /* Cáritas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cáritas.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF716602AA680C000C8B1F7 /* caritasApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = caritasApp.swift; sourceTree = "<group>"; };
 		FBF716622AA680C000C8B1F7 /* loginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginView.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 				FBF7166E2AA69E7700C8B1F7 /* detallesView.swift */,
 				93FAC58A2AC2501B006BFD5F /* mgm_detallesView.swift */,
 				93FAC58C2AC25091006BFD5F /* mgm_recolectoresView.swift */,
+				FBE4208D2AD9A33F006CCC83 /* mapaView.swift */,
 				93FAC58E2AC250A7006BFD5F /* mgm_listadoView.swift */,
 				FB95E6942AA78B4D001B82BF /* ModelData.swift */,
 				FB95E6962AA78B8E001B82BF /* Recibo.swift */,
@@ -167,6 +170,7 @@
 				93FAC58B2AC2501B006BFD5F /* mgm_detallesView.swift in Sources */,
 				FBF7166F2AA69E7700C8B1F7 /* detallesView.swift in Sources */,
 				93FAC58D2AC25091006BFD5F /* mgm_recolectoresView.swift in Sources */,
+				FBE4208E2AD9A33F006CCC83 /* mapaView.swift in Sources */,
 				FBF716632AA680C000C8B1F7 /* loginView.swift in Sources */,
 				FB95E6972AA78B8E001B82BF /* Recibo.swift in Sources */,
 				FBAE7D6C2AA77B6C001C653B /* contentView.swift in Sources */,

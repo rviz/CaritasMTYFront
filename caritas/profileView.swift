@@ -20,12 +20,12 @@ struct profileView: View {
                     .rotationEffect(Angle(degrees:-15))
                     .offset(y:-60)
                 // Imagen del repartidor en cuestión
-                Image(systemName: "face.smiling")
+                Image(systemName: "person.crop.circle")
                     .resizable(resizingMode: .stretch)
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 130)
                     .foregroundColor(.black)
-                    .background(.yellow)
+                    .background(Color(red: 220/255, green: 220/255, blue: 220/255))
                     .clipShape(Circle())
 
                     .offset(y:80)
@@ -46,12 +46,11 @@ struct profileView: View {
             Button(action: {
                 showingConfirmationAlert = true
             }) {
-                Text("Cerrar Sesión")
-                    .foregroundColor(Color.red)
+                Text("Cerrar sesión")
+                    .foregroundColor(Color.white)
                     .padding()
-                    .background(Color.white)
+                    .background(Color.red)
                     .cornerRadius(10)
-                    .shadow(radius: 10)
                     .padding(.bottom, 25)
             }
             .alert(isPresented: $showingConfirmationAlert) {

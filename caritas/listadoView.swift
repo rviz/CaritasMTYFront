@@ -64,7 +64,7 @@ struct listadoView: View {
                     
                     VStack() {
 
-                        TextField("Buscar por ID", text: $filtroSearch)
+                        TextField("Buscar por nombre", text: $filtroSearch)
                             .textFieldStyle(.roundedBorder)
                             .frame(width: 330)
                             .font(.title3)
@@ -74,17 +74,17 @@ struct listadoView: View {
                         
                         Picker(selection: $option, label: Text("Picker"))
                         {
-                            Text("Nombre donante").tag(1)
-                            Text("Colonia").tag(2)
+                            Text("Recibo").tag(1)
+                            Text("Nombre").tag(2)
                         }
                         .padding(.top, 3.0)
                         .pickerStyle(.segmented)
                         .frame(width: 330)
                         .onChange(of: option){ value in
                             if(option == 1){
-                                tipoFiltro = "Nombre"
+                                tipoFiltro = "Id"
                             } else if (option == 2){
-                                tipoFiltro = "Colonia"
+                                tipoFiltro = "Nombre"
                             }
                         }
                         
@@ -107,9 +107,18 @@ struct listadoView: View {
                         } else {
                             
                             List {
-                                ForEach(Array(lista.enumerated()), id: \.1.id) { index, listaItem in
-                                    if filtroSearch.isEmpty || listaItem.donorName.localizedCaseInsensitiveContains(filtroSearch) {
-                                        NavigationLink(destination: detallesView(yaCargo: $yaCargo, ticket: listaItem)) {
+                                ForEach(Array(lista.enumerated()).sorted { (item1, item2) -> Bool in
+                                    switch option {
+                                        case 1: // Ordenar por colonia
+                                            return item1.element.id < item2.element.id
+                                        case 2: // Ordenar por nombre de donante
+                                            return item1.element.donorName.localizedCaseInsensitiveCompare(item2.element.donorName) == .orderedAscending
+                                        default:
+                                            return false
+                                        }
+                                    }, id: \.1.id) { index, listaItem in
+                                        if filtroSearch.isEmpty || listaItem.donorName.localizedCaseInsensitiveContains(filtroSearch) {
+                                            NavigationLink(destination: detallesView(yaCargo: $yaCargo, ticket: listaItem)) {
                                             VStack(alignment: .leading, spacing: 5) {
                                                 
                                                 
@@ -141,7 +150,7 @@ struct listadoView: View {
                                                                 }
                                                             }
                                                             
-                                                            Text("Id: ")
+                                                            Text("Recibo: ")
                                                                 .fontWeight(.bold)
                                                             +
                                                             Text("\(idReciboBD)")

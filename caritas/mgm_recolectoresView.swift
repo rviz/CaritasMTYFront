@@ -93,9 +93,10 @@ struct mgm_recolectoresView: View {
                 HStack{
                     
                     VStack() {
-                        /*
+                        
                         if(recolectores().isEmpty){
                             Group{
+                                Spacer()
                                 Image("notificacionVacio")
                                     .resizable(resizingMode: .stretch)
                                     .aspectRatio(contentMode: .fit)
@@ -106,11 +107,10 @@ struct mgm_recolectoresView: View {
                                     .foregroundColor(.gray)
                                     .multilineTextAlignment(.center)
                                     .frame(width: 200)
-
-                                
-                            }.offset(y:230)
-                            */
-                        //} else {
+                                Spacer()
+                            }
+                            
+                        } else {
                             
                             List (listaR){
                                 listaItem in
@@ -118,8 +118,23 @@ struct mgm_recolectoresView: View {
                                     
                                     HStack{
                                         
+                                        let progressValue = self.getProgressValue(tickets: listaItem.tickets)
                                         var numberConflicts = countConflicts(tickets: listaItem.tickets)
                                         var conflict = isThereConflict(tickets: listaItem.tickets)
+                                        var roundedProgress = Int((progressValue * 100).rounded())
+
+                                        ZStack {
+                                                                                        
+                                            Circle()
+                                                .fill(roundedProgress == 100 && !conflict ? Color.green : conflict ? Color.red : Color.gray)
+                                                .frame(width: 30, height: 30)
+                                            
+                                            Text(String(numberConflicts))
+                                                .font(.footnote)
+                                                .foregroundColor(.white)
+                                                .bold()
+                                            
+                                        } .offset(x:-13, y:-40)
                                         
                                         VStack(alignment: .leading, spacing: 5) {
                                             
@@ -147,7 +162,7 @@ struct mgm_recolectoresView: View {
                                                 
                                                 
                                                 // Impresión de etiqueta "sin información"
-                                                var recolectorBD: String {
+                                                var zonaBD: String {
                                                     if listaItem.username.isEmpty {
                                                         return "Sin información"
                                                     } else {
@@ -157,7 +172,7 @@ struct mgm_recolectoresView: View {
                                                 
                                                 Text("Zona:")
                                                     .fontWeight(.bold)
-                                                Text(recolectorBD)
+                                                Text(zonaBD)
                                             }
                                             
                                             
@@ -177,9 +192,6 @@ struct mgm_recolectoresView: View {
                                                 
                                                 
                                             }
-                                            
-                                            
-                                            
                                             
                                             HStack{
                                                 
@@ -210,17 +222,7 @@ struct mgm_recolectoresView: View {
 
                                         } .font(.title3)
                                         
-                                        ZStack {
-                                            Circle()
-                                                .fill(conflict ? Color.red : Color.gray)
-                                                .frame(width: 30, height: 30)
-                                            
-                                            Text(String(numberConflicts))
-                                                .font(.footnote)
-                                                .foregroundColor(.white)
-                                                .bold()
-                                            
-                                        } .offset(x:25, y:-45)
+                                        
                                           
                                     }
                                     
@@ -235,11 +237,11 @@ struct mgm_recolectoresView: View {
                                     yaCargo = true
                                 }
                             }
-                            .frame(width: 350, height: 700)
+                            .frame(width: 350, height: 630)
                             .padding(.top, 15)
                             .listStyle(.inset)
                             
-                        //}
+                        }
                         
                     }
                   

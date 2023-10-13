@@ -49,7 +49,7 @@ struct listadoView: View {
                             .frame(height: 80)
                             .offset(y:-50)
                         
-                        Text("Tickets asignados")
+                        Text("Recibos asignados")
                             .font(.title)
                             .fontWeight(.bold)
                             .padding(.bottom, 5)

@@ -21,7 +21,7 @@ struct mgm_listadoView: View {
                         .frame(height: 80)
                         .offset(y:-50)
                     
-                    Text("Tickets con conflicto")
+                    Text("Recibos con conflicto")
                         .font(.title)
                         .fontWeight(.bold)
                         .padding(.bottom, 5)
@@ -31,22 +31,27 @@ struct mgm_listadoView: View {
                 
                 VStack {
                     if ticketsWithConflict().isEmpty {
-                        Image(systemName: "face.smiling.inverse")
-                            .resizable(resizingMode: .stretch)
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 100)
-                            .foregroundColor(Color(red: 0, green: 156/255, blue: 171/255))
-                            .padding(.bottom, 20)
-                        
-                        Text("Este recolector no tiene recibos con conflicto.")
-                            .font(.title3)
-                            .foregroundColor(.gray)
-                            .multilineTextAlignment(.center)
+                        Spacer()
+                            Image(systemName: "face.smiling.inverse")
+                                .resizable(resizingMode: .stretch)
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 100)
+                                .foregroundColor(Color(red: 0, green: 156/255, blue: 171/255))
+                                .padding(.bottom, 20)
+                            
+                            Text("Este recolector no tiene recibos con conflicto.")
+                                .font(.title3)
+                                .foregroundColor(.gray)
+                                .multilineTextAlignment(.center)
                             .frame(width: 250)
+                        Spacer()
+
                     } else {
                         List {
                             ForEach(Array(lista.enumerated()), id: \.1.id) { _, listaItem in
+                                
                                 if listaItem.state == "CONFLICT" {
+                                    
                                     VStack(alignment: .leading, spacing: 5) {
                                         let idReciboBD = listaItem.id == 0 ? "Sin información" : "\(String(listaItem.id))"
                                         Text("ID: \(idReciboBD)")

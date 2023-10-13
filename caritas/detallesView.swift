@@ -75,36 +75,36 @@ struct detallesView: View {
     }
     
     var calleBD: String {
-        if ticket.housingReference.isEmpty {
+        if ticket.street.isEmpty {
             return "Sin información"
         } else {
-            return ticket.housingReference
+            return ticket.street
         }
     }
     
     var coloniaBD: String {
-        if ticket.reprogramationComments.isEmpty {
+        if ticket.suburb.isEmpty {
             return "Sin información, sin info, sin informaciones, no disponibles."
         } else {
-            return ticket.reprogramationComments
+            return ticket.suburb
         }
     }
     
     // Variables de la base de datos
     var numeroCasaBD: String {
-        if ticket.housingReference.isEmpty {
+        if ticket.houseNumber == 0 {
             return "Sin información"
         } else {
-            return ticket.housingReference
+            return String(ticket.houseNumber)
         }
     }
     
     // Variables de la base de datos
     var municipioBD: String {
-        if ticket.housingReference.isEmpty {
+        if ticket.municipality.isEmpty {
             return "Sin información"
         } else {
-            return ticket.housingReference
+            return ticket.municipality
         }
     }
     
@@ -169,6 +169,13 @@ struct detallesView: View {
                                         
                     VStack(alignment: .leading, spacing: 0) {
                         
+//                        VStack {
+//                             Text("ID: ")
+//                                 .fontWeight(.bold)
+//                            +
+//                            Text(idBD)
+//                         }.padding(.bottom, 10)
+                        
                         VStack {
                              Text("Donante: ")
                                  .fontWeight(.bold)
@@ -180,7 +187,7 @@ struct detallesView: View {
                             Text("Teléfono: ")
                                 .fontWeight(.bold)
                             +
-                            Text("+\(telefonoBD)")
+                            Text(telefonoBD)
                         }.padding(.bottom, 15)
                         Divider()
                             .padding(.bottom, 15)
@@ -220,9 +227,10 @@ struct detallesView: View {
                             Text(notasBD)
                         }.padding(.bottom, 10)
                     }
-                    .padding(.top, 100)
+                    .padding(.top, 90)
                     .padding(.bottom, 25)
                     .frame(maxWidth: 380)
+                    .font(.title3)
                 }
                 .offset(y:-50)
                 .padding(.top, -5)

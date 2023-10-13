@@ -16,10 +16,9 @@ struct profileView: View {
                 // Barra de color y la imagen del repartidor en cuestión
                 Color(red: 0, green: 156/255, blue: 171/255)
                     .edgesIgnoringSafeArea(.all)
-
                     .frame(width:500, height: 250)
                     .rotationEffect(Angle(degrees:-15))
-                    .offset(y:-50)
+                    .offset(y:-60)
                 // Imagen del repartidor en cuestión
                 Image(systemName: "face.smiling")
                     .resizable(resizingMode: .stretch)
@@ -33,9 +32,9 @@ struct profileView: View {
             }.offset(y:-50)
             
             VStack{
-                Text("¡Hola ")
+                Text("¡Bienvenido ")
                 +
-                Text("recolector")
+                Text("usuario")
                 .bold()
                 +
                 Text("!")
@@ -53,6 +52,7 @@ struct profileView: View {
                     .background(Color.white)
                     .cornerRadius(10)
                     .shadow(radius: 10)
+                    .padding(.bottom, 25)
             }
             .alert(isPresented: $showingConfirmationAlert) {
                 Alert(

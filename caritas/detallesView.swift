@@ -207,27 +207,21 @@ struct detallesView: View {
                             }.padding(.bottom, 10)
                             Divider()
                                 .padding(.bottom, 10)
-                            
                             VStack {
-                                Text("Calle: ")
+                                Text("Dirección: ")
                                     .fontWeight(.bold)
                                 +
-                                Text(calleBD)
+                                Text(calleBD + ", \(coloniaBD), #\(numeroCasaBD)")
                             }.padding(.bottom, 5)
                             
                             VStack {
-                                Text("Colonia: ")
+                                Text("Municipio: ")
                                     .fontWeight(.bold)
                                 +
-                                Text(coloniaBD)
+                                Text(municipioBD)
                             }.padding(.bottom, 5)
                             
-                            VStack {
-                                Text("Número: ")
-                                    .fontWeight(.bold)
-                                +
-                                Text(numeroCasaBD)
-                            }.padding(.bottom, 5)
+                            
                             
                             VStack {
                                 Text("Notas: ")

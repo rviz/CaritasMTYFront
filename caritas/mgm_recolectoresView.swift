@@ -45,7 +45,6 @@ struct mgm_recolectoresView: View {
             }
         }
         return ret
-        
     }
    
    
@@ -57,7 +56,7 @@ struct mgm_recolectoresView: View {
         if (total == 0) {
             return 0;
         }
-        var result = (collected / total)
+        let result = (collected / total)
         
         return result
     }
@@ -72,7 +71,6 @@ struct mgm_recolectoresView: View {
         NavigationStack{
             VStack{
                 VStack{
-                    
                     ZStack{
                         // Barra de color
                         Color(red: 0, green: 156/255, blue: 171/255)
@@ -91,9 +89,7 @@ struct mgm_recolectoresView: View {
                 }
                 
                 HStack{
-                    
                     VStack() {
-                        
                         if(recolectores().isEmpty){
                             Group{
                                 Spacer()
@@ -111,36 +107,20 @@ struct mgm_recolectoresView: View {
                             }
                             
                         } else {
-                            
                             List (listaR){
                                 listaItem in
                                 NavigationLink(destination: mgm_listadoView(id:listaItem.id)) {
-                                    
                                     HStack{
-                                        
                                         let progressValue = self.getProgressValue(tickets: listaItem.tickets)
                                         let numberConflicts = countConflicts(tickets: listaItem.tickets)
                                         let conflict = isThereConflict(tickets: listaItem.tickets)
                                         let roundedProgress = Int((progressValue * 100).rounded())
-
-                                        ZStack {
-                                                                                        
-                                            Circle()
-                                                .fill(roundedProgress == 100 && !conflict ? Color.green : conflict ? Color.red : Color.gray)
-                                                .frame(width: 30, height: 30)
-                                            
-                                            Text(String(numberConflicts))
-                                                .font(.footnote)
-                                                .foregroundColor(.white)
-                                                .bold()
-                                            
-                                        } .offset(x:-13, y:-40)
                                         
                                         VStack(alignment: .leading, spacing: 5) {
                                             
                                             let progressValue = self.getProgressValue(tickets: listaItem.tickets)
-                                            var roundedProgress = Int((progressValue * 100).rounded())
-                                            var conflict = isThereConflict(tickets: listaItem.tickets)
+                                            let roundedProgress = Int((progressValue * 100).rounded())
+                                            let conflict = isThereConflict(tickets: listaItem.tickets)
                                             
                                             HStack {
                                                 // Impresión de etiqueta "sin información"
@@ -155,6 +135,8 @@ struct mgm_recolectoresView: View {
                                                 Text("\(recolectorBD)")
                                                     .fontWeight(.bold)
                                                     .foregroundColor(Color(red: 0, green: 156/255, blue: 171/255))
+                                                // quiero agregar aqui un simbolo de warning
+                                                
                                             } .padding(.top, 10)
                                             
                                             
@@ -189,9 +171,7 @@ struct mgm_recolectoresView: View {
                                                 Text("Recibos finalizados:")
                                                     .fontWeight(.bold)
                                                 Text("\(String(self.getAmmountOfCollectedTickets(tickets: listaItem.tickets)))/\(String(listaItem.tickets.count))")
-                                                
-                                                
-                                            }
+                                            }.padding(.bottom,-10)
                                             
                                             HStack{
                                                 
@@ -204,6 +184,8 @@ struct mgm_recolectoresView: View {
                                                 
                                                 // Barra de progreso
                                                 ProgressView(value: self.getProgressValue(tickets:listaItem.tickets))
+                                                    .frame(width: 240)
+                                                    .scaleEffect(y: 2.5)
                                                     .background(.white) // Establece el fondo del ProgressView en azul
                                                     .progressViewStyle(LinearProgressViewStyle(tint: roundedProgress == 100 && !conflict ? .green : (conflict ? .red : .black)))
                                                 
@@ -221,6 +203,7 @@ struct mgm_recolectoresView: View {
                                             
 
                                         } .font(.title3)
+                                            .padding(.leading,20)
                                         
                                         
                                           
@@ -237,7 +220,7 @@ struct mgm_recolectoresView: View {
                                     yaCargo = true
                                 }
                             }
-                            .frame(width: 350, height: 630)
+                            .frame(width: 400, height: 630)
                             .padding(.top, 15)
                             .listStyle(.inset)
                             

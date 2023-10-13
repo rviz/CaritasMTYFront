@@ -16,12 +16,15 @@ extension View {
     }
 }
 
+
+
 struct detallesView: View {
     @Binding var yaCargo: Bool
     //@Binding var ticket: ticket
 
     var ticket: ticket
-
+    
+    
 
     // Variables
     @Environment(\.dismiss) private var dismiss
@@ -150,8 +153,8 @@ struct detallesView: View {
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .multilineTextAlignment(.center)
-                        .padding(.top, 40)
-                        .padding(.bottom, 30)
+                        .padding(.top, 15)
+                        .padding(.bottom, 25)
                     
 
 /*                    Button(action: {
@@ -190,29 +193,20 @@ struct detallesView: View {
                     HStack{
                         
                         VStack(alignment: .leading, spacing: 0) {
-                            
-                            //                        VStack {
-                            //                             Text("ID: ")
-                            //                                 .fontWeight(.bold)
-                            //                            +
-                            //                            Text(idBD)
-                            //                         }.padding(.bottom, 10)
-                            
                             VStack {
                                 Text("Donante: ")
                                     .fontWeight(.bold)
                                 +
                                 Text(donanteBD)
                             }.padding(.bottom, 10)
-                            
                             VStack {
                                 Text("Teléfono: ")
                                     .fontWeight(.bold)
                                 +
                                 Text(telefonoBD)
-                            }.padding(.bottom, 15)
+                            }.padding(.bottom, 10)
                             Divider()
-                                .padding(.bottom, 15)
+                                .padding(.bottom, 10)
                             
                             VStack {
                                 Text("Calle: ")
@@ -236,23 +230,15 @@ struct detallesView: View {
                             }.padding(.bottom, 10)
                             
                             VStack {
-                                Text("Municipio: ")
-                                    .fontWeight(.bold)
-                                +
-                                Text(municipioBD)
-                            }.padding(.bottom, 10)
-                            
-                            VStack {
                                 Text("Notas: ")
                                     .fontWeight(.bold)
                                 +
                                 Text(notasBD)
-                            }.padding(.bottom, 10)
+                            }
                         }
-                        .padding(.top, 90)
-                        .padding(.bottom, 25)
+                        .padding(.top, 65)
+                        .padding(.bottom, 15)
                         .frame(maxWidth: 380)
-                        .font(.title3)
                     }
                     .offset(y:-50)
                     .padding(.top, -5)
@@ -263,22 +249,18 @@ struct detallesView: View {
                         // Barra de color
                         if(optionEstado == 1){
                             Color(red: 214/255, green: 214/255, blue: 214/255)
-                                .frame(height: 50)
-                                .frame(width: 330)
-                                .cornerRadius(10) //
+                                .frame(width: 330, height: 50)
+                                .cornerRadius(8) //
                                 .offset(y:-55)
-                            
-                            
                         }else if(optionEstado == 2){
                             Color.green
-                                .frame(height: 50)
-                                .frame(width: 330)
-                                .cornerRadius(10) //
+                                .frame(width: 330, height: 50)
+                                .cornerRadius(8) //
                                 .offset(y:-55)
                         }else if(optionEstado == 3){
-                            Color(red: 255/255, green: 0/255, blue: 0/255)                                .frame(height: 50)
-                                .frame(width: 330)
-                                .cornerRadius(10) //
+                            Color(red: 255/255, green: 0/255, blue: 0/255)
+                                .frame(width: 330, height: 50)
+                                .cornerRadius(8) //
                                 .offset(y:-55)
                         }
                         
@@ -287,7 +269,6 @@ struct detallesView: View {
                             Text("No cobrado").tag(1)
                             Text("Cobrado").tag(2)
                             Text("Conflicto").tag(3)
-                            
                         }.pickerStyle(.segmented)
                             .frame(width: 310)
                             .background(
@@ -308,20 +289,17 @@ struct detallesView: View {
                             }
                             .padding(.top, -70)
                             .zIndex(2)
-                        
-                        
                     }
                     
                     VStack{
                         if optionEstado == 3{
-                            // Campo de texto 1: Comentarios adicionales
-                            Text("Comentarios adicionales:")
+                            // Campo de texto 1: Comentarios por conflicto
+                            Text("Comentarios de conflicto:")
                                 .frame(maxWidth: .infinity, alignment: .leading)
-                                .padding([.bottom, .trailing], -3.0)
                                 .padding(.leading, 35)
-                                .padding(.top, -30)
+                                .padding(.top, -45)
+                                .padding(.bottom, -10)
                                 .fontWeight(.regular)
-                            
                             TextField("Comentario", text: $comentarioAdicional, axis: .vertical)
                                 .onReceive(Just(comentarioAdicional)){ // Limita la cantidad de caracteres
                                     _ in limitText(textLimit)
@@ -330,13 +308,13 @@ struct detallesView: View {
                                     
                                 }
                                 .padding(.leading)
-                                .padding(.top,8)
+                                .padding(.top,10)
                                 .padding(.bottom, 10)
                                 .frame(width: 323)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 10)
                                         .stroke(Color.gray, lineWidth: 1)
-                                ).padding(.bottom, 55)
+                                ).padding(.bottom, 35)
                                 .padding(.top, -1)
                                 .foregroundColor(commentsColor)
                                 .disabled(!isCommentEnabled)

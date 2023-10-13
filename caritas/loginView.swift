@@ -64,6 +64,7 @@ struct loginView: View {
                     
                     Button{
                         self.isValid = self.validate()
+                        hideKeyboard()
                     } label: {
                         Text("Iniciar sesión")
                             .frame(width: 327, height: 61)
@@ -95,9 +96,6 @@ struct loginView: View {
                         contraseña = ""
                         idd=0
                     }
-                    
-                
-            
             }
             
         }.preferredColorScheme(.light)

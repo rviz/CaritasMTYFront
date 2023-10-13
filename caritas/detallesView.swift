@@ -153,8 +153,8 @@ struct detallesView: View {
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .multilineTextAlignment(.center)
-                        .padding(.top, 15)
-                        .padding(.bottom, 25)
+                        .padding(.top, 20)
+                        .padding(.bottom, 30)
                     
 
 /*                    Button(action: {
@@ -198,7 +198,7 @@ struct detallesView: View {
                                     .fontWeight(.bold)
                                 +
                                 Text(donanteBD)
-                            }.padding(.bottom, 10)
+                            }.padding(.bottom, 5)
                             VStack {
                                 Text("Teléfono: ")
                                     .fontWeight(.bold)
@@ -213,21 +213,21 @@ struct detallesView: View {
                                     .fontWeight(.bold)
                                 +
                                 Text(calleBD)
-                            }.padding(.bottom, 10)
+                            }.padding(.bottom, 5)
                             
                             VStack {
                                 Text("Colonia: ")
                                     .fontWeight(.bold)
                                 +
                                 Text(coloniaBD)
-                            }.padding(.bottom, 10)
+                            }.padding(.bottom, 5)
                             
                             VStack {
                                 Text("Número: ")
                                     .fontWeight(.bold)
                                 +
                                 Text(numeroCasaBD)
-                            }.padding(.bottom, 10)
+                            }.padding(.bottom, 5)
                             
                             VStack {
                                 Text("Notas: ")
@@ -236,12 +236,12 @@ struct detallesView: View {
                                 Text(notasBD)
                             }
                         }
-                        .padding(.top, 65)
+                        .padding(.top, 75)
                         .padding(.bottom, 15)
                         .frame(maxWidth: 380)
                     }
                     .offset(y:-50)
-                    .padding(.top, -5)
+                    .padding(.top,-3)
                     .padding(.leading, 43)
                     
                     // Opciones: Estados
@@ -249,19 +249,19 @@ struct detallesView: View {
                         // Barra de color
                         if(optionEstado == 1){
                             Color(red: 214/255, green: 214/255, blue: 214/255)
-                                .frame(width: 330, height: 50)
+                                .frame(width: 330, height: 55)
                                 .cornerRadius(8) //
-                                .offset(y:-55)
+                                .offset(y:-45)
                         }else if(optionEstado == 2){
                             Color.green
-                                .frame(width: 330, height: 50)
+                                .frame(width: 330, height: 55)
                                 .cornerRadius(8) //
-                                .offset(y:-55)
+                                .offset(y:-45)
                         }else if(optionEstado == 3){
                             Color(red: 255/255, green: 0/255, blue: 0/255)
-                                .frame(width: 330, height: 50)
+                                .frame(width: 330, height: 55)
                                 .cornerRadius(8) //
-                                .offset(y:-55)
+                                .offset(y:-45)
                         }
                         
                         Picker(selection: $optionEstado, label: Text("Picker"))
@@ -270,7 +270,7 @@ struct detallesView: View {
                             Text("Cobrado").tag(2)
                             Text("Conflicto").tag(3)
                         }.pickerStyle(.segmented)
-                            .frame(width: 310)
+                            .frame(width: 305)
                             .background(
                                 // Apply a background color to the selected segment
                                 RoundedRectangle(cornerRadius: 8)
@@ -287,7 +287,7 @@ struct detallesView: View {
                                 }
                                 
                             }
-                            .padding(.top, -70)
+                            .padding(.top, -60)
                             .zIndex(2)
                     }
                     
@@ -297,8 +297,7 @@ struct detallesView: View {
                             Text("Comentarios de conflicto:")
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .padding(.leading, 35)
-                                .padding(.top, -45)
-                                .padding(.bottom, -10)
+                                .padding(.top, -20)
                                 .fontWeight(.regular)
                             TextField("Comentario", text: $comentarioAdicional, axis: .vertical)
                                 .onReceive(Just(comentarioAdicional)){ // Limita la cantidad de caracteres
@@ -314,8 +313,9 @@ struct detallesView: View {
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 10)
                                         .stroke(Color.gray, lineWidth: 1)
-                                ).padding(.bottom, 35)
-                                .padding(.top, -1)
+                                ).padding(.bottom, 50)
+                            //padding del textfield
+                                .padding(.top, -5)
                                 .foregroundColor(commentsColor)
                                 .disabled(!isCommentEnabled)
                         }
@@ -346,6 +346,7 @@ struct detallesView: View {
                             .frame(width: 300, height: 40)
                             .foregroundColor(Color.white)
                     }
+                    .frame(height: 60)
                     .buttonStyle(.borderedProminent)
                     .tint(Color(red: 0, green: 156/255, blue: 171/255))
                     .padding(.top, -25)
@@ -405,7 +406,6 @@ struct detallesView: View {
                     Spacer()
                     
                 } .padding(.top, -58)  // scroll
-                
             }
         }
     }

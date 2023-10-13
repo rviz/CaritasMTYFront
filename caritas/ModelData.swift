@@ -1,7 +1,7 @@
 
 import Foundation
 
-let apiLink = "10.22.212.43:5000"
+let apiLink = "10.22.163.36:5000"
 
 func tickets(forManagerId managerId: Int) -> Array<ticket> {
     var lista: Array<ticket> = []

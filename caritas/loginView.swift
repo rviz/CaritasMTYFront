@@ -68,11 +68,10 @@ struct loginView: View {
                     } label: {
                         Text("Iniciar sesión")
                             .frame(width: 327, height: 61)
-                            .background(Color(red: 255/255, green: 255/255, blue: 255/255, opacity: 0.1))
+                            .background(Color(red: 255/255, green: 255/255, blue: 255/255, opacity: 0.2))
                             .cornerRadius(10)
-                        
-
-                    }.frame(width: 200, height: 50).tint(Color(red: 255/255, green: 255/255, blue: 255/255, opacity: 0)) // botón de atras
+                    }
+                    .frame(height: 50).tint(Color(red: 255/255, green: 255/255, blue: 255/255, opacity: 0)) // botón de atras
                         .navigationDestination(isPresented: $isValid){
                             contentView(id: idd, rol: role)
                         }
@@ -81,11 +80,6 @@ struct loginView: View {
                         .padding(.top, 60)
                         .font(.title3)
                         .fontWeight(.regular)
-                    /*
-                    NavigationLink("Pestaña de manager", destination: mgm_recolectoresView())
-                        .offset(y:40)
-                        .navigationBarBackButtonHidden(true)
-                    */
                     Text(mensajeError)
                         .foregroundColor(.red)
                         .offset(y:70)

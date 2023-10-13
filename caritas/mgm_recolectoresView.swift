@@ -119,9 +119,9 @@ struct mgm_recolectoresView: View {
                                     HStack{
                                         
                                         let progressValue = self.getProgressValue(tickets: listaItem.tickets)
-                                        var numberConflicts = countConflicts(tickets: listaItem.tickets)
-                                        var conflict = isThereConflict(tickets: listaItem.tickets)
-                                        var roundedProgress = Int((progressValue * 100).rounded())
+                                        let numberConflicts = countConflicts(tickets: listaItem.tickets)
+                                        let conflict = isThereConflict(tickets: listaItem.tickets)
+                                        let roundedProgress = Int((progressValue * 100).rounded())
 
                                         ZStack {
                                                                                         

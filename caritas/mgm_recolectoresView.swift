@@ -13,16 +13,15 @@ struct mgm_recolectoresView: View {
     @State private var colorEstado: Color = .black
     @State var yaCargo: Bool = false
     @State var listaR: Array<Collector> = []
+    @State var totalTickets: Int = 0
 
-
-    
     @State private var dateString: String = "2023-09-27T14:30:00Z" // Sample date string
     @State private var formattedDateString: String = ""
    
     func getAmmountOfCollectedTickets( tickets: Array<ticket>) -> Int {
         var ret: Int = 0;
         for t in tickets {
-            if t.state == "COLLECTED" {
+            if (t.state == "COLLECTED" || t.state == "CONFLICT"){
                 ret += 1
             }
         }
@@ -30,20 +29,25 @@ struct mgm_recolectoresView: View {
     }
     
     func isThereConflict( tickets: Array<ticket>) -> Bool {
+        for t in tickets {
+            if t.state == "CONFLICT" {
+                return true
+            }
+        }
+        return false
+    }
+    
+    func countConflicts( tickets: Array<ticket>) -> Int {
         var ret: Int = 0;
         for t in tickets {
             if t.state == "CONFLICT" {
                 ret += 1
-                
             }
         }
+        return ret
         
-        if(ret != 0){
-            return true
-        } else {
-            return false
-        }
     }
+   
    
     func getProgressValue(tickets: Array<ticket>) -> Float {
         
@@ -112,97 +116,113 @@ struct mgm_recolectoresView: View {
                                 listaItem in
                                 NavigationLink(destination: mgm_listadoView(id:listaItem.id)) {
                                     
-                                    VStack(alignment: .leading, spacing: 5) {
+                                    HStack{
                                         
-                                        let progressValue = self.getProgressValue(tickets: listaItem.tickets)
-                                        let roundedProgress = Int((progressValue * 100).rounded())
-                                        let conflict = isThereConflict(tickets: listaItem.tickets)
+                                        var numberConflicts = countConflicts(tickets: listaItem.tickets)
+                                        var conflict = isThereConflict(tickets: listaItem.tickets)
                                         
-                                        HStack {
-                                            // Impresión de etiqueta "sin información"
-                                            var recolectorBD: String {
-                                                if listaItem.fullname.isEmpty {
-                                                    return "Sin información"
-                                                } else {
-                                                    return listaItem.fullname
-                                                }
-                                            }
+                                        VStack(alignment: .leading, spacing: 5) {
                                             
-                                            Text("\(recolectorBD)")
-                                                .fontWeight(.bold)
-                                                .foregroundColor(roundedProgress == 100 ? .green : (conflict ? .red : Color(red: 0, green: 156/255, blue: 171/255)))
-                                        } .padding(.top, 10)
-                                        
-                                        
-                                        HStack {
-                                            
-                                            
-                                            // Impresión de etiqueta "sin información"
-                                            var recolectorBD: String {
-                                                if listaItem.username.isEmpty {
-                                                    return "Sin información"
-                                                } else {
-                                                    return listaItem.username
-                                                }
-                                            }
-                                            
-                                            Text("Zona:")
-                                                .fontWeight(.bold)
-                                            Text(recolectorBD)
-                                            
-                                        }
-                                        
-                                        HStack {
-                                            // Impresión de etiqueta "sin información"
-                                            var recolectorBD: String {
-                                                if listaItem.id == 0 {
-                                                    return "Sin información"
-                                                } else {
-                                                    return String(listaItem.id)
-                                                }
-                                            }
-                                            
-                                            Text("Recibos cobrados:")
-                                                .fontWeight(.bold)
-                                            Text(String(self.getAmmountOfCollectedTickets(tickets: listaItem.tickets)))
-                                        }
-                                        
-                                        
-                                        HStack {
-                                            // Impresión de etiqueta "sin información"
-                                            var recolectorBD: String {
-                                                if listaItem.id == 0 {
-                                                    return "Sin información"
-                                                } else {
-                                                    return String(listaItem.tickets.count)
-                                                }
-                                            }
-                                            
-                                            Text("Recibos asignados:")
-                                                .fontWeight(.bold)
-                                            Text(recolectorBD)
-                                        }
-                                        
-                                        HStack{
-                                            
-                                            // Obtención de porcentaje
                                             let progressValue = self.getProgressValue(tickets: listaItem.tickets)
-                                            let roundedProgress = Int((progressValue * 100).rounded())
+                                            var roundedProgress = Int((progressValue * 100).rounded())
+                                            var conflict = isThereConflict(tickets: listaItem.tickets)
                                             
-                                            // Existencia de conflictos
-                                            let conflict = isThereConflict(tickets: listaItem.tickets)
+                                            HStack {
+                                                // Impresión de etiqueta "sin información"
+                                                var recolectorBD: String {
+                                                    if listaItem.fullname.isEmpty {
+                                                        return "Sin información"
+                                                    } else {
+                                                        return listaItem.fullname
+                                                    }
+                                                }
+                                                
+                                                Text("\(recolectorBD)")
+                                                    .fontWeight(.bold)
+                                                    .foregroundColor(Color(red: 0, green: 156/255, blue: 171/255))
+                                            } .padding(.top, 10)
                                             
-                                            // Barra de progreso
-                                            ProgressView(value: self.getProgressValue(tickets:listaItem.tickets))
-                                                .background(.white) // Establece el fondo del ProgressView en azul
-                                                .progressViewStyle(LinearProgressViewStyle(tint: roundedProgress == 100 ? .green : (conflict ? .red : .black)))
                                             
-                                            // Impresión de porcentaje
-                                            Text("\(roundedProgress)%")
-                                                .padding(.leading, 10)
-                                                .font(.body)
-                                        } .padding(.bottom, 10)
-                                    } .font(.title3)
+                                            HStack {
+                                                
+                                                
+                                                // Impresión de etiqueta "sin información"
+                                                var recolectorBD: String {
+                                                    if listaItem.username.isEmpty {
+                                                        return "Sin información"
+                                                    } else {
+                                                        return listaItem.username
+                                                    }
+                                                }
+                                                
+                                                Text("Zona:")
+                                                    .fontWeight(.bold)
+                                                Text(recolectorBD)
+                                            }
+                                            
+                                            
+                                            HStack {
+                                                // Impresión de etiqueta "sin información"
+                                                var recolectorBD: String {
+                                                    if listaItem.id == 0 {
+                                                        return "Sin información"
+                                                    } else {
+                                                        return String(listaItem.id)
+                                                    }
+                                                }
+                                                
+                                                Text("Recibos finalizados:")
+                                                    .fontWeight(.bold)
+                                                Text("\(String(self.getAmmountOfCollectedTickets(tickets: listaItem.tickets)))/\(String(listaItem.tickets.count))")
+                                                
+                                                
+                                            }
+                                            
+                                            
+                                            
+                                            
+                                            HStack{
+                                                
+                                                // Obtención de porcentaje
+                                                let progressValue = self.getProgressValue(tickets: listaItem.tickets)
+                                                let roundedProgress = Int((progressValue * 100).rounded())
+                                                
+                                                // Existencia de conflictos
+                                                let conflict = isThereConflict(tickets: listaItem.tickets)
+                                                
+                                                // Barra de progreso
+                                                ProgressView(value: self.getProgressValue(tickets:listaItem.tickets))
+                                                    .background(.white) // Establece el fondo del ProgressView en azul
+                                                    .progressViewStyle(LinearProgressViewStyle(tint: roundedProgress == 100 && !conflict ? .green : (conflict ? .red : .black)))
+                                                
+                                                 //Impresión de porcentaje
+                                                Text("\(roundedProgress)%")
+                                                    .padding(.leading, 10)
+                                                    .font(.body)
+                                                
+                                               
+                                            }
+                                            .padding(.bottom, 10)
+                                            .padding(.top, 12)
+
+                                            
+                                            
+
+                                        } .font(.title3)
+                                        
+                                        ZStack {
+                                            Circle()
+                                                .fill(conflict ? Color.red : Color.gray)
+                                                .frame(width: 30, height: 30)
+                                            
+                                            Text(String(numberConflicts))
+                                                .font(.footnote)
+                                                .foregroundColor(.white)
+                                                .bold()
+                                            
+                                        } .offset(x:25, y:-45)
+                                          
+                                    }
                                     
                                 }
                             }

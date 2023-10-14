@@ -179,7 +179,7 @@ struct detallesView: View {
                     Button{
                         self.isValid = true
                         
-                        loadCoordinates()
+                        //loadCoordinates()
                        
                         
                     } label: {
@@ -189,7 +189,7 @@ struct detallesView: View {
                             .frame(width: 300, height: 40)
                             .foregroundColor(Color.white)
                         
-                    }// botón de atras
+                    }
                         .navigationDestination(isPresented: $isValid){
                             mapaView(latitud: lat, longitud: lng)
                         }

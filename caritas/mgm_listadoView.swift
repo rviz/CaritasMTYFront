@@ -32,11 +32,11 @@ struct mgm_listadoView: View {
                 VStack {
                     if ticketsWithConflict().isEmpty {
                         Spacer()
-                            Image(systemName: "face.smiling.inverse")
+                            Image(systemName: "face.smiling")
                                 .resizable(resizingMode: .stretch)
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 100)
-                                .foregroundColor(Color(red: 0, green: 156/255, blue: 171/255))
+                                .foregroundColor(Color(red: 0, green: 0, blue: 0, opacity:0.5))
                                 .padding(.bottom, 20)
                             
                             Text("Este recolector no tiene recibos con conflicto.")

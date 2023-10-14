@@ -97,7 +97,6 @@ struct mgm_recolectoresView: View {
                                     .resizable(resizingMode: .stretch)
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: 100)
-                                
                                 Text("No se encontraron recolectores")
                                     .font(.title3)
                                     .foregroundColor(.gray)
@@ -136,13 +135,10 @@ struct mgm_recolectoresView: View {
                                                     .fontWeight(.bold)
                                                     .foregroundColor(Color(red: 0, green: 156/255, blue: 171/255))
                                                 // quiero agregar aqui un simbolo de warning
-                                                
                                             } .padding(.top, 10)
                                             
                                             
                                             HStack {
-                                                
-                                                
                                                 // Impresión de etiqueta "sin información"
                                                 var zonaBD: String {
                                                     if listaItem.username.isEmpty {
@@ -172,6 +168,22 @@ struct mgm_recolectoresView: View {
                                                     .fontWeight(.bold)
                                                 Text("\(String(self.getAmmountOfCollectedTickets(tickets: listaItem.tickets)))/\(String(listaItem.tickets.count))")
                                             }.padding(.bottom,-10)
+                                            
+                                            if(conflict){
+                                                HStack{
+                                                    Text("Conflictos:")
+                                                        .fontWeight(.bold)
+                                                    Text("\(numberConflicts)")
+                                                        .font(.callout)
+                                                        .padding(.vertical, 1.0)
+                                                        .padding(.horizontal, 6.0)
+                                                        .foregroundColor(Color.white)
+                                                        .background(Color.red)
+                                                        .cornerRadius(3)
+                                                    
+                                                }
+                                                .offset(y:10)
+                                            }
                                             
                                             HStack{
                                                 

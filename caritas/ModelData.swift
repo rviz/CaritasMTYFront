@@ -1,5 +1,42 @@
 
 import Foundation
+func fetchCoordinates(for address: String, completion: @escaping (Result<Location, Error>) -> Void) {
+    // Reemplaza espacios con '+'
+    let formattedAddress = address.replacingOccurrences(of: " ", with: "+")
+    let apiKey = "AIzaSyA0IhjlpXb-MHMmnQXlBWReFWhBx6wEK6o" // ¡Cambia esto con tu nueva clave API!
+    let urlString = "https://maps.googleapis.com/maps/api/geocode/json?address=\(formattedAddress)&key=\(apiKey)"
+    
+    guard let url = URL(string: urlString) else {
+        completion(.failure(NSError(domain: "", code: 400, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"])))
+        return
+    }
+    
+    URLSession.shared.dataTask(with: url) { (data, response, error) in
+        if let error = error {
+            completion(.failure(error))
+            return
+        }
+        
+        guard let data = data else {
+            completion(.failure(NSError(domain: "", code: 400, userInfo: [NSLocalizedDescriptionKey: "No data received"])))
+            return
+        }
+        
+        do {
+            let decoder = JSONDecoder()
+            let response = try decoder.decode(GoogleGeocodeResponse.self, from: data)
+            if let firstLocation = response.results.first?.geometry.location {
+                completion(.success(firstLocation))
+            } else {
+                completion(.failure(NSError(domain: "", code: 400, userInfo: [NSLocalizedDescriptionKey: "No location found"])))
+            }
+        } catch let parsingError {
+            completion(.failure(parsingError))
+        }
+    }.resume()
+}
+
+
 
 let apiLink = "10.22.163.36:5000"
 

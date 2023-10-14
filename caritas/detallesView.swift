@@ -25,7 +25,10 @@ struct detallesView: View {
     var ticket: ticket
     
     
-
+    @State private var coordinates: String = "Cargando..."
+    @State var lat: Double = 0.0
+    @State var lng: Double = 0.0
+    
     // Variables
     @Environment(\.dismiss) private var dismiss
     @State private var estadoFinal: String = ""
@@ -175,7 +178,10 @@ struct detallesView: View {
 */
                     Button{
                         self.isValid = true
-
+                        
+                        loadCoordinates()
+                       
+                        
                     } label: {
                         Text("Ver mapa")
                             .font(.title2)
@@ -185,7 +191,10 @@ struct detallesView: View {
                         
                     }// botón de atras
                         .navigationDestination(isPresented: $isValid){
-                            mapaView(latitud: 25.649991, longitud: -100.29)
+                            mapaView(latitud: lat, longitud: lng)
+                        }
+                        .onAppear(){
+                            loadCoordinates()
                         }
                         .buttonStyle(.borderedProminent)
                         .tint(Color(red: 0, green: 156/255, blue: 171/255))
@@ -367,42 +376,28 @@ struct detallesView: View {
                             secondaryButton: .cancel(Text("Cancelar"))
                         )
                     }
-                    
-                    //
-                    /*
-                     hideKeyboard()
-                     CambiarComment(id: ticket.id, comment: comentarioAdicional) { msg in
-                     if let msg = msg, msg != "" {
-                     }}
-                     CambiarEstado(id: ticket.id, state: estadoFinal) { msg in
-                     if let msg = msg, msg != "" {
-                     }}
-                     yaCargo = false
-                     
-                     dismiss()
-                     
-                     }){
-                     Text("Guardar")
-                     .font(.title2)
-                     .fontWeight(.bold)
-                     .frame(width: 300, height: 40)
-                     .foregroundColor(Color.white) // Establece el color del texto en blanco
-                     }
-                     .onAppear(){
-                     //bloquearEdicion()
-                     
-                     }
-                     .buttonStyle(.borderedProminent)
-                     .tint(Color(red: 0, green: 156/255, blue: 171/255))
-                     .padding(.top, -25)
-                     
-                     */
                     Spacer()
                     
                 } .padding(.top, -58)  // scroll
             }
         }
     }
+    
+    func loadCoordinates() {
+        fetchCoordinates(for: "Av. Eugenio Garza Sada 2501, Monterrey, NL, Mexico") { result in
+            //DispatchQueue.main.async {
+                switch result {
+                case .success(let location):
+                    coordinates = "Lat: \(location.lat), Lng: \(location.lng)"
+                    self.lat = location.lat
+                    self.lng = location.lng
+                case .failure(let error):
+                    coordinates = "Error: \(error.localizedDescription)"
+                }
+           // }
+        }
+    }
+    
     func limitText(_ upper: Int){
            if comentarioAdicional.count > upper {
                comentarioAdicional = String(comentarioAdicional.prefix(upper))

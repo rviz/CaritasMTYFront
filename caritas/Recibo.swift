@@ -7,6 +7,24 @@
 
 import Foundation
 
+
+struct GoogleGeocodeResponse: Decodable {
+    let results: [GeocodeResult]
+}
+
+struct GeocodeResult: Decodable {
+    let geometry: Geometry
+}
+
+struct Geometry: Decodable {
+    let location: Location
+}
+
+struct Location: Decodable {
+    let lat: Double
+    let lng: Double
+}
+
 struct ticketote: Codable{
     var tickets: [ticket]
 }

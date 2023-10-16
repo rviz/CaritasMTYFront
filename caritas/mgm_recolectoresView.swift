@@ -141,10 +141,10 @@ struct mgm_recolectoresView: View {
                                             HStack {
                                                 // Impresión de etiqueta "sin información"
                                                 var zonaBD: String {
-                                                    if listaItem.username.isEmpty {
+                                                    if listaItem.zone.isEmpty {
                                                         return "Sin información"
                                                     } else {
-                                                        return listaItem.username
+                                                        return listaItem.zone
                                                     }
                                                 }
                                                 

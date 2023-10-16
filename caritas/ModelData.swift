@@ -1,8 +1,6 @@
 
 import Foundation
 
-let apiLink = "10.22.168.82:5000"
-
 func fetchCoordinates(for address: String, completion: @escaping (Result<Location, Error>) -> Void) {
     // Reemplaza espacios con '+'
     let formattedAddress = address.replacingOccurrences(of: " ", with: "+")
@@ -41,7 +39,7 @@ func fetchCoordinates(for address: String, completion: @escaping (Result<Locatio
 
 
 
-
+let apiLink = "10.22.168.82:5000"
 
 func tickets(forManagerId managerId: Int) -> Array<ticket> {
     var lista: Array<ticket> = []

@@ -156,8 +156,8 @@ struct detallesView: View {
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .multilineTextAlignment(.center)
-                        .padding(.top, 20)
-                        .padding(.bottom, 30)
+                        .padding(.top, 40)
+                        .padding(.bottom, 40)
                     
 
 /*                    Button(action: {
@@ -207,7 +207,7 @@ struct detallesView: View {
                                     .fontWeight(.bold)
                                 +
                                 Text(donanteBD)
-                            }.padding(.bottom, 5)
+                            }.padding(.bottom, 10)
                             VStack {
                                 Text("Teléfono: ")
                                     .fontWeight(.bold)
@@ -221,14 +221,14 @@ struct detallesView: View {
                                     .fontWeight(.bold)
                                 +
                                 Text(calleBD + ", \(coloniaBD), #\(numeroCasaBD)")
-                            }.padding(.bottom, 5)
+                            }.padding(.bottom, 10)
                             
                             VStack {
                                 Text("Municipio: ")
                                     .fontWeight(.bold)
                                 +
                                 Text(municipioBD)
-                            }.padding(.bottom, 5)
+                            }.padding(.bottom, 10)
                             
                             
                             
@@ -241,11 +241,12 @@ struct detallesView: View {
                         }
                         .padding(.top, 75)
                         .padding(.bottom, 15)
-                        .frame(maxWidth: 380)
+                        .frame(maxWidth: 340)
+                        .font(.system(size: 18))
                     }
                     .offset(y:-50)
                     .padding(.top,-3)
-                    .padding(.leading, 43)
+                    .padding(.leading, 30)
                     
                     // Opciones: Estados
                     ZStack{
@@ -304,8 +305,7 @@ struct detallesView: View {
                                 .fontWeight(.regular)
                             TextField("Comentario", text: $comentarioAdicional, axis: .vertical)
                                 .onReceive(Just(comentarioAdicional)){ // Limita la cantidad de caracteres
-                                    _ in limitText(textLimit)
-                                }
+                                    _ in limitText(textLimit)}
                                 .onTapGesture {
                                     
                                 }
@@ -331,9 +331,13 @@ struct detallesView: View {
                         }
                         else if (ticket.state == "COLLECTED"){
                             optionEstado = 2
+                            bloquearEdicion()
+
                         }
                         else if (ticket.state == "CONFLICT"){
                             optionEstado = 3
+                            bloquearEdicion()
+
                         }
                     } .padding(.bottom, 0)
                         .padding(.top, -5)
@@ -398,6 +402,7 @@ struct detallesView: View {
         }
     }
     
+
     func limitText(_ upper: Int){
            if comentarioAdicional.count > upper {
                comentarioAdicional = String(comentarioAdicional.prefix(upper))

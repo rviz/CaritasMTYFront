@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9320B7742AD9C5E0002FF5AE /* KeyboardAvoider in Frameworks */ = {isa = PBXBuildFile; productRef = 9320B7732AD9C5E0002FF5AE /* KeyboardAvoider */; };
 		93AD73542AAA2486006C4E3F /* profileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AD73532AAA2486006C4E3F /* profileView.swift */; };
-		93FAC58B2AC2501B006BFD5F /* mgm_detallesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FAC58A2AC2501B006BFD5F /* mgm_detallesView.swift */; };
 		93FAC58D2AC25091006BFD5F /* mgm_recolectoresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FAC58C2AC25091006BFD5F /* mgm_recolectoresView.swift */; };
 		93FAC58F2AC250A7006BFD5F /* mgm_listadoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FAC58E2AC250A7006BFD5F /* mgm_listadoView.swift */; };
 		FB95E6932AA786BD001B82BF /* listadoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB95E6922AA786BD001B82BF /* listadoView.swift */; };
@@ -27,7 +25,6 @@
 
 /* Begin PBXFileReference section */
 		93AD73532AAA2486006C4E3F /* profileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileView.swift; sourceTree = "<group>"; };
-		93FAC58A2AC2501B006BFD5F /* mgm_detallesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mgm_detallesView.swift; sourceTree = "<group>"; };
 		93FAC58C2AC25091006BFD5F /* mgm_recolectoresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mgm_recolectoresView.swift; sourceTree = "<group>"; };
 		93FAC58E2AC250A7006BFD5F /* mgm_listadoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mgm_listadoView.swift; sourceTree = "<group>"; };
 		FB95E6922AA786BD001B82BF /* listadoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listadoView.swift; sourceTree = "<group>"; };
@@ -49,7 +46,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9320B7742AD9C5E0002FF5AE /* KeyboardAvoider in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,7 +76,6 @@
 				FB95E6922AA786BD001B82BF /* listadoView.swift */,
 				FBF7166E2AA69E7700C8B1F7 /* detallesView.swift */,
 				FBCAC9842ADA2A2E0073802F /* prueba.swift */,
-				93FAC58A2AC2501B006BFD5F /* mgm_detallesView.swift */,
 				93FAC58C2AC25091006BFD5F /* mgm_recolectoresView.swift */,
 				FBE4208D2AD9A33F006CCC83 /* mapaView.swift */,
 				93FAC58E2AC250A7006BFD5F /* mgm_listadoView.swift */,
@@ -119,7 +114,6 @@
 			);
 			name = "Cáritas";
 			packageProductDependencies = (
-				9320B7732AD9C5E0002FF5AE /* KeyboardAvoider */,
 			);
 			productName = caritas;
 			productReference = FBF7165D2AA680C000C8B1F7 /* Cáritas.app */;
@@ -150,7 +144,6 @@
 			);
 			mainGroup = FBF716542AA680C000C8B1F7;
 			packageReferences = (
-				9320B7722AD9C5E0002FF5AE /* XCRemoteSwiftPackageReference "KeyboardAvoider" */,
 			);
 			productRefGroup = FBF7165E2AA680C000C8B1F7 /* Products */;
 			projectDirPath = "";
@@ -178,7 +171,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93FAC58B2AC2501B006BFD5F /* mgm_detallesView.swift in Sources */,
 				FBF7166F2AA69E7700C8B1F7 /* detallesView.swift in Sources */,
 				93FAC58D2AC25091006BFD5F /* mgm_recolectoresView.swift in Sources */,
 				FBE4208E2AD9A33F006CCC83 /* mapaView.swift in Sources */,
@@ -393,25 +385,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		9320B7722AD9C5E0002FF5AE /* XCRemoteSwiftPackageReference "KeyboardAvoider" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/michaelhenry/KeyboardAvoider";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		9320B7732AD9C5E0002FF5AE /* KeyboardAvoider */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9320B7722AD9C5E0002FF5AE /* XCRemoteSwiftPackageReference "KeyboardAvoider" */;
-			productName = KeyboardAvoider;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FBF716552AA680C000C8B1F7 /* Project object */;
 }

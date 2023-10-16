@@ -26,7 +26,6 @@ struct mgm_detallesView: View {
     @State private var estado: String = ""
 
     
-    
     var body: some View {
        
         

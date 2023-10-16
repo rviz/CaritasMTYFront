@@ -38,7 +38,7 @@ func fetchCoordinates(for address: String, completion: @escaping (Result<Locatio
 
 
 
-let apiLink = "10.22.163.36:5000"
+let apiLink = "10.22.168.82:5000"
 
 func tickets(forManagerId managerId: Int) -> Array<ticket> {
     var lista: Array<ticket> = []

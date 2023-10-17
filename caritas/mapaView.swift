@@ -12,7 +12,6 @@ import CoreLocation
 struct mapaView: View {
     @State var latitud: Double = 0.0
     @State var longitud: Double = 0.0
-    @State var customMark: [Marcador] = [Marcador (coordinate: .init(latitude: 25.649991, longitude: -100.29))]
     @State var showPosicion: Bool = true
     @State private var region:MKCoordinateRegion = MKCoordinateRegion()
     
@@ -25,6 +24,7 @@ struct mapaView: View {
         
     var body: some View {
         VStack{
+            var customMark: [Marcador] = [Marcador (coordinate: .init(latitude: self.latitud, longitude: self.longitud))]
             Map(coordinateRegion: $region,
                 showsUserLocation: showPosicion,
                 userTrackingMode: .constant(.follow),

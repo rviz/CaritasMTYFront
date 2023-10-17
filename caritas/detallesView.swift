@@ -384,7 +384,10 @@ struct detallesView: View {
     }
     
     func loadCoordinates() {
-        fetchCoordinates(for: "Av. Eugenio Garza Sada 2501, Monterrey, NL, Mexico") { result in
+        
+        var s = calleBD + ", \(coloniaBD), \(numeroCasaBD)"
+        print (s)
+        fetchCoordinates(for: s) { result in
             //DispatchQueue.main.async {
                 switch result {
                 case .success(let location):

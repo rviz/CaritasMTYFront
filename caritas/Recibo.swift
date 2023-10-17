@@ -40,7 +40,7 @@ struct User: Codable, Identifiable{
 }
 
 struct Collector: Codable, Identifiable{
-    var fullname, username, uuid: String
+    var fullname, username, uuid, zone: String
     var id, managerId: Int
     var tickets: [ticket]
 }

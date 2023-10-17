@@ -224,7 +224,8 @@ struct detallesView: View {
                         }
                         .padding(.top, 75)
                         .padding(.bottom, 15)
-                        .frame(maxWidth: 340)
+                        .frame(width: 300)
+                        .offset(x:-18)
                         .font(.system(size: 18))
                     }
                     .offset(y:-50)

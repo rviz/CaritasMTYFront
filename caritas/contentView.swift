@@ -19,7 +19,7 @@ struct contentView: View {
                 if (rol == "MANAGER"){
                     mgm_recolectoresView()
                         .tabItem {
-                            Label("Tickets", systemImage: "ticket")
+                            Label("Recolectores", systemImage: "figure.outdoor.cycle")
                         }
                 }
                 

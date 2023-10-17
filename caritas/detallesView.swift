@@ -16,8 +16,6 @@ extension View {
     }
 }
 
-
-
 struct detallesView: View {
     @Binding var yaCargo: Bool
     //@Binding var ticket: ticket
@@ -47,7 +45,6 @@ struct detallesView: View {
     @State private var showingConfirmationAlert = false
     @State private var isValid: Bool = false
 
-    
     // Limite de palabras en campo de comentarios
     let textLimit = 150
     
@@ -55,6 +52,8 @@ struct detallesView: View {
     @State private var isPickerEnabled = true
     @State private var isCommentEnabled = true
     
+    @State private var colorTelefono: Color = .black
+
 
     // Variables de la base de datos
     var idBD: String {
@@ -196,7 +195,20 @@ struct detallesView: View {
                                     .fontWeight(.bold)
                                 +
                                 Text(telefonoBD)
+                                    .foregroundColor(colorTelefono)
                             }.padding(.bottom, 10)
+                                .onTapGesture {
+                                    if !telefonoBD.isEmpty {
+                                        UIPasteboard.general.string = telefonoBD
+                                        colorTelefono = (Color(red: 0, green: 156/255, blue: 171/255))
+                                        
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                                            colorTelefono = .black
+                                        }
+                                        
+                                    }
+                                }
+                                
                             Divider()
                                 .padding(.bottom, 10)
                             VStack {
@@ -224,8 +236,9 @@ struct detallesView: View {
                         }
                         .padding(.top, 75)
                         .padding(.bottom, 15)
-                        .frame(width: 300)
+                        .frame(width: 280)
                         .offset(x:-18)
+
                         .font(.system(size: 18))
                     }
                     .offset(y:-50)

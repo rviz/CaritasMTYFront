@@ -1,5 +1,14 @@
 
 import Foundation
+import UIKit
+
+
+extension String {
+    func removeAccents() -> String {
+        return self.folding(options: .diacriticInsensitive, locale: .current)
+    }
+}
+
 
 func fetchCoordinates(for address: String, completion: @escaping (Result<Location, Error>) -> Void) {
     // Reemplaza espacios con '+'

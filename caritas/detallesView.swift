@@ -171,6 +171,9 @@ struct detallesView: View {
                             .cornerRadius(10)
                             .padding(.horizontal, 20)
                     })
+                    .onAppear(){
+                        loadCoordinates()
+                    }
 
                     /*
                     Button{

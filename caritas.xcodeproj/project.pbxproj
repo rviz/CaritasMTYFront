@@ -25,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		93AD73532AAA2486006C4E3F /* profileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileView.swift; sourceTree = "<group>"; };
+		93BE6BB92ADE1AC600A01A54 /* Ca-ritas-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Ca-ritas-Info.plist"; sourceTree = "<group>"; };
 		93FAC58C2AC25091006BFD5F /* mgm_recolectoresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mgm_recolectoresView.swift; sourceTree = "<group>"; };
 		93FAC58E2AC250A7006BFD5F /* mgm_listadoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mgm_listadoView.swift; sourceTree = "<group>"; };
 		FB95E6922AA786BD001B82BF /* listadoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listadoView.swift; sourceTree = "<group>"; };
@@ -55,6 +56,7 @@
 		FBF716542AA680C000C8B1F7 = {
 			isa = PBXGroup;
 			children = (
+				93BE6BB92ADE1AC600A01A54 /* Ca-ritas-Info.plist */,
 				FBF7165F2AA680C000C8B1F7 /* caritas */,
 				FBF7165E2AA680C000C8B1F7 /* Products */,
 			);
@@ -314,6 +316,7 @@
 				DEVELOPMENT_TEAM = 6AUPJ8CSTJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Ca-ritas-Info.plist";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Permita usar su ubicación actual";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -345,6 +348,7 @@
 				DEVELOPMENT_TEAM = 6AUPJ8CSTJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Ca-ritas-Info.plist";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Permita usar su ubicación actual";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

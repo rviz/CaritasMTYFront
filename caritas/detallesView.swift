@@ -157,25 +157,22 @@ struct detallesView: View {
                         .fontWeight(.bold)
                         .multilineTextAlignment(.center)
                         .padding(.top, 40)
-                        .padding(.bottom, 40)
+                        .padding(.bottom, 20)
                     
 
-/*                    Button(action: {
-                        // Acción que deseas realizar cuando se presione el botón
-                    }) {
-                        Text("Ver mapa")
+                    
+                    NavigationLink(destination: mapaView(latitud: lat, longitud: lng), label: {
+                        Text ("Ver mapa")
                             .font(.title2)
                             .fontWeight(.bold)
-                            .frame(width: 300, height: 40)
+                            .frame(width: 310, height: 60)
                             .foregroundColor(Color.white)
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .tint(Color(red: 0, green: 156/255, blue: 171/255))
-                    .padding(.top, -25)
-                    .onTapGesture {
-                        mapaView(latitud: 25.649991, longitud: -100.29)
-                    }
-*/
+                            .background(Color(red: 0, green: 156/255, blue: 171/255))
+                            .cornerRadius(10)
+                            .padding(.horizontal, 20)
+                    })
+
+                    /*
                     Button{
                         self.isValid = true
                         
@@ -199,6 +196,7 @@ struct detallesView: View {
                         .buttonStyle(.borderedProminent)
                         .tint(Color(red: 0, green: 156/255, blue: 171/255))
                         .padding(.top, -25)
+                     */
                     HStack{
                         
                         VStack(alignment: .leading, spacing: 0) {

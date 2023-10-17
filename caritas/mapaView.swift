@@ -3,7 +3,7 @@
 //  Cáritas
 //
 //  Created by Alumno on 13/10/23.
-//
+//import SwiftUI
 import SwiftUI
 import MapKit
 import CoreLocation
@@ -13,7 +13,7 @@ struct mapaView: View {
     @State var longitud: Double = 0.0
     @State var showPosicion: Bool = true
     @State private var region: MKCoordinateRegion = MKCoordinateRegion()
-    @State private var isShowingAlert = false
+    @State private var isShowingAlert = true // Mostrar el popup automáticamente al cargar la vista
 
     // Zoom inicial de 2000 mts
     @State private var latZoom: Double = 2000
@@ -34,22 +34,18 @@ struct mapaView: View {
                 .onAppear {
                     region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitud, longitude: longitud), latitudinalMeters: latZoom, longitudinalMeters: lonZoom)
                 }
-
-            Button("Abrir en Mapas") {
-                isShowingAlert = true
-            }
-            .alert(isPresented: $isShowingAlert) {
-                Alert(
-                    title: Text("Abrir en Mapas"),
-                    message: Text("¿Deseas abrir esta ubicación en la aplicación Mapas?"),
-                    primaryButton: .default(Text("Abrir")) {
-                        openInMaps()
-                    },
-                    secondaryButton: .cancel()
-                )
-            }
         }
         .ignoresSafeArea()
+        .alert(isPresented: $isShowingAlert) {
+            Alert(
+                title: Text("Abrir en Mapas"),
+                message: Text("¿Deseas abrir esta ubicación en la aplicación Mapas?"),
+                primaryButton: .default(Text("Abrir")) {
+                    openInMaps()
+                },
+                secondaryButton: .cancel()
+            )
+        }
     }
 
     func openInMaps() {

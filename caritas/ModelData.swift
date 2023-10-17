@@ -12,7 +12,7 @@ extension String {
 
 func fetchCoordinates(for address: String, completion: @escaping (Result<Location, Error>) -> Void) {
     // Reemplaza espacios con '+'
-    let formattedAddress = address.replacingOccurrences(of: " ", with: "+")
+    let formattedAddress = address.replacingOccurrences(of: " ", with: "+").removeAccents()
     let apiKey = "AIzaSyA0IhjlpXb-MHMmnQXlBWReFWhBx6wEK6o" // ¡Cambia esto con tu nueva clave API!
     let urlString = "https://maps.googleapis.com/maps/api/geocode/json?address=\(formattedAddress)&key=\(apiKey)"
     

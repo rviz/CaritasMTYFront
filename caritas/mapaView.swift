@@ -6,11 +6,12 @@
 //import SwiftUI
 import SwiftUI
 import MapKit
-import CoreLocation
+//import CoreLocation
 
 struct mapaView: View {
     @State var latitud: Double = 0.0
     @State var longitud: Double = 0.0
+    
     @State var showPosicion: Bool = true
     @State private var region: MKCoordinateRegion = MKCoordinateRegion()
     @State private var isShowingAlert = true // Mostrar el popup automáticamente al cargar la vista

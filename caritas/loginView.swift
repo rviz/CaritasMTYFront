@@ -10,8 +10,7 @@ struct loginView: View {
     @State private var conteoIntentos : Int = 0
     @State private var idd: Int = 0
     @State private var role: String = ""
-    
-    @State private var isButtonEnabled = false // Estado para controlar la habilitación del botón y el enlace de navegación pepe
+    @State private var isButtonDisabled = false // Estado para controlar la habilitación del botón y el enlace de navegación pepe
     
     var body: some View {
         
@@ -90,6 +89,7 @@ struct loginView: View {
                         contraseña = ""
                         idd=0
                     }
+                    .disabled(isButtonDisabled)
             }
             
         }.preferredColorScheme(.light)
@@ -117,11 +117,11 @@ struct loginView: View {
          print("Conteo actual = " + String(conteoIntentos))
          if(conteoIntentos > 5){
              mensajeError = "Intenta en 10 minutos."
-             isButtonEnabled = true
+             isButtonDisabled = true
          }
          
-         let timer = Timer.scheduledTimer(withTimeInterval: 15, repeats: false) { _ in
-             isButtonEnabled.self = false
+         let timer = Timer.scheduledTimer(withTimeInterval: 600, repeats: false) { _ in
+             isButtonDisabled.self = false
              conteoIntentos = 0
              mensajeError = " "
          }

@@ -13,7 +13,6 @@ struct listadoView: View {
     @State private var lista: Array<ticket> = []
     @State var yaCargo: Bool = false
     
-    @State private var dateString: String = "2023-09-27T14:30:00Z" // Sample date string
     @State private var formattedDateString: String = ""
     
     // Función para cambiar el formato de una fecha

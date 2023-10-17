@@ -171,35 +171,17 @@ struct detallesView: View {
                             .cornerRadius(10)
                             .padding(.horizontal, 20)
                     })
+                    
                     .onAppear(){
                         loadCoordinates()
                     }
+                    .disabled(lat == 0)
 
-                    /*
-                    Button{
-                        self.isValid = true
-                        
-                        //loadCoordinates()
-                       
-                        
-                    } label: {
-                        Text("Ver mapa")
-                            .font(.title2)
-                            .fontWeight(.bold)
-                            .frame(width: 300, height: 40)
-                            .foregroundColor(Color.white)
-                        
+                    if (lat == 0){
+                        Text("Mapa no disponible")
+                            .foregroundColor(Color.red)
                     }
-                        .navigationDestination(isPresented: $isValid){
-                            mapaView(latitud: lat, longitud: lng)
-                        }
-                        .onAppear(){
-                            loadCoordinates()
-                        }
-                        .buttonStyle(.borderedProminent)
-                        .tint(Color(red: 0, green: 156/255, blue: 171/255))
-                        .padding(.top, -25)
-                     */
+
                     HStack{
                         
                         VStack(alignment: .leading, spacing: 0) {

@@ -4,7 +4,6 @@
 //
 //  Created by Alumno on 13/10/23.
 //
-
 import SwiftUI
 import MapKit
 import CoreLocation
@@ -13,35 +12,51 @@ struct mapaView: View {
     @State var latitud: Double = 0.0
     @State var longitud: Double = 0.0
     @State var showPosicion: Bool = true
-    @State private var region:MKCoordinateRegion = MKCoordinateRegion()
-    
-    
-    //Zoom inicial de 2000 mts
-    @State private var latZoom:Double = 2000
-    @State private var lonZoom:Double = 2000
-    //Variable para mostrar ubicación actual
+    @State private var region: MKCoordinateRegion = MKCoordinateRegion()
+    @State private var isShowingAlert = false
+
+    // Zoom inicial de 2000 mts
+    @State private var latZoom: Double = 2000
+    @State private var lonZoom: Double = 2000
+    // Variable para mostrar ubicación actual
     @State private var locationManager = CLLocationManager()
-        
+
     var body: some View {
-        VStack{
-            let customMark: [Marcador] = [Marcador (coordinate: .init(latitude: self.latitud, longitude: self.longitud))]
+        VStack {
+            let customMark: [Marcador] = [Marcador(coordinate: .init(latitude: self.latitud, longitude: self.longitud))]
             Map(coordinateRegion: $region,
-               // showsUserLocation: showPosicion,
                 showsUserLocation: false,
                 userTrackingMode: .constant(.follow),
                 annotationItems: customMark,
                 annotationContent: { city in
                     MapMarker(coordinate: city.coordinate, tint: .red)
                 })
-            //MapAnnotation
-               .onAppear(){
-                   /*
-                   if (showPosicion){
-                       locationManager.requestWhenInUseAuthorization()
-                   }*/
-                   region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitud, longitude:longitud), latitudinalMeters: latZoom, longitudinalMeters: lonZoom)
+                .onAppear {
+                    region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitud, longitude: longitud), latitudinalMeters: latZoom, longitudinalMeters: lonZoom)
                 }
-        }.ignoresSafeArea()
+
+            Button("Abrir en Mapas") {
+                isShowingAlert = true
+            }
+            .alert(isPresented: $isShowingAlert) {
+                Alert(
+                    title: Text("Abrir en Mapas"),
+                    message: Text("¿Deseas abrir esta ubicación en la aplicación Mapas?"),
+                    primaryButton: .default(Text("Abrir")) {
+                        openInMaps()
+                    },
+                    secondaryButton: .cancel()
+                )
+            }
+        }
+        .ignoresSafeArea()
+    }
+
+    func openInMaps() {
+        let coordinates = CLLocationCoordinate2D(latitude: latitud, longitude: longitud)
+        let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: coordinates))
+        mapItem.name = "Ubicación personalizada"
+        mapItem.openInMaps()
     }
 }
 

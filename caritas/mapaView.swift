@@ -24,9 +24,10 @@ struct mapaView: View {
         
     var body: some View {
         VStack{
-            var customMark: [Marcador] = [Marcador (coordinate: .init(latitude: self.latitud, longitude: self.longitud))]
+            let customMark: [Marcador] = [Marcador (coordinate: .init(latitude: self.latitud, longitude: self.longitud))]
             Map(coordinateRegion: $region,
-                showsUserLocation: showPosicion,
+               // showsUserLocation: showPosicion,
+                showsUserLocation: false,
                 userTrackingMode: .constant(.follow),
                 annotationItems: customMark,
                 annotationContent: { city in
@@ -34,9 +35,10 @@ struct mapaView: View {
                 })
             //MapAnnotation
                .onAppear(){
+                   /*
                    if (showPosicion){
                        locationManager.requestWhenInUseAuthorization()
-                   }
+                   }*/
                    region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitud, longitude:longitud), latitudinalMeters: latZoom, longitudinalMeters: lonZoom)
                 }
         }.ignoresSafeArea()
